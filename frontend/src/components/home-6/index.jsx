@@ -10,8 +10,11 @@ import Footer from "../common/footer/Footer";
 import CopyrightFooter from "../common/footer/CopyrightFooter";
 import PopupSignInUp from "../common/PopupSignInUp";
 import Hero from "./Hero";
+import { useGetCategoriesQuery } from "../../features/categories/categoriesApi";
 
 const index = () => {
+  const { data, isLoading, error } = useGetCategoriesQuery();
+  console.log("useGetUsersQuery", data, isLoading, error);
   return (
     <>
       {/* <!-- Main Header Nav --> */}
