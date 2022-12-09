@@ -50,7 +50,7 @@ const Footer = () => {
       </div>
       {/* End .col */}
 
-      <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+      {/* <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
         <div className="footer_contact_widget">
           <h4>Contact Us</h4>
           <ul className="list-unstyled">
@@ -71,15 +71,15 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
       {/* End .col */}
 
       <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
         <div className="footer_social_widget">
-          <h4>Follow us</h4>
+          {/* <h4>Follow us</h4>
           <ul className="mb30">
             <Social />
-          </ul>
+          </ul> */}
           <h4>Subscribe</h4>
           <SubscribeForm />
         </div>

@@ -160,7 +160,7 @@ const index = () => {
       </section>
 
       {/* <!-- Our Partners --> */}
-      <section id="our-partners" className="our-partners">
+      {/* <section id="our-partners" className="our-partners">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
@@ -174,7 +174,7 @@ const index = () => {
             <Partners />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <!-- Our Footer --> */}
       <section className="footer_one home6 bgc-f7">

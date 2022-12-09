@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Social from "../footer/Social";
 
 const HeaderMenuContent = ({ float = "" }) => {
   const route = useRouter();
@@ -239,9 +240,10 @@ const HeaderMenuContent = ({ float = "" }) => {
   return (
     <ul
       id="respMenu"
-      className="ace-responsive-menu text-end d-lg-block d-none"
+      className="text-end d-sm-block d-none"
       data-menu-style="horizontal"
     >
+      <Social />
       {/* <li className="dropitem">
         <a
           href="#"
