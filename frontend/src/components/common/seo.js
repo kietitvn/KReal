@@ -4,7 +4,7 @@ const Seo = ({ pageTitle, font }) => (
   <>
     <Head>
       <title>
-        {pageTitle && `${pageTitle} || FindHouse - Real Estate React Template}`}
+        {pageTitle && `${pageTitle} || KReal - Bất Động Sản`}
       </title>
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta
@@ -13,7 +13,7 @@ const Seo = ({ pageTitle, font }) => (
       />
       <meta
         name="description"
-        content="FindHouse - Real Estate React Template"
+        content="KReal - Bất Động Sản"
       />
       <meta name="ibthemes" content="ATFN" />
       <meta

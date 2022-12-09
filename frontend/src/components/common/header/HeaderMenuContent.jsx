@@ -242,7 +242,7 @@ const HeaderMenuContent = ({ float = "" }) => {
       className="ace-responsive-menu text-end d-lg-block d-none"
       data-menu-style="horizontal"
     >
-      <li className="dropitem">
+      {/* <li className="dropitem">
         <a
           href="#"
           className={
@@ -254,8 +254,6 @@ const HeaderMenuContent = ({ float = "" }) => {
           <span className="title">Home</span>
           <span className="arrow"></span>
         </a>
-        {/* <!-- Level Two--> */}
-
         <ul className="sub-menu ">
           {home.map((item) => (
             <li key={item.id}>
@@ -271,10 +269,10 @@ const HeaderMenuContent = ({ float = "" }) => {
             </li>
           ))}
         </ul>
-      </li>
+      </li> */}
       {/* End .dropitem */}
 
-      <li className="dropitem">
+      {/* <li className="dropitem">
         <a
           href="#"
           className={
@@ -290,7 +288,6 @@ const HeaderMenuContent = ({ float = "" }) => {
           <span className="title">Listing</span>
           <span className="arrow"></span>
         </a>
-        {/* <!-- Level Two--> */}
         <ul className="sub-menu ">
           {listing.map((item) => (
             <li className="dropitem arrow" key={item.id}>
@@ -304,7 +301,7 @@ const HeaderMenuContent = ({ float = "" }) => {
               >
                 {item.title}
               </a>
-              {/* <!-- Level Three--> */}
+             
               <ul className="sub-menu ">
                 {item.items.map((val, i) => (
                   <li key={i}>
@@ -325,10 +322,10 @@ const HeaderMenuContent = ({ float = "" }) => {
             </li>
           ))}
         </ul>
-      </li>
+      </li> */}
       {/* End .dropitem */}
 
-      <li className="dropitem">
+      {/* <li className="dropitem">
         <a
           href="#"
           className={
@@ -363,7 +360,6 @@ const HeaderMenuContent = ({ float = "" }) => {
               >
                 {item.title}
               </a>
-              {/* <!-- Level Three--> */}
               <ul className="sub-menu ">
                 {item.items.map((val, i) => (
                   <li key={i}>
@@ -385,10 +381,10 @@ const HeaderMenuContent = ({ float = "" }) => {
             </li>
           ))}
         </ul>
-      </li>
+      </li> */}
       {/* End .dropitem */}
 
-      <li className="dropitem">
+      {/* <li className="dropitem">
         <a
           href="#"
           className={
@@ -415,10 +411,10 @@ const HeaderMenuContent = ({ float = "" }) => {
             </li>
           ))}
         </ul>
-      </li>
+      </li> */}
       {/* End .dropitem */}
 
-      <li className="dropitem">
+      {/* <li className="dropitem">
         <a
           href="#"
           className={
@@ -452,10 +448,10 @@ const HeaderMenuContent = ({ float = "" }) => {
             </li>
           ))}
         </ul>
-      </li>
+      </li> */}
       {/* End .dropitem */}
 
-      <li className="last">
+      {/* <li className="last">
         <Link href="/contact">
           <a
             className={route.pathname === "/contact" ? "ui-active" : undefined}
@@ -463,10 +459,10 @@ const HeaderMenuContent = ({ float = "" }) => {
             Contact
           </a>
         </Link>
-      </li>
+      </li> */}
       {/* End .dropitem */}
 
-      <li className={`list-inline-item list_s ${float}`}>
+      {/* <li className={`list-inline-item list_s ${float}`}>
         <a
           href="#"
           className="btn flaticon-user"
@@ -475,17 +471,17 @@ const HeaderMenuContent = ({ float = "" }) => {
         >
           <span className="dn-lg">Login/Register</span>
         </a>
-      </li>
+      </li> */}
       {/* End .dropitem */}
 
-      <li className={`list-inline-item add_listing ${float}`}>
+      {/* <li className={`list-inline-item add_listing ${float}`}>
         <Link href="/create-listing">
           <a>
             <span className="flaticon-plus"></span>
             <span className="dn-lg"> Create Listing</span>
           </a>
         </Link>
-      </li>
+      </li> */}
       {/* End .dropitem */}
     </ul>
   );

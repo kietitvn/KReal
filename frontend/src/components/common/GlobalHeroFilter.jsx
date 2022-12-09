@@ -14,7 +14,7 @@ const GlobalHeroFilter = ({ className = "" }) => {
                         aria-controls="pills-home"
                         aria-selected="true"
                     >
-                        Buy
+                        Bán
                     </a>
                 </li>
 
@@ -28,7 +28,7 @@ const GlobalHeroFilter = ({ className = "" }) => {
                         aria-controls="pills-profile"
                         aria-selected="false"
                     >
-                        Rent
+                        Thuê
                     </a>
                 </li>
             </ul>

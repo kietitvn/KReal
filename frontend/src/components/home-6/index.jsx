@@ -116,7 +116,7 @@ const index = () => {
       </section>
 
       {/* <!-- Our Agents --> */}
-      <section id="our-agents" className="our-agents pt40 pb15">
+      {/* <section id="our-agents" className="our-agents pt40 pb15">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -131,7 +131,6 @@ const index = () => {
               </div>
             </div>
           </div>
-          {/* End .row */}
         </div>
 
         <div className="our_agents_home6_slider ">
@@ -141,8 +140,7 @@ const index = () => {
             </div>
           </div>
         </div>
-        {/* End .row */}
-      </section>
+      </section> */}
 
       {/* <!-- Our Blog --> */}
       <section className="our-blog bb1 pb30">

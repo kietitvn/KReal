@@ -36,7 +36,7 @@ const CopyrightFooter = () => {
               target="_blank"
               rel="noreferrer"
             >
-              ib-themes
+              KReal
             </a>
             . All rights reserved.
           </p>

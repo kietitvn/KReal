@@ -10,15 +10,15 @@ const ErrorPageContent = () => {
         alt="error.png"
       />
       <div className="erro_code">
-        <h1>Ohh! Page Not Found</h1>
+        <h1>Ohh! Trang không tồn tại</h1>
       </div>
-      <p>We can’t seem to find the page you’re looking for</p>
+      <p>Xin lỗi vì sự bất tiện này!</p>
 
       <Form />
       {/* End form */}
 
       <Link href="/">
-        <a className="btn btn_error btn-thm">Back To Home</a>
+        <a className="btn btn_error btn-thm">Trang Chủ</a>
       </Link>
     </div>
   );

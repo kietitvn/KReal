@@ -21,7 +21,7 @@ const GlobalFilter = ({ className = "" }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter keyword..."
+              placeholder="Từ khóa..."
               onChange={(e) => dispatch(addKeyword(e.target.value))}
             />
           </div>
@@ -32,13 +32,10 @@ const GlobalFilter = ({ className = "" }) => {
           <div className="search_option_two">
             <div className="candidate_revew_select">
               <select className="selectpicker w100 form-select show-tick">
-                <option value="">Property Type</option>
-                <option>Apartment</option>
-                <option>Bungalow</option>
-                <option>Condo</option>
-                <option>House</option>
-                <option>Land</option>
-                <option>Single Family</option>
+                <option value="">Nhà</option>
+                <option>Đất</option>
+                <option>Căn hộ</option>
+                <option>Biệt thự</option>
               </select>
             </div>
           </div>
@@ -50,7 +47,7 @@ const GlobalFilter = ({ className = "" }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Location"
+              placeholder="Vị trí"
               onChange={(e) => dispatch(addLocation(e.target.value))}
             />
             <label>
@@ -69,7 +66,7 @@ const GlobalFilter = ({ className = "" }) => {
               data-bs-auto-close="outside"
               aria-expanded="false"
             >
-              <span>Price</span>
+              <span>Giá</span>
               <label htmlFor="InputEmail2">
                 <span className="fa fa-angle-down"></span>
               </label>
@@ -92,13 +89,13 @@ const GlobalFilter = ({ className = "" }) => {
                 data-bs-auto-close="outside"
                 aria-expanded="false"
               >
-                Advanced <i className="flaticon-more pl10 flr-520"></i>
+                Thêm <i className="flaticon-more pl10 flr-520"></i>
               </span>
 
               <div className="dropdown-content dropdown-menu ">
                 <div className="row p15">
                   <div className="col-lg-12">
-                    <h4 className="text-thm3 mb-4">Amenities</h4>
+                    <h4 className="text-thm3 mb-4">Tiện ích</h4>
                   </div>
 
                   <CheckBoxFilter />
@@ -127,7 +124,7 @@ const GlobalFilter = ({ className = "" }) => {
               type="submit"
               className="btn btn-thm"
             >
-              Search
+              Tìm
             </button>
           </div>
         </li>
