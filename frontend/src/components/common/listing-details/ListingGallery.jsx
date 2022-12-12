@@ -1,6 +1,7 @@
 import { Gallery, Item } from "react-photoswipe-gallery";
 import "photoswipe/dist/photoswipe.css";
 import propertiesContent from "../../../data/properties";
+import { useRouter } from "next/router";
 
 const ListingGallery = () => {
   return (

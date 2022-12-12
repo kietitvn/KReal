@@ -88,14 +88,14 @@ const FeaturedProperties = () => {
 
                   <div className="overlay">
                     <div className="details">
-                      <Link href={`/listing-details-v2/${item.id}`}>
+                      <Link href={`/listing-details-v1/${item.id}`}>
                         <a className="fp_price">
                           {doctien(detail.price)}
                           <small>/tháng</small>
                         </a>
                       </Link>
                       <h4>
-                        <Link href={`/listing-details-v2/${item.id}`}>
+                        <Link href={`/listing-details-v1/${item.id}`}>
                           <a>{detail.name}</a>
                         </Link>
                       </h4>
