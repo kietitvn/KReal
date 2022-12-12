@@ -1,0 +1,108 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "price": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "yearBuilt": {
+      "type": "integer"
+    },
+    "width": {
+      "type": "integer",
+      "default": 0
+    },
+    "length": {
+      "type": "integer",
+      "default": 0
+    },
+    "categoryID": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Bán",
+        "Thuê"
+      ],
+      "default": "Bán"
+    },
+    "bedRoom": {
+      "type": "integer",
+      "default": 0
+    },
+    "bathRoom": {
+      "type": "integer",
+      "default": 0
+    },
+    "floor": {
+      "type": "integer",
+      "default": 0
+    },
+    "direction": {
+      "type": "enumeration",
+      "enum": [
+        "Đông",
+        "Tây",
+        "Nam",
+        "Bắc",
+        "Đông Nam",
+        "Đông Bắc",
+        "Tây Nam",
+        "Tây Bắc"
+      ]
+    },
+    "feature_ids": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::feature.feature"
+    },
+    "legal": {
+      "type": "enumeration",
+      "enum": [
+        "SHR",
+        "Sổ Chung",
+        "Kê Khai 99",
+        "Vi Bằng"
+      ]
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "cover": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

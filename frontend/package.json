@@ -6,7 +6,8 @@
     "dev": "next dev",
     "start": "next start",
     "build": "next build",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "yarn cache clean"
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",

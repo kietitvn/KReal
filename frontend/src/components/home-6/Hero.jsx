@@ -8,10 +8,10 @@ const Hero = () => {
           <div className="col-lg-12">
             <div className="home_content home6">
               <div className="home-text home6 text-center">
-                <h2 className="fz55">Enjoy The Finest Homes</h2>
-                <p className="fz18">
+                <h2 className="fz55">Tận hưởng những ngôi nhà đẹp nhất</h2>
+                {/* <p className="fz18">
                   From as low as $10 per day with limited time offer discounts.
-                </p>
+                </p> */}
               </div>
               <GlobalHeroFilter className="home6" />
             </div>

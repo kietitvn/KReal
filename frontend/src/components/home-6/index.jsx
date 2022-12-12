@@ -11,10 +11,14 @@ import CopyrightFooter from "../common/footer/CopyrightFooter";
 import PopupSignInUp from "../common/PopupSignInUp";
 import Hero from "./Hero";
 import { useGetCategoriesQuery } from "../../features/categories/categoriesApi";
+import { useGetProductsQuery } from "../../features/products/productsApi";
 
 const index = () => {
   const { data, isLoading, error } = useGetCategoriesQuery();
-  console.log("useGetUsersQuery", data, isLoading, error);
+  console.log("useGetCategoriesQuery", data, isLoading, error);
+
+  // const { data, isLoading, error } = useGetProductsQuery();
+  // console.log("useGetProductsQuery", data, isLoading, error);
   return (
     <>
       {/* <!-- Main Header Nav --> */}
