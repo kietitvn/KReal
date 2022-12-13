@@ -1,4 +1,4 @@
-const PropertyDetails = () => {
+const PropertyDetails = (props) => {
   return (
     <>
       <div className="col-md-6 col-lg-6 col-xl-4">

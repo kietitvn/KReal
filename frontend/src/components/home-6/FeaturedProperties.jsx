@@ -1,8 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Slider from "react-slick";
-import properties from "../../data/properties";
 import { useGetProductsQuery } from "../../features/products/productsApi";
+import { loadProducts } from "../../features/products/productsSlice";
 import { doctien } from "../../utils/currency";
 
 const FeaturedProperties = () => {
@@ -51,6 +52,15 @@ const FeaturedProperties = () => {
 
   const { data, isLoading, error } = useGetProductsQuery();
   console.log("useGetProductsQuery", data);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isLoading) {
+      dispatch(loadProducts(data));
+    }
+    return () => {};
+  }, [data]);
+
   return (
     data && (
       <>
@@ -58,58 +68,60 @@ const FeaturedProperties = () => {
           {data.data.map((item) => {
             const detail = item.attributes;
             return (
-              <div className="item" key={item.id}>
-                <div className="properti_city home6">
-                  <div className="thumb">
-                    <picture>
-                      <source
-                        srcSet={
-                          process.env.baseUrl + detail.cover.data.attributes.url
-                        }
-                        type="image/webp"
-                      />
-                      <img
-                        className="img-whp"
-                        src={
-                          process.env.baseUrl + detail.cover.data.attributes.url
-                        }
-                        alt={detail.cover.data.attributes.alternativeText}
-                      />
-                    </picture>
-                    <div className="thmb_cntnt">
-                      <ul className="tag mb0">
-                        <li className="list-inline-item">
-                          <a href="#">{detail.status}</a>
-                        </li>
-                      </ul>
+              <Link href={`/listing-details-v1/${item.id}`} key={item.id}>
+                <div className="item">
+                  <div className="properti_city home6">
+                    <div className="thumb">
+                      <picture>
+                        <source
+                          srcSet={
+                            process.env.baseUrl +
+                            detail.cover.data.attributes.url
+                          }
+                          type="image/webp"
+                        />
+                        <img
+                          className="img-whp"
+                          src={
+                            process.env.baseUrl +
+                            detail.cover.data.attributes.url
+                          }
+                          alt={detail.cover.data.attributes.alternativeText}
+                        />
+                      </picture>
+                      <div className="thmb_cntnt">
+                        <ul className="tag mb0">
+                          <li className="list-inline-item">
+                            <a href="#">{detail.status}</a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  {/* End .thumb */}
+                    {/* End .thumb */}
 
-                  <div className="overlay">
-                    <div className="details">
-                      <Link href={`/listing-details-v1/${item.id}`}>
+                    <div className="overlay">
+                      <div className="details">
                         <a className="fp_price">
                           {doctien(detail.price)}
-                          <small>/tháng</small>
+                          <small>
+                            {detail.status === "Bán" ? "" : "/tháng"}
+                          </small>
                         </a>
-                      </Link>
-                      <h4>
-                        <Link href={`/listing-details-v1/${item.id}`}>
+                        <h4>
                           <a>{detail.name}</a>
-                        </Link>
-                      </h4>
-                      <ul className="prop_details mb0">
-                        {detail.feature_ids.data.map((val, i) => (
-                          <li className="list-inline-item" key={i}>
-                            <a href="#">{val.attributes.name}</a>
-                          </li>
-                        ))}
-                      </ul>
+                        </h4>
+                        <ul className="prop_details mb0">
+                          {detail.feature_ids.data.map((val, i) => (
+                            <li className="list-inline-item" key={i}>
+                              <a href="#">{val.attributes.name}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </Slider>

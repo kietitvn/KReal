@@ -7,19 +7,25 @@ import Footer from "../../components/common/footer/Footer";
 import Header from "../../components/common/header/DefaultHeader";
 import MobileMenu from "../../components/common/header/MobileMenu";
 import PopupSignInUp from "../../components/common/PopupSignInUp";
-import properties from "../../data/properties";
 import DetailsContent from "../../components/listing-details-v1/DetailsContent";
 import Sidebar from "../../components/listing-details-v1/Sidebar";
+import { useSelector, useStore } from "react-redux";
+import properties from "../../data/properties";
+import { selectProducts } from "../../features/products/productsSlice";
+import { doctien } from "../../utils/currency";
 
 const ListingDynamicDetailsV1 = () => {
   const router = useRouter();
-  const [property, setProperty] = useState({});
+  const [product, setProduct] = useState({});
   const id = router.query.id;
-
+  console.log("product:", product);
+  const productData = useSelector(selectProducts);
   useEffect(() => {
     if (!id) <h1>Loading...</h1>;
-    else setProperty(properties?.find((item) => item.id == id));
-
+    else {
+      const product = productData?.products?.data?.find((f) => f.id == id);
+      setProduct(product);
+    }
     return () => {};
   }, [id]);
 
@@ -41,15 +47,15 @@ const ListingDynamicDetailsV1 = () => {
             <div className="row mb30">
               <div className="col-lg-7 col-xl-8">
                 <div className="single_property_title mt30-767">
-                  <h2>{property?.title}</h2>
-                  <p>{property?.location}</p>
+                  <h2>{product?.attributes?.name}</h2>
+                  <p>{product?.attributes?.location}</p>
                 </div>
               </div>
               <div className="col-lg-5 col-xl-4">
                 <div className="single_property_social_share position-static transform-none">
                   <div className="price float-start fn-400">
                     <h2>
-                      ${property?.price}
+                      {doctien(product?.attributes?.price)}
                       <small>/mo</small>
                     </h2>
                   </div>
@@ -90,8 +96,14 @@ const ListingDynamicDetailsV1 = () => {
                   <div className="col-lg-12">
                     <div className="spls_style_two mb30-520">
                       <Item
-                        original={property?.img}
-                        thumbnail={property?.img}
+                        original={
+                          process.env.baseUrl +
+                          product?.attributes?.cover?.data?.attributes?.url
+                        }
+                        thumbnail={
+                          process.env.baseUrl +
+                          product?.attributes?.cover?.data?.attributes?.url
+                        }
                         width={752}
                         height={450}
                       >
@@ -99,8 +111,15 @@ const ListingDynamicDetailsV1 = () => {
                           <div role="button" ref={ref} onClick={open}>
                             <img
                               className="img-fluid w100 cover lds-1"
-                              src={property.img}
-                              alt="1.jpg"
+                              src={
+                                process.env.baseUrl +
+                                product?.attributes?.cover?.data?.attributes
+                                  ?.url
+                              }
+                              alt={
+                                product?.attributes?.cover?.data?.attributes
+                                  ?.alternativeText
+                              }
                             />
                           </div>
                         )}
@@ -109,16 +128,15 @@ const ListingDynamicDetailsV1 = () => {
                   </div>
                 </div>
               </div>
-              {/* End .col-sm-7 .col-lg-8 */}
 
               <div className="col-sm-5 col-lg-4">
                 <div className="row">
-                  {property?.imgList?.map((val, i) => (
+                  {product?.attributes?.image?.data.map((val, i) => (
                     <div className="col-6" key={i}>
                       <div className="spls_style_two img-gallery-box mb24">
                         <Item
-                          original={val}
-                          thumbnail={val}
+                          original={process.env.baseUrl + val.attributes?.url}
+                          thumbnail={process.env.baseUrl + val.attributes?.url}
                           width={752}
                           height={450}
                         >
@@ -126,8 +144,8 @@ const ListingDynamicDetailsV1 = () => {
                             <div role="button" ref={ref} onClick={open}>
                               <img
                                 className="img-fluid w100"
-                                src={val}
-                                alt="2.jpg"
+                                src={process.env.baseUrl + val.attributes?.url}
+                                alt={val.attributes?.alternativeText}
                               />
                             </div>
                           )}
@@ -137,7 +155,6 @@ const ListingDynamicDetailsV1 = () => {
                   ))}
                 </div>
               </div>
-              {/* End  col-sm-5 col-lg-4 */}
             </div>
             {/* End .row */}
           </Gallery>
@@ -147,17 +164,17 @@ const ListingDynamicDetailsV1 = () => {
       {/* <!-- Agent Single Grid View --> */}
       <section className="our-agent-single bgc-f7 pb30-991">
         <div className="container">
-          <div className="row">
-            <div className="col-md-12 col-lg-8">
-              <DetailsContent />
-            </div>
+          {/* <div className="row"> */}
+            {/* <div className="col-md-12 col-lg-8"> */}
+              <DetailsContent {...product} />
+            {/* </div> */}
             {/* End details content .col-lg-8 */}
 
-            <div className="col-lg-4 col-xl-4">
+            {/* <div className="col-lg-4 col-xl-4">
               <Sidebar />
-            </div>
+            </div> */}
             {/* End sidebar content .col-lg-4 */}
-          </div>
+          {/* </div> */}
           {/* End .row */}
         </div>
       </section>

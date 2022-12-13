@@ -1,34 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  id: 1,
-  attributes: {
-    name: "",
-    location: "",
-    description: "",
-    price: 0,
-    yearBuilt: 0,
-    width: 0,
-    length: 0,
-    categoryID: 1,
-    status: "",
-    bedRoom: 0,
-    bathRoom: 0,
-    floor: 0,
-    direction: "",
-    feature_ids: [],
-    legal: "",
-    image: [],
-    cover: null,
-    createdAt: "",
-    updatedAt: "",
-    publishedAt: "",
-  },
+  products: {},
+  compair: [],
 };
 
 export const productsSlice = createSlice({
   name: "products",
   initialState,
+  reducers: {
+    loadProducts: (state, action) => {
+      state.products = action.payload;
+    },
+    resetProducts: (state, action) => {
+      state.products = initialState;
+    },
+  },
 });
 
+export const { loadProducts, resetProducts } = productsSlice.actions;
+export const selectProducts = (state) => state.products;
 export default productsSlice.reducer;

@@ -13,63 +13,64 @@ import PropertyVideo from "../common/listing-details/PropertyVideo";
 import WalkScore from "../common/listing-details/WalkScore";
 import WhatsNearby from "../common/listing-details/WhatsNearby";
 
-const DetailsContent = () => {
+const DetailsContent = (props) => {
+  console.log("DetailsContent:", props);
   return (
     <>
       <div className="listing_single_description">
         <div className="lsd_list">
-          <PropertyItem />
+          <PropertyItem {...props} />
         </div>
         {/* End .lsd_list */}
 
-        <h4 className="mb30">Description</h4>
-        <PropertyDescriptions />
+        <h4 className="mb30">Mô tả</h4>
+        <PropertyDescriptions description={props?.attributes?.description} />
       </div>
       {/* End .listing_single_description */}
 
-      <div className="additional_details">
+      {/* <div className="additional_details">
         <div className="row">
           <div className="col-lg-12">
-            <h4 className="mb15">Property Details</h4>
+            <h4 className="mb15">Chi tiết</h4>
           </div>
-          <PropertyDetails />
+          <PropertyDetails {...props}/>
         </div>
-      </div>
+      </div> */}
       {/* End .additional_details */}
 
-      <div className="additional_details">
+      {/* <div className="additional_details">
         <div className="row">
           <div className="col-lg-12">
             <h4 className="mb15">Additional details</h4>
           </div>
           <AdditionalDetails />
         </div>
-      </div>
+      </div> */}
       {/* End .additional_details */}
 
-      <div className="property_attachment_area">
+      {/* <div className="property_attachment_area">
         <h4 className="mb30">Property Attachments</h4>
         <div className="iba_container style2">
           <Attachments />
         </div>
-      </div>
+      </div> */}
       {/* End .property_attachment_area */}
 
       <div className="application_statics mt30">
         <div className="row">
           <div className="col-lg-12">
-            <h4 className="mb10">Features</h4>
+            <h4 className="mb10">Tiện ích</h4>
           </div>
           {/* End .col */}
 
-          <PropertyFeatures />
+          <PropertyFeatures features={props?.attributes?.feature_ids} />
         </div>
       </div>
       {/* End .feature_area */}
 
       <div className="application_statics mt30">
         <h4 className="mb30">
-          Location{" "}
+          Vị trí
           <small className="float-end">
             1421 San Pedro St, Los Angeles, CA 90015
           </small>
@@ -80,31 +81,31 @@ const DetailsContent = () => {
       </div>
       {/* End .location_area */}
 
-      <div className="application_statics mt30">
+      {/* <div className="application_statics mt30">
         <h4 className="mb30">Floor plans</h4>
         <div className="faq_according style2">
           <FloorPlans />
         </div>
-      </div>
+      </div> */}
       {/* End .floor_plane */}
 
-      <div className="shop_single_tab_content style2 mt30">
+      {/* <div className="shop_single_tab_content style2 mt30">
         <PropertyVideo />
-      </div>
+      </div> */}
       {/* End property-video  */}
 
-      <div className="walkscore_area mt30">
+      {/* <div className="walkscore_area mt30">
         <WalkScore />
-      </div>
+      </div> */}
       {/* End walkscore_area */}
 
-      <div className="whats_nearby mt30">
+      {/* <div className="whats_nearby mt30">
         <h4 className="mb10">What&apos;s Nearby</h4>
         <WhatsNearby />
-      </div>
+      </div> */}
       {/* End what's nearby area */}
 
-      <div className="product_single_content">
+      {/* <div className="product_single_content">
         <div className="mbp_pagination_comments mt30">
           <div className="total_review">
             <h4>896 Reviews</h4>
@@ -118,7 +119,7 @@ const DetailsContent = () => {
               Write a Review
             </a>
           </div>
-          {/* End .total_review */}
+          
           <Comments />
           <div className="custom_hr"></div>
 
@@ -139,7 +140,7 @@ const DetailsContent = () => {
             <ReviewBox />
           </div>
         </div>
-      </div>
+      </div> */}
       {/* End review and comment area area */}
     </>
   );

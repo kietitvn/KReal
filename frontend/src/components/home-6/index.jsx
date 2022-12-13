@@ -1,22 +1,17 @@
+import { useGetCategoriesQuery } from "../../features/categories/categoriesApi";
+import Blogs from "../common/Blogs";
+import CopyrightFooter from "../common/footer/CopyrightFooter";
+import Footer from "../common/footer/Footer";
 import MobileMenu from "../common/header/MobileMenu";
-import AgentsTeam from "./AgentsTeam";
+import PopupSignInUp from "../common/PopupSignInUp";
 import FeaturedProperties from "./FeaturedProperties";
 import FindProperties from "./FindProperties";
 import Header from "./Header";
-import LookingItem from "./LookingItem";
-import Blogs from "../common/Blogs";
-import Partners from "../common/Partners";
-import Footer from "../common/footer/Footer";
-import CopyrightFooter from "../common/footer/CopyrightFooter";
-import PopupSignInUp from "../common/PopupSignInUp";
 import Hero from "./Hero";
-import { useGetCategoriesQuery } from "../../features/categories/categoriesApi";
-import { useGetProductsQuery } from "../../features/products/productsApi";
+import LookingItem from "./LookingItem";
 
 const index = () => {
   const { data, isLoading, error } = useGetCategoriesQuery();
-  console.log("useGetCategoriesQuery", data, isLoading, error);
-
   // const { data, isLoading, error } = useGetProductsQuery();
   // console.log("useGetProductsQuery", data, isLoading, error);
   return (
