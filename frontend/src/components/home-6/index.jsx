@@ -34,11 +34,11 @@ const index = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="main-title mb40">
-                <h2>Featured Properties</h2>
+                <h2>Những BĐS có nhiều tiện ích</h2>
                 <p>
-                  Handpicked properties by our team.{" "}
+                  BĐS được lựa chọn cẩn thận bởi đội ngũ của chúng tôi.
                   <a className="float-end" href="#">
-                    View All <span className="flaticon-next"></span>
+                    Danh sách <span className="flaticon-next"></span>
                   </a>
                 </p>
               </div>

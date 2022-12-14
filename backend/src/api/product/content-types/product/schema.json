@@ -13,28 +13,32 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
-    },
-    "location": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true,
+      "minLength": 200
     },
     "price": {
       "type": "biginteger",
-      "default": "0"
+      "default": "0",
+      "required": true,
+      "min": "0"
     },
     "yearBuilt": {
       "type": "integer"
     },
     "width": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "min": 0
     },
     "length": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "min": 0
     },
     "categoryID": {
       "type": "relation",
@@ -48,7 +52,8 @@
         "Bán",
         "Thuê"
       ],
-      "default": "Bán"
+      "default": "Bán",
+      "required": true
     },
     "bedRoom": {
       "type": "integer",
@@ -56,11 +61,14 @@
     },
     "bathRoom": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "min": 0
     },
     "floor": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "min": 0,
+      "required": false
     },
     "direction": {
       "type": "enumeration",
@@ -73,7 +81,8 @@
         "Đông Bắc",
         "Tây Nam",
         "Tây Bắc"
-      ]
+      ],
+      "required": true
     },
     "feature_ids": {
       "type": "relation",
@@ -87,12 +96,14 @@
         "Sổ Chung",
         "Kê Khai 99",
         "Vi Bằng"
-      ]
+      ],
+      "default": "SHR",
+      "required": false
     },
     "image": {
       "type": "media",
       "multiple": true,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
@@ -100,7 +111,7 @@
     "cover": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
@@ -108,6 +119,12 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "location": {
+      "type": "component",
+      "repeatable": false,
+      "component": "geography.location",
+      "required": false
     }
   }
 }
