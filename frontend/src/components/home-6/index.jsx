@@ -37,7 +37,7 @@ const index = () => {
                 <h2>Những BĐS có nhiều tiện ích</h2>
                 <p>
                   BĐS được lựa chọn cẩn thận bởi đội ngũ của chúng tôi.
-                  <a className="float-end" href="#">
+                  <a className="float-end" href="/listing-grid-v1">
                     Danh sách <span className="flaticon-next"></span>
                   </a>
                 </p>

@@ -200,7 +200,7 @@ const FeaturedItem = () => {
             </div>
             {/* End .tc_content */}
 
-            <div className="fp_footer">
+            {/* <div className="fp_footer">
               <ul className="fp_meta float-start mb0">
                 <li className="list-inline-item">
                   <Link href="/agent-v2">
@@ -216,7 +216,7 @@ const FeaturedItem = () => {
                 </li>
               </ul>
               <div className="fp_pdate float-end">{item.postedYear}</div>
-            </div>
+            </div> */}
             {/* End .fp_footer */}
           </div>
         </div>
