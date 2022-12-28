@@ -49,7 +49,7 @@ const ListingDynamicDetailsV1 = () => {
               <div className="col-lg-7 col-xl-8">
                 <div className="single_property_title mt30-767">
                   <h2>{product?.attributes?.name}</h2>
-                  <p>{product?.attributes?.location}</p>
+                  <p>{`${product?.attributes?.location?.address}, ${product?.attributes?.location?.ward}, ${product?.attributes?.location?.district}, ${product?.attributes?.location?.province}`}</p>
                 </div>
               </div>
               <div className="col-lg-5 col-xl-4">
@@ -57,7 +57,9 @@ const ListingDynamicDetailsV1 = () => {
                   <div className="price float-start fn-400">
                     <h2>
                       {doctien(product?.attributes?.price)}
-                      <small>/mo</small>
+                      <small>
+                        {product?.attributes?.status === "Bán" ? "" : "/tháng"}
+                      </small>
                     </h2>
                   </div>
 
@@ -166,15 +168,15 @@ const ListingDynamicDetailsV1 = () => {
       <section className="our-agent-single bgc-f7 pb30-991">
         <div className="container">
           {/* <div className="row"> */}
-            {/* <div className="col-md-12 col-lg-8"> */}
-              <DetailsContent {...product} />
-            {/* </div> */}
-            {/* End details content .col-lg-8 */}
+          {/* <div className="col-md-12 col-lg-8"> */}
+          <DetailsContent {...product} />
+          {/* </div> */}
+          {/* End details content .col-lg-8 */}
 
-            {/* <div className="col-lg-4 col-xl-4">
+          {/* <div className="col-lg-4 col-xl-4">
               <Sidebar />
             </div> */}
-            {/* End sidebar content .col-lg-4 */}
+          {/* End sidebar content .col-lg-4 */}
           {/* </div> */}
           {/* End .row */}
         </div>

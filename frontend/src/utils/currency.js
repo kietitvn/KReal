@@ -25,7 +25,6 @@ export function doctien(SoTien) {
   if (isNaN(ViTri[0])) ViTri[0] = "0";
   so = so - parseFloat(ViTri[0].toString()) * 1000000;
 
-  console.log(so, ViTri);
   if (isNaN(ViTri[0])) ViTri[0] = "0";
   if (ViTri[3] > 0) {
     lan = 3;
