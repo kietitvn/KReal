@@ -1,2 +1,2 @@
 home	home-6
-detail	listing-details-v2
+detail	listing-details-v1
