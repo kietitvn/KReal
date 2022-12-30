@@ -1,4 +1,8 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useGetCategoriesQuery } from "../../features/categories/categoriesApi";
+import { loadCategories } from "../../features/categories/categoriesSlice";
+import { pollingInterval } from "../../utils/const";
 import Blogs from "../common/Blogs";
 import CopyrightFooter from "../common/footer/CopyrightFooter";
 import Footer from "../common/footer/Footer";
@@ -11,9 +15,17 @@ import Hero from "./Hero";
 import LookingItem from "./LookingItem";
 
 const index = () => {
-  const { data, isLoading, error } = useGetCategoriesQuery();
-  // const { data, isLoading, error } = useGetProductsQuery();
-  // console.log("useGetProductsQuery", data, isLoading, error);
+  const { data, isLoading } = useGetCategoriesQuery("Category", {
+    pollingInterval: pollingInterval,
+  });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!isLoading) {
+      dispatch(loadCategories(data));
+    }
+    return () => {};
+  }, [data]);
+
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -48,7 +60,6 @@ const index = () => {
           {/* End .row */}
         </div>
         {/* End .container */}
-
         <div className="feature_property_home6_slider ">
           <div className="container ml--xxl-0">
             <div className="gutter-x15">

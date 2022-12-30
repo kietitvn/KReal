@@ -6,8 +6,11 @@ import {
 import PricingRangeSlider from "./PricingRangeSlider";
 import CheckBoxFilter from "./CheckBoxFilter";
 import GlobalSelectBox from "./GlobalSelectBox";
+import { useSelector } from "react-redux";
+import { selectCategories } from "../../features/categories/categoriesSlice";
 
 const GlobalFilter = ({ className = "" }) => {
+  const categoriesData = useSelector(selectCategories);
   // submit handler
   const submitHandler = () => {
     Router.push("/listing-grid-v1");
@@ -32,10 +35,15 @@ const GlobalFilter = ({ className = "" }) => {
           <div className="search_option_two">
             <div className="candidate_revew_select">
               <select className="selectpicker w100 form-select show-tick">
-                <option value="">Nhà</option>
+                {categoriesData.categories.data.map((item) => (
+                  <option value="" key={item.id}>
+                    {item.attributes.name}
+                  </option>
+                ))}
+                {/* <option value="">Nhà</option>
                 <option>Đất</option>
                 <option>Căn hộ</option>
-                <option>Biệt thự</option>
+                <option>Biệt thự</option> */}
               </select>
             </div>
           </div>

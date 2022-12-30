@@ -8,6 +8,7 @@ export const categoriesApi = api.injectEndpoints({
         method: "GET",
         params: "?populate=*",
       }),
+      providesTags: ['Category'],
     }),
   }),
 });

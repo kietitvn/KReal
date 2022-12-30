@@ -8,6 +8,7 @@ export const productsApi = api.injectEndpoints({
         method: "GET",
         params: "?populate=*",
       }),
+      providesTags: ['Product'],
     }),
   }),
 });

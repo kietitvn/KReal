@@ -18,7 +18,7 @@ import {
 import storage from "reduxjs-toolkit-persist/lib/storage";
 
 const persistConfig = {
-  key: "root",
+  key: "api",
   storage,
 };
 
@@ -44,5 +44,5 @@ export const store = configureStore({
         /* ignore persistance actions */
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(api.middleware),
 });
