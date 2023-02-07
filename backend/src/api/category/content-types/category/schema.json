@@ -35,6 +35,11 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "icon_classname": {
+      "type": "string",
+      "required": true,
+      "default": "flaticon-house-1"
     }
   }
 }

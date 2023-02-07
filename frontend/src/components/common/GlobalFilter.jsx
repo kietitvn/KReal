@@ -35,7 +35,7 @@ const GlobalFilter = ({ className = "" }) => {
           <div className="search_option_two">
             <div className="candidate_revew_select">
               <select className="selectpicker w100 form-select show-tick">
-                {categoriesData.categories.data.map((item) => (
+                {categoriesData && categoriesData.categories && categoriesData.categories.data && categoriesData.categories.data.map((item) => (
                   <option value="" key={item.id}>
                     {item.attributes.name}
                   </option>
