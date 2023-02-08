@@ -121,10 +121,10 @@
       "targetField": "name"
     },
     "location": {
-      "type": "component",
-      "repeatable": false,
-      "component": "geography.location",
-      "required": false
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::location.location",
+      "inversedBy": "products"
     }
   }
 }

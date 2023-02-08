@@ -7,9 +7,6 @@
   },
   "options": {},
   "attributes": {
-    "address": {
-      "type": "string"
-    },
     "province": {
       "type": "enumeration",
       "enum": [
@@ -128,6 +125,9 @@
         "Phường 16"
       ],
       "default": "Phường 2"
+    },
+    "address": {
+      "type": "string"
     }
   }
 }
