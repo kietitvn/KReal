@@ -1,11 +1,3 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import agentSlice from "../features/agent/agentSlice";
-import { api } from "../features/api/api";
-import categoriesSlice from "../features/categories/categoriesSlice";
-import filterSlice from "../features/filter/filterSlice";
-import productsSlice from "../features/products/productsSlice";
-import propertiesSlice from "../features/properties/propertiesSlice";
-
 import {
   persistReducer,
   FLUSH,
@@ -17,6 +9,15 @@ import {
 } from "reduxjs-toolkit-persist";
 import storage from "reduxjs-toolkit-persist/lib/storage";
 
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import agentSlice from "../features/agent/agentSlice";
+import { api } from "../features/api/api";
+import categoriesSlice from "../features/categories/categoriesSlice";
+import filterSlice from "../features/filter/filterSlice";
+import productsSlice from "../features/products/productsSlice";
+import propertiesSlice from "../features/properties/propertiesSlice";
+import locationsSlice from "../features/location/locationsSlice";
+
 const persistConfig = {
   key: "api",
   storage,
@@ -24,11 +25,12 @@ const persistConfig = {
 
 const reducers = combineReducers({
   [api.reducerPath]: api.reducer,
+  filter: filterSlice,
+  agent: agentSlice,
   properties: propertiesSlice,
   categories: categoriesSlice,
   products: productsSlice,
-  filter: filterSlice,
-  agent: agentSlice,
+  location: locationsSlice,
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);

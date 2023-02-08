@@ -75,8 +75,8 @@ const index = () => {
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="main-title text-center mb30">
-                <h2>What are you looking for?</h2>
-                <p>We provide full service at every step.</p>
+                <h2>Bạn đang tìm loại BĐS nào?</h2>
+                <p>Chúng tôi cung cấp mọi loại hình BĐS.</p>
               </div>
             </div>
           </div>
@@ -93,8 +93,17 @@ const index = () => {
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="main-title text-center">
-                <h2>Find Properties in These Cities</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h2>Tìm BĐS theo phường ở quận 8</h2>
+                <p>
+                  Quận 8 là một quận nội thành, nhưng là quận nội thành ven đô
+                  nằm về phía Tây nam của Thành phố Hồ Chí Minh có diện tích tự
+                  nhiên 1.917 ha, hiện nay diện tích đất nông nghiệp còn hơn 200
+                  ha. Bị chia cắt bởi 23 kênh rạch dọc ngang, thuận tiện cho
+                  giao thông đường thủy, có hệ thống bến cảng và kho tàng vào
+                  loại lớn nhất Thành phố hình thành từ đầu thế kỷ XX và 46
+                  chiếc cầu lớn nhỏ, trong đó có những cây cầu lớn như cầu Chữ
+                  Y, Nhị Thiên Đường, cầu Nguyễn Tri Phương.
+                </p>
               </div>
             </div>
           </div>

@@ -6,5 +6,6 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.baseUrl + "/api", //  "http://localhost:1337/api",
   }),
+  refetchOnFocus: true,
   endpoints: (builder) => ({}),
 });

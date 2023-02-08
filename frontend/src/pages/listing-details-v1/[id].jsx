@@ -48,8 +48,8 @@ const ListingDynamicDetailsV1 = () => {
             <div className="row mb30">
               <div className="col-lg-7 col-xl-8">
                 <div className="single_property_title mt30-767">
-                  <h2>{product?.attributes?.name}</h2>
-                  <p>{`${product?.attributes?.location?.address}, ${product?.attributes?.location?.ward}, ${product?.attributes?.location?.district}, ${product?.attributes?.location?.province}`}</p>
+                  <h2>{product?.attributes?.name}</h2>                  
+                  <p>{product?.attributes?.location ? product.attributes.location.data.attributes.name : ""}</p>
                 </div>
               </div>
               <div className="col-lg-5 col-xl-4">

@@ -1,17 +1,6 @@
-import Comments from "../blog-details/Comments";
-import Ratings from "../blog-details/Ratings";
-import ReviewBox from "../blog-details/ReviewBox";
-import AdditionalDetails from "../common/listing-details/AdditionalDetails";
-import Attachments from "../common/listing-details/Attachments";
-import FloorPlans from "../common/listing-details/FloorPlans";
 import PropertyDescriptions from "../common/listing-details/PropertyDescriptions";
-import PropertyDetails from "../common/listing-details/PropertyDetails";
 import PropertyFeatures from "../common/listing-details/PropertyFeatures";
 import PropertyItem from "../common/listing-details/PropertyItem";
-import PropertyLocation from "../common/listing-details/PropertyLocation";
-import PropertyVideo from "../common/listing-details/PropertyVideo";
-import WalkScore from "../common/listing-details/WalkScore";
-import WhatsNearby from "../common/listing-details/WhatsNearby";
 
 const DetailsContent = (props) => {
   console.log("DetailsContent:", props);
@@ -56,19 +45,21 @@ const DetailsContent = (props) => {
       </div> */}
       {/* End .property_attachment_area */}
 
-      <div className="application_statics mt30">
-        <div className="row">
-          <div className="col-lg-12">
-            <h4 className="mb10">Tiện ích</h4>
-          </div>
-          {/* End .col */}
+      {props?.attributes?.feature_ids.data.length > 0 && (
+        <div className="application_statics mt30">
+          <div className="row">
+            <div className="col-lg-12">
+              <h4 className="mb10">Tiện ích</h4>
+            </div>
+            {/* End .col */}
 
-          <PropertyFeatures features={props?.attributes?.feature_ids} />
+            <PropertyFeatures features={props?.attributes?.feature_ids} />
+          </div>
         </div>
-      </div>
+      )}
       {/* End .feature_area */}
 
-      <div className="application_statics mt30">
+      {/* <div className="application_statics mt30">
         <h4 className="mb30">
           Vị trí
           <small className="float-end">
@@ -78,7 +69,7 @@ const DetailsContent = (props) => {
         <div className="property_video p0">
           <PropertyLocation />
         </div>
-      </div>
+      </div> */}
       {/* End .location_area */}
 
       {/* <div className="application_statics mt30">

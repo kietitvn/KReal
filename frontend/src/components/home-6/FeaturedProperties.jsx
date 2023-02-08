@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import Slider from "react-slick";
 import { useGetProductsQuery } from "../../features/products/productsApi";
 import { loadProducts } from "../../features/products/productsSlice";
+import { pollingInterval } from "../../utils/const";
 import { doctien } from "../../utils/currency";
 
 const FeaturedProperties = () => {
@@ -50,7 +51,9 @@ const FeaturedProperties = () => {
     ],
   };
 
-  const { data, isLoading, error } = useGetProductsQuery();
+  const { data, isLoading, error } = useGetProductsQuery("Products", {
+    pollingInterval: pollingInterval,
+  });
   console.log("useGetProductsQuery", data);
   const dispatch = useDispatch();
 

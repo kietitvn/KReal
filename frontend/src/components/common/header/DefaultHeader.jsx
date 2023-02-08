@@ -23,7 +23,7 @@ const Header = () => {
         navbar ? "stricky-fixed " : ""
       }`}
     >
-      <div className="container-fluid p0">
+      <div className="d-flex align-items-center flex-wrap home6-nav">
         {/* <!-- Menu Toggle btn--> */}
         <Link href="/">
           <a className="navbar_brand float-start dn-smd">
@@ -42,7 +42,7 @@ const Header = () => {
         </Link>
         {/* site logo brand */}
 
-        <nav>
+        <nav className="ms-auto">
           <HeaderMenuContent />
         </nav>
         {/* End .navbar */}

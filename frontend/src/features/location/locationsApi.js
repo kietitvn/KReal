@@ -1,16 +1,16 @@
 import { api } from "../api/api";
 
-export const productsApi = api.injectEndpoints({
+export const locationsApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getProducts: builder.query({
+    getLocations: builder.query({
       query: () => ({
-        url: "/products",
+        url: "/locations",
         method: "GET",
         params: "?populate=*", //high level: populate[location][populate]=*
       }),
-      providesTags: ['Product'],
+      providesTags: ['Location'],
     }),
   }),
 });
 
-export const { useGetProductsQuery } = productsApi;
+export const { useGetLocationsQuery } = locationsApi;
