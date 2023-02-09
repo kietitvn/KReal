@@ -4,7 +4,7 @@ const GlobalSelectBox = () => {
       <li className="list-inline-item">
         <div className="candidate_revew_select">
           <select className="selectpicker w100 show-tick form-select">
-            <option>Bathrooms</option>
+            <option>Phòng tắm</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -13,6 +13,7 @@ const GlobalSelectBox = () => {
             <option>6</option>
             <option>7</option>
             <option>8</option>
+            <option>9</option>
           </select>
         </div>
       </li>
@@ -21,7 +22,7 @@ const GlobalSelectBox = () => {
       <li className="list-inline-item">
         <div className="candidate_revew_select">
           <select className="selectpicker w100 show-tick form-select">
-            <option>Bedrooms</option>
+            <option>Phòng ngủ</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -30,12 +31,30 @@ const GlobalSelectBox = () => {
             <option>6</option>
             <option>7</option>
             <option>8</option>
+            <option>9</option>
+          </select>
+        </div>
+      </li>
+
+      <li className="list-inline-item">
+        <div className="candidate_revew_select">
+          <select className="selectpicker w100 show-tick form-select">
+            <option>Phòng vệ sinh</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
           </select>
         </div>
       </li>
       {/* End li */}
 
-      <li className="list-inline-item">
+      {/* <li className="list-inline-item">
         <div className="candidate_revew_select">
           <select className="selectpicker w100 show-tick form-select">
             <option>Year built</option>
@@ -50,7 +69,6 @@ const GlobalSelectBox = () => {
           </select>
         </div>
       </li>
-      {/* End li */}
 
       <li className="list-inline-item">
         <div className="candidate_revew_select">
@@ -67,7 +85,7 @@ const GlobalSelectBox = () => {
             <option>Konya</option>
           </select>
         </div>
-      </li>
+      </li> */}
     </>
   );
 };

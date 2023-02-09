@@ -54,7 +54,6 @@ const FeaturedProperties = () => {
   const { data, isLoading, error } = useGetProductsQuery("Products", {
     pollingInterval: pollingInterval,
   });
-  console.log("useGetProductsQuery", data);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -12,7 +12,7 @@ export const categoriesSlice = createSlice({
       state.categories = action.payload;
     },
     resetCategories: (state, action) => {
-      state.categories = initialState;
+      state = initialState;
     },
   },
 });

@@ -3,7 +3,6 @@ import { selectCategories } from "../../features/categories/categoriesSlice";
 
 const LookingItem = () => {
   const categoriesData = useSelector(selectCategories);
-  console.log("categoriesData:", categoriesData)
   return (
     <>
       {categoriesData && categoriesData.categories && categoriesData.categories.data && categoriesData.categories.data.map((item) => (

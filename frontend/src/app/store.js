@@ -17,6 +17,7 @@ import filterSlice from "../features/filter/filterSlice";
 import productsSlice from "../features/products/productsSlice";
 import propertiesSlice from "../features/properties/propertiesSlice";
 import locationsSlice from "../features/location/locationsSlice";
+import featuresSlice from "../features/feature/featuresSlice";
 
 const persistConfig = {
   key: "api",
@@ -30,7 +31,8 @@ const reducers = combineReducers({
   properties: propertiesSlice,
   categories: categoriesSlice,
   products: productsSlice,
-  location: locationsSlice,
+  locations: locationsSlice,
+  features: featuresSlice,
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);

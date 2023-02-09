@@ -8,7 +8,7 @@ export const locationsApi = api.injectEndpoints({
         method: "GET",
         params: "?populate=*", //high level: populate[location][populate]=*
       }),
-      providesTags: ['Location'],
+      //providesTags: ['Location'],
     }),
   }),
 });

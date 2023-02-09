@@ -1,7 +1,64 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useGetFeaturesQuery } from "../../features/feature/featuresApi";
+import { loadFeatures } from "../../features/feature/featuresSlice";
+import { pollingInterval } from "../../utils/const";
+
 const CheckBoxFilter = () => {
+  const { data, isLoading } = useGetFeaturesQuery("Feature", {
+    pollingInterval: pollingInterval,
+  });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!isLoading) {
+      dispatch(loadFeatures(data));
+    }
+    return () => {};
+  }, [data]);
+
+  // const data1 = 0,
+  //   data2 = 0,
+  //   data3 = 0,
+  //   data4 = 0,
+  //   data5 = 0;
+
+  // if (data && data.data.length() > 3) {
+  //   data2 = data.data.slice(3, 3);
+  // }
+  // if (data && data.data.length() > 3) {
+  //   data3 = data.data.slice(3, 3);
+  // }
+  // if (data && data.data.length() > 3) {
+  //   data4 = data.data.slice(3, 3);
+  // }
+  // if (data && data.data.length() > 3) {
+  //   data5 = data.data.slice(3, 3);
+  // }
+
   return (
     <>
-      <div className="col-xxs-6 col-sm col-lg col-xl">
+      <ul className="ab_counting">
+        {data &&
+          data.data.map((item) => (
+            <li className="list-inline-item" key={item.id}>
+              <ul className="ui_kit_checkbox selectable-list">
+                <li className="center">
+                  <div className="form-check custom-checkbox">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id="customCheck1"
+                    />
+                    <label className="form-check-label" htmlFor="customCheck1">
+                      {item.attributes.name}
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          ))}
+      </ul>
+      {/* <div className="col-xxs-6 col-sm col-lg col-xl">
         <ul className="ui_kit_checkbox selectable-list">
           <li>
             <div className="form-check custom-checkbox">
@@ -11,11 +68,11 @@ const CheckBoxFilter = () => {
                 id="customCheck1"
               />
               <label className="form-check-label" htmlFor="customCheck1">
-                Air Conditioning
+                Air Conditioning 1
               </label>
             </div>
           </li>
-          {/* End li */}
+          
 
           <li>
             <div className="form-check custom-checkbox">
@@ -29,7 +86,7 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
 
           <li>
             <div className="form-check custom-checkbox">
@@ -43,12 +100,11 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
         </ul>
-      </div>
-      {/* End .col */}
+      </div> */}
 
-      <div className="col-xs-6 col-sm col-lg col-xl">
+      {/* <div className="col-xs-6 col-sm col-lg col-xl">
         <ul className="ui_kit_checkbox selectable-list">
           <li>
             <div className="form-check custom-checkbox">
@@ -62,7 +118,7 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
 
           <li>
             <div className="form-check custom-checkbox">
@@ -76,7 +132,7 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
 
           <li>
             <div className="form-check custom-checkbox">
@@ -90,10 +146,10 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
         </ul>
       </div>
-      {/* End .col */}
+      
 
       <div className="col-xs-6 col-sm col-lg col-xl">
         <ul className="ui_kit_checkbox selectable-list">
@@ -109,7 +165,7 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
 
           <li>
             <div className="form-check custom-checkbox">
@@ -123,7 +179,7 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
 
           <li>
             <div className="form-check custom-checkbox">
@@ -137,10 +193,10 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
         </ul>
       </div>
-      {/* End .col */}
+      
 
       <div className="col-xxs-6 col-sm col-lg col-xl">
         <ul className="ui_kit_checkbox selectable-list">
@@ -156,7 +212,7 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
 
           <li>
             <div className="form-check custom-checkbox">
@@ -170,7 +226,7 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
 
           <li>
             <div className="form-check custom-checkbox">
@@ -184,10 +240,10 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
         </ul>
       </div>
-      {/* End .col */}
+      
 
       <div className="col-xxs-6 col-sm col-lg col-xl">
         <ul className="ui_kit_checkbox selectable-list">
@@ -203,7 +259,7 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
 
           <li>
             <div className="form-check custom-checkbox">
@@ -217,7 +273,7 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
 
           <li>
             <div className="form-check custom-checkbox">
@@ -231,10 +287,9 @@ const CheckBoxFilter = () => {
               </label>
             </div>
           </li>
-          {/* End li */}
+          
         </ul>
-      </div>
-      {/* End .col */}
+      </div> */}
     </>
   );
 };

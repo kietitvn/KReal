@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useGetCategoriesQuery } from "../../features/categories/categoriesApi";
 import { loadCategories } from "../../features/categories/categoriesSlice";
+import { useGetLocationsQuery } from "../../features/location/locationsApi";
+import { loadLocations } from "../../features/location/locationsSlice";
 import { pollingInterval } from "../../utils/const";
 import Blogs from "../common/Blogs";
 import CopyrightFooter from "../common/footer/CopyrightFooter";
@@ -15,16 +17,37 @@ import Hero from "./Hero";
 import LookingItem from "./LookingItem";
 
 const index = () => {
-  const { data, isLoading } = useGetCategoriesQuery("Category", {
+  const { data, isSuccess } = useGetCategoriesQuery("Category", {
     pollingInterval: pollingInterval,
   });
+
+  const {
+    data: dataLocation,
+    isSuccess: isSuccessLocation,
+  } = useGetLocationsQuery("Location", {
+    pollingInterval: pollingInterval,
+  });
+
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (!isLoading) {
-      dispatch(loadCategories(data));
-    }
-    return () => {};
-  }, [data]);
+
+  if (isSuccess) {
+    dispatch(loadCategories(data));
+  }
+
+  if (isSuccessLocation) {
+    dispatch(loadLocations(dataLocation));
+  }
+
+  // useEffect(() => {
+  //   if (!isLoading) {
+  //     dispatch(loadCategories(data));
+  //   }
+
+  //   if (!isLoadingLocation) {
+  //     dispatch(loadLocations(dataLocation));
+  //   }
+  //   return () => {};
+  // }, [data || dataLocation]);
 
   return (
     <>

@@ -1,16 +1,15 @@
 import Router from "next/router";
-import {
-  addKeyword,
-  addLocation,
-} from "../../features/properties/propertiesSlice";
-import PricingRangeSlider from "./PricingRangeSlider";
-import CheckBoxFilter from "./CheckBoxFilter";
-import GlobalSelectBox from "./GlobalSelectBox";
 import { useSelector } from "react-redux";
 import { selectCategories } from "../../features/categories/categoriesSlice";
+import { selectLocations } from "../../features/location/locationsSlice";
+import { addKeyword } from "../../features/properties/propertiesSlice";
+import CheckBoxFilter from "./CheckBoxFilter";
+import GlobalSelectBox from "./GlobalSelectBox";
+import PricingRangeSlider from "./PricingRangeSlider";
 
 const GlobalFilter = ({ className = "" }) => {
   const categoriesData = useSelector(selectCategories);
+  const locationData = useSelector(selectLocations);
   // submit handler
   const submitHandler = () => {
     Router.push("/listing-grid-v1");
@@ -35,22 +34,30 @@ const GlobalFilter = ({ className = "" }) => {
           <div className="search_option_two">
             <div className="candidate_revew_select">
               <select className="selectpicker w100 form-select show-tick">
-                {categoriesData && categoriesData.categories && categoriesData.categories.data && categoriesData.categories.data.map((item) => (
+                {categoriesData?.categories?.data.map((item) => (
                   <option value="" key={item.id}>
                     {item.attributes.name}
                   </option>
                 ))}
-                {/* <option value="">Nhà</option>
-                <option>Đất</option>
-                <option>Căn hộ</option>
-                <option>Biệt thự</option> */}
               </select>
             </div>
           </div>
         </li>
         {/* End li */}
-
         <li className="list-inline-item">
+          <div className="search_option_two">
+            <div className="candidate_revew_select">
+              <select className="selectpicker w100 form-select show-tick">
+                {locationData?.locations?.data.map((item) => (
+                  <option value="" key={item.id}>
+                    {item.attributes.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </li>
+        {/* <li className="list-inline-item">
           <div className="form-group">
             <input
               type="text"
@@ -62,7 +69,7 @@ const GlobalFilter = ({ className = "" }) => {
               <span className="flaticon-maps-and-flags"></span>
             </label>
           </div>
-        </li>
+        </li> */}
         {/* End li */}
 
         <li className="list-inline-item">

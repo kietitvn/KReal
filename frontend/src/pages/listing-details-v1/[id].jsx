@@ -20,7 +20,6 @@ const ListingDynamicDetailsV1 = () => {
   const id = router.query.id;
   
   const productData = useSelector(selectProducts);
-  console.log("ListingDynamicDetailsV1:", productData);
   useEffect(() => {
     if (!id) <h1>Loading...</h1>;
     else {

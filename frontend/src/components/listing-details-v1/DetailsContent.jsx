@@ -3,7 +3,6 @@ import PropertyFeatures from "../common/listing-details/PropertyFeatures";
 import PropertyItem from "../common/listing-details/PropertyItem";
 
 const DetailsContent = (props) => {
-  console.log("DetailsContent:", props);
   return (
     <>
       <div className="listing_single_description">

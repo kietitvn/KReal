@@ -1,29 +1,12 @@
 import Link from "next/link";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import findProperties from "../../data/findProperties";
-import { useGetLocationsQuery } from "../../features/location/locationsApi";
-import { loadLocations } from "../../features/location/locationsSlice";
-import { pollingInterval } from "../../utils/const";
+import { useSelector } from "react-redux";
+import { selectLocations } from "../../features/location/locationsSlice";
 
 const FindProperties = () => {
-  const { data, isLoading } = useGetLocationsQuery("Location", {
-    pollingInterval: pollingInterval,
-  });
-
-  console.log("dataLocation", data);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (!isLoading) {
-      dispatch(loadLocations(data));
-    }
-    return () => {};
-  }, [data]);
-
+  const locationData = useSelector(selectLocations);
   return (
     <>
-      {data.data.map((item) => (
+      {locationData?.locations?.data.map((item) => (
         <div className="col-sm-6 col-md-6 col-lg-4 col-xl-4" key={item.id}>
           <Link href="/listing-list-v1">
             <a className="property_city_home6">
