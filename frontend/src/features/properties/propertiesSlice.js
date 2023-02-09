@@ -96,4 +96,5 @@ export const {
     addLength,
     resetAmenities,
 } = propertiesSlice.actions;
+export const selectFilter = (state) => state;
 export default propertiesSlice.reducer;

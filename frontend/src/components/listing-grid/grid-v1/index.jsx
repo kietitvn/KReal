@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { selectFilter } from "../../../features/properties/propertiesSlice";
 import Pagination from "../../common/blog/Pagination";
 import CopyrightFooter from "../../common/footer/CopyrightFooter";
 import Footer from "../../common/footer/Footer";
@@ -12,6 +14,8 @@ import BreadCrumb2 from "./BreadCrumb2";
 import FeaturedItem from "./FeaturedItem";
 
 const index = () => {
+  const data = useSelector(selectFilter);
+  console.log("selectFilter", data)
   return (
     <>
       {/* <!-- Main Header Nav --> */}

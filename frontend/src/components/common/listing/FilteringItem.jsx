@@ -179,7 +179,7 @@ const FilteringItem = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="keyword"
+            placeholder="Keyword"
             value={getKeyword}
             onChange={(e) => setKeyword(e.target.value)}
           />
@@ -314,7 +314,7 @@ const FilteringItem = () => {
       </li>
       {/* End li */}
 
-      <li>
+      {/* <li>
         <div className="search_option_two">
           <div className="candidate_revew_select">
             <select
@@ -329,10 +329,10 @@ const FilteringItem = () => {
             </select>
           </div>
         </div>
-      </li>
+      </li> */}
       {/* End li */}
 
-      <li>
+      {/* <li>
         <div className="search_option_two">
           <div className="candidate_revew_select">
             <select
@@ -352,10 +352,10 @@ const FilteringItem = () => {
             </select>
           </div>
         </div>
-      </li>
+      </li> */}
       {/* End li */}
 
-      <li className="min_area list-inline-item">
+      {/* <li className="min_area list-inline-item">
         <div className="form-group mb-4">
           <input
             type="number"
@@ -366,10 +366,10 @@ const FilteringItem = () => {
             onChange={(e) => setAreaMin(e.target.value)}
           />
         </div>
-      </li>
+      </li> */}
       {/* End li */}
 
-      <li className="max_area list-inline-item">
+      {/* <li className="max_area list-inline-item">
         <div className="form-group mb-4">
           <input
             type="number"
@@ -380,7 +380,7 @@ const FilteringItem = () => {
             onChange={(e) => setAreaMax(e.target.value)}
           />
         </div>
-      </li>
+      </li> */}
       {/* End li */}
 
       <li>
