@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  status: "Ban",
+  status: "Bán",
   keyword: "",
   propertyType: "",
   location: "",

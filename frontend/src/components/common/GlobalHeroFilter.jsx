@@ -18,7 +18,7 @@ const GlobalHeroFilter = ({ className = "" }) => {
             aria-controls="pills-home"
             aria-selected="true"
             onClick={() => {
-              dispatch(addStatus("Ban"));
+              dispatch(addStatus("Bán"));
               dispatch(addPrice(priceRange.sell));
             }}
           >
@@ -36,7 +36,7 @@ const GlobalHeroFilter = ({ className = "" }) => {
             aria-controls="pills-profile"
             aria-selected="false"
             onClick={() => {
-              dispatch(addStatus("Thue"));
+              dispatch(addStatus("Thuê"));
               dispatch(addPrice(priceRange.rent));
             }}
           >

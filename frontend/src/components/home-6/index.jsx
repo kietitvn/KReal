@@ -19,7 +19,6 @@ import LookingItem from "./LookingItem";
 
 const index = () => {
   const dataFilter = useSelector(selectFilter);
-  console.log("selectFilter", dataFilter);
 
   const { data, isSuccess } = useGetCategoriesQuery("Category");
 

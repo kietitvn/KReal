@@ -30,7 +30,6 @@ const FilteringItem = () => {
   } = useSelector((state) => state.properties);
 
   const statspro = useSelector((state) => state.properties);
-  console.log("statspro:", statspro);
 
   const categoriesData = useSelector(selectCategories);
   const locationData = useSelector(selectLocations);
@@ -40,7 +39,7 @@ const FilteringItem = () => {
   const Router = useRouter();
   // clear filter
   const clearAllFilters = () => {
-    dispatch(addStatus("Ban"));
+    dispatch(addStatus("Bán"));
     dispatch(addKeyword(""));
     dispatch(addLocation(""));
     dispatch(addPropertyType(""));
@@ -61,7 +60,7 @@ const FilteringItem = () => {
             <select
               onChange={(e) => {
                 dispatch(addStatus(e.target.value));
-                if (e.target.value === "Ban") {
+                if (e.target.value === "Bán") {
                   dispatch(addPrice(priceRange.sell));
                 } else {
                   dispatch(addPrice(priceRange.rent));
@@ -70,8 +69,8 @@ const FilteringItem = () => {
               className="selectpicker w100 show-tick form-select"
               value={status}
             >
-              <option value="Ban">Bán</option>
-              <option value="Thue">Thuê</option>
+              <option value="Bán">Bán</option>
+              <option value="Thuê">Thuê</option>
             </select>
           </div>
         </div>
@@ -166,7 +165,9 @@ const FilteringItem = () => {
             >
               <option value="">Chọn phòng tắm</option>
               {bathRoom.map((item) => (
-                <option value={item}>{item}</option>
+                <option value={item} key={item}>
+                  {item}
+                </option>
               ))}
             </select>
           </div>
@@ -184,7 +185,9 @@ const FilteringItem = () => {
             >
               <option value="">Chọn phòng ngủ</option>
               {bedRoom.map((item) => (
-                <option value={item}>{item}</option>
+                <option value={item} key={item}>
+                  {item}
+                </option>
               ))}
             </select>
           </div>

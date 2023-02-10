@@ -35,20 +35,19 @@ const FilterTopBar = () => {
       <div className="col-sm-12 col-md-4 col-lg-4 col-xl-5">
         <div className="left_area tac-xsd">
           <p>
-            <span className={length === 0 ? "text-danger" : undefined}>
-              {length}{" "}
-            </span>
             {length !== 0 ? (
-              "Search results"
+              <span>`${length} BĐS phù hợp nhất với bạn`</span>
             ) : (
-              <span className="text-danger">Not found results</span>
+              <span className="text-danger">
+                Rất tiếc, không có BĐS như yêu cầu.
+              </span>
             )}
           </p>
         </div>
       </div>
       {/* End .col */}
 
-      <div className="col-sm-12 col-md-8 col-lg-8 col-xl-7">
+      {/* <div className="col-sm-12 col-md-8 col-lg-8 col-xl-7">
         <div className="right_area text-end tac-xsd">
           <ul>
             <li className="list-inline-item">
@@ -77,7 +76,7 @@ const FilterTopBar = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
       {/* End .col */}
     </>
   );

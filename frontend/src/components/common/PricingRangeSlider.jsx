@@ -10,8 +10,7 @@ const RangeSlider = () => {
   const dispath = useDispatch();
   const { status, price } = useSelector((state) => state.properties);
 
-  const priceLimit = status === "Ban" ? priceRange.sell : priceRange.rent;
-  console.log("priceLimit", priceLimit);
+  const priceLimit = status === "Bán" ? priceRange.sell : priceRange.rent;
   return (
     <div className="nft__filter-price tp-range-slider tp-range-slider-dark mb-20">
       <div className="nft__filter-price-inner d-flex align-items-center justify-content-between">

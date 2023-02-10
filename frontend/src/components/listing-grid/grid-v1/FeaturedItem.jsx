@@ -3,8 +3,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addLength } from "../../../features/properties/propertiesSlice";
 import properties from "../../../data/properties";
+import { selectProducts } from "../../../features/products/productsSlice";
 
 const FeaturedItem = () => {
+  const productData = useSelector(selectProducts);
+  console.log("productData", productData);
   const {
     keyword,
     location,
@@ -18,6 +21,11 @@ const FeaturedItem = () => {
     area,
     amenities,
   } = useSelector((state) => state.properties);
+
+  const stateFilter = useSelector((state) => state.properties);
+
+  console.log("stateFilter", stateFilter);
+
   const { statusType, featured, isGridOrList } = useSelector(
     (state) => state.filter
   );
@@ -26,29 +34,29 @@ const FeaturedItem = () => {
 
   // keyword filter
   const keywordHandler = (item) =>
-    item.title.toLowerCase().includes(keyword?.toLowerCase());
+    item.attributes.name.toLowerCase().includes(keyword?.toLowerCase());
 
   // location handler
   const locationHandler = (item) => {
-    return item.location.toLowerCase().includes(location.toLowerCase());
+    return item?.attributes?.location?.data?.id === location;
   };
 
   // status handler
   const statusHandler = (item) =>
-    item.type.toLowerCase().includes(status.toLowerCase());
+    item.attributes.status.toLowerCase().includes(status.toLowerCase());
 
   // properties handler
   const propertiesHandler = (item) =>
-    item.type.toLowerCase().includes(propertyType.toLowerCase());
+    item.attributes.categoryID.data.find((item) => item.id === propertyType);
 
   // price handler
   const priceHandler = (item) =>
-    item.price < price?.max && item.price > price?.min;
+    item.attributes.price < price?.max && item.attributes.price > price?.min;
 
   // bathroom handler
   const bathroomHandler = (item) => {
     if (bathrooms !== "") {
-      return item.itemDetails[1].number == bathrooms;
+      return item.attributes.bathRoom == bathrooms;
     }
     return true;
   };
@@ -56,7 +64,7 @@ const FeaturedItem = () => {
   // bedroom handler
   const bedroomHandler = (item) => {
     if (bedrooms !== "") {
-      return item.itemDetails[0].number == bedrooms;
+      return item.attributes.bedRoom == bedrooms;
     }
     return true;
   };
@@ -88,7 +96,7 @@ const FeaturedItem = () => {
   const advanceHandler = (item) => {
     if (amenities.length !== 0) {
       return amenities.find((item2) =>
-        item2.toLowerCase().includes(item.amenities.toLowerCase())
+        item2.includes(item.feature_ids.data.toLowerCase())
       );
     }
     return true;
@@ -114,21 +122,19 @@ const FeaturedItem = () => {
   };
 
   // status handler
-  let content = properties
+  let content = productData?.products?.data
     ?.slice(0, 10)
-    ?.filter(keywordHandler)
-    ?.filter(locationHandler)
-    ?.filter(statusHandler)
-    ?.filter(propertiesHandler)
-    ?.filter(priceHandler)
-    ?.filter(bathroomHandler)
-    ?.filter(bedroomHandler)
-    ?.filter(garagesHandler)
-    ?.filter(builtYearsHandler)
-    ?.filter(areaHandler)
-    ?.filter(advanceHandler)
-    ?.sort(statusTypeHandler)
-    ?.filter(featuredHandler)
+    // ?.filter(keywordHandler)
+    // ?.filter(locationHandler)
+    // ?.filter(statusHandler)
+    // ?.filter(propertiesHandler)
+    // ?.filter(priceHandler)
+    // ?.filter(bathroomHandler)
+    // ?.filter(bedroomHandler)
+
+    //?.filter(advanceHandler)
+    // ?.sort(statusTypeHandler)
+    // ?.filter(featuredHandler)
     .map((item) => (
       <div
         className={`${
@@ -188,7 +194,7 @@ const FeaturedItem = () => {
                 {item.location}
               </p>
 
-              <ul className="prop_details mb0">
+              {/* <ul className="prop_details mb0">
                 {item.itemDetails.map((val, i) => (
                   <li className="list-inline-item" key={i}>
                     <a href="#">
@@ -196,7 +202,7 @@ const FeaturedItem = () => {
                     </a>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
             </div>
             {/* End .tc_content */}
 
@@ -224,9 +230,9 @@ const FeaturedItem = () => {
     ));
 
   // add length of filter items
-  useEffect(() => {
-    dispatch(addLength(content.length));
-  }, [dispatch, addLength, content]);
+  // useEffect(() => {
+  //   dispatch(addLength(content.length));
+  // }, [dispatch, addLength, content]);
 
   return <>{content}</>;
 };
