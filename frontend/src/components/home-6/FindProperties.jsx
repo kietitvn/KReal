@@ -6,7 +6,7 @@ const FindProperties = () => {
   const locationData = useSelector(selectLocations);
   return (
     <>
-      {locationData?.locations?.data.map((item) => (
+      {locationData?.locations?.data?.map((item) => (
         <div className="col-sm-6 col-md-6 col-lg-4 col-xl-4" key={item.id}>
           <Link href="/listing-list-v1">
             <a className="property_city_home6">
