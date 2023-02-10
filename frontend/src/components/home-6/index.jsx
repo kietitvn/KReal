@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetCategoriesQuery } from "../../features/categories/categoriesApi";
 import { loadCategories } from "../../features/categories/categoriesSlice";
 import { useGetLocationsQuery } from "../../features/location/locationsApi";
 import { loadLocations } from "../../features/location/locationsSlice";
+import { selectFilter } from "../../features/properties/propertiesSlice";
 import { pollingInterval } from "../../utils/const";
 import Blogs from "../common/Blogs";
 import CopyrightFooter from "../common/footer/CopyrightFooter";
@@ -17,37 +18,26 @@ import Hero from "./Hero";
 import LookingItem from "./LookingItem";
 
 const index = () => {
-  const { data, isSuccess } = useGetCategoriesQuery("Category", {
-    pollingInterval: pollingInterval,
-  });
+  const dataFilter = useSelector(selectFilter);
+  console.log("selectFilter", dataFilter);
 
-  const {
-    data: dataLocation,
-    isSuccess: isSuccessLocation,
-  } = useGetLocationsQuery("Location", {
-    pollingInterval: pollingInterval,
-  });
+  const { data, isSuccess } = useGetCategoriesQuery("Category");
+
+  const { data: dataLocation, isSuccess: isSuccessLocation } =
+    useGetLocationsQuery("Location");
 
   const dispatch = useDispatch();
 
-  if (isSuccess) {
-    dispatch(loadCategories(data));
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(loadCategories(data));
+    }
 
-  if (isSuccessLocation) {
-    dispatch(loadLocations(dataLocation));
-  }
-
-  // useEffect(() => {
-  //   if (!isLoading) {
-  //     dispatch(loadCategories(data));
-  //   }
-
-  //   if (!isLoadingLocation) {
-  //     dispatch(loadLocations(dataLocation));
-  //   }
-  //   return () => {};
-  // }, [data || dataLocation]);
+    if (isSuccessLocation) {
+      dispatch(loadLocations(dataLocation));
+    }
+    return () => {};
+  }, [data || dataLocation]);
 
   return (
     <>

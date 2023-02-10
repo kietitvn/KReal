@@ -1,13 +1,18 @@
 import Router from "next/router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectCategories } from "../../features/categories/categoriesSlice";
 import { selectLocations } from "../../features/location/locationsSlice";
-import { addKeyword } from "../../features/properties/propertiesSlice";
+import {
+  addKeyword,
+  addPropertyType,
+  addLocation,
+} from "../../features/properties/propertiesSlice";
 import CheckBoxFilter from "./CheckBoxFilter";
 import GlobalSelectBox from "./GlobalSelectBox";
 import PricingRangeSlider from "./PricingRangeSlider";
 
 const GlobalFilter = ({ className = "" }) => {
+  const dispatch = useDispatch();
   const categoriesData = useSelector(selectCategories);
   const locationData = useSelector(selectLocations);
   // submit handler
@@ -15,12 +20,17 @@ const GlobalFilter = ({ className = "" }) => {
     Router.push("/listing-grid-v1");
   };
 
+  const { keyword, location, propertyType } = useSelector(
+    (state) => state.properties
+  );
+
   return (
     <div className={`home1-advnc-search ${className}`}>
       <ul className="h1ads_1st_list mb0">
         <li className="list-inline-item">
           <div className="form-group">
             <input
+              value={keyword}
               type="text"
               className="form-control"
               placeholder="Từ khóa..."
@@ -33,9 +43,14 @@ const GlobalFilter = ({ className = "" }) => {
         <li className="list-inline-item">
           <div className="search_option_two">
             <div className="candidate_revew_select">
-              <select className="selectpicker w100 form-select show-tick">
+              <select
+                className="selectpicker w100 form-select show-tick"
+                onChange={(e) => dispatch(addPropertyType(e.target.value))}
+                value={propertyType}
+              >
+                <option value="">Chọn loại BĐS</option>
                 {categoriesData?.categories?.data?.map((item) => (
-                  <option value="" key={item.id}>
+                  <option value={item.id} key={item.id}>
                     {item.attributes.name}
                   </option>
                 ))}
@@ -47,9 +62,14 @@ const GlobalFilter = ({ className = "" }) => {
         <li className="list-inline-item">
           <div className="search_option_two">
             <div className="candidate_revew_select">
-              <select className="selectpicker w100 form-select show-tick">
+              <select
+                className="selectpicker w100 form-select show-tick"
+                onChange={(e) => dispatch(addLocation(e.target.value))}
+                value={location}
+              >
+                <option value="">Chọn khu vực</option>
                 {locationData?.locations?.data?.map((item) => (
-                  <option value="" key={item.id}>
+                  <option value={item.id} key={item.id}>
                     {item.attributes.name}
                   </option>
                 ))}
@@ -81,7 +101,7 @@ const GlobalFilter = ({ className = "" }) => {
               data-bs-auto-close="outside"
               aria-expanded="false"
             >
-              <span>Giá</span>
+              <span>Tài chính</span>
               <label htmlFor="InputEmail2">
                 <span className="fa fa-angle-down"></span>
               </label>

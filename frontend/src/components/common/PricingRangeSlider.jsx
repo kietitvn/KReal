@@ -1,45 +1,31 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import InputRange from "react-input-range";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPrice } from "../../features/properties/propertiesSlice";
 import { priceRange } from "../../utils/const";
 import { doctien } from "../../utils/currency";
 
 const RangeSlider = () => {
-  const [price, setPrice] = useState({
-    value: { min: priceRange.sell.min, max: priceRange.sell.max },
-  });
   const dispath = useDispatch();
+  const { status, price } = useSelector((state) => state.properties);
 
-  const handleOnChange = (value) => {
-    setPrice({ value });
-  };
-
-  // price add to state
-  useEffect(() => {
-    dispath(
-      addPrice({
-        min: price.value.min,
-        max: price.value.max,
-      })
-    );
-  }, [dispath, price, addPrice]);
-
+  const priceLimit = status === "Ban" ? priceRange.sell : priceRange.rent;
+  console.log("priceLimit", priceLimit);
   return (
     <div className="nft__filter-price tp-range-slider tp-range-slider-dark mb-20">
       <div className="nft__filter-price-inner d-flex align-items-center justify-content-between">
-        <span>{doctien(price.value.min)}</span>
-        <span>{doctien(price.value.max)}</span>
+        <span>{doctien(price.min)}</span>
+        <span>{doctien(price.max)}</span>
       </div>
 
       <InputRange
         formatLabel={(value) => ``}
-        minValue={priceRange.sell.min}
-        maxValue={priceRange.sell.max}
-        step={priceRange.sell.step}
-        value={price.value}
-        onChange={(value) => handleOnChange(value)}
+        minValue={priceLimit.min}
+        maxValue={priceLimit.max}
+        step={priceLimit.step}
+        value={price}
+        onChange={(value) => dispath(addPrice(value))}
       />
 
       <div className="slider-styled inside-slider" id="nft-slider"></div>

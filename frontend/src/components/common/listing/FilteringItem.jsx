@@ -1,28 +1,19 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
+import { selectCategories } from "../../../features/categories/categoriesSlice";
+import { selectLocations } from "../../../features/location/locationsSlice";
 import {
-  addFeatured,
-  addStatusType,
-} from "../../../features/filter/filterSlice";
-import {
-  addAmenities,
-  addAreaMax,
-  addAreaMin,
   addBathrooms,
   addBedrooms,
-  addGarages,
   addKeyword,
   addLocation,
   addPrice,
   addPropertyType,
   addStatus,
-  addYearBuilt,
   resetAmenities,
 } from "../../../features/properties/propertiesSlice";
+import { bathRoom, bedRoom, priceRange } from "../../../utils/const";
 import PricingRangeSlider from "../../common/PricingRangeSlider";
-import { v4 as uuidv4 } from "uuid";
-import { useRouter } from "next/router";
 
 const FilteringItem = () => {
   const {
@@ -38,150 +29,62 @@ const FilteringItem = () => {
     amenities,
   } = useSelector((state) => state.properties);
 
-  // input state
-  const [getKeyword, setKeyword] = useState(keyword);
-  const [getLocation, setLocation] = useState(location);
-  const [getStatus, setStatus] = useState(status);
-  const [getPropertiesType, setPropertiesType] = useState(propertyType);
-  const [getBathroom, setBathroom] = useState(bathrooms);
-  const [getBedroom, setBedroom] = useState(bedrooms);
-  const [getGarages, setGarages] = useState(garages);
-  const [getBuiltYear, setBuiltYear] = useState(yearBuilt);
-  const [getAreaMin, setAreaMin] = useState(area.min);
-  const [getAreaMax, setAreaMax] = useState(area.max);
+  const statspro = useSelector((state) => state.properties);
+  console.log("statspro:", statspro);
 
-  // advanced state
-  const [getAdvanced, setAdvanced] = useState([
-    { id: uuidv4(), name: "Air Conditioning" },
-    { id: uuidv4(), name: "Barbeque" },
-    { id: uuidv4(), name: "Gym" },
-    { id: uuidv4(), name: "Microwave" },
-    { id: uuidv4(), name: "TV Cable" },
-    { id: uuidv4(), name: "Lawn" },
-    { id: uuidv4(), name: "Refrigerator" },
-    { id: uuidv4(), name: "Swimming Pool" },
-    { id: uuidv4(), name: "WiFi" },
-    { id: uuidv4(), name: "Sauna" },
-    { id: uuidv4(), name: "Dryer" },
-    { id: uuidv4(), name: "Washer" },
-    { id: uuidv4(), name: "Laundry" },
-    { id: uuidv4(), name: "Outdoor Shower" },
-    { id: uuidv4(), name: "Window Coverings" },
-  ]);
+  const categoriesData = useSelector(selectCategories);
+  const locationData = useSelector(selectLocations);
 
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
 
   const Router = useRouter();
-
-  // keyword
-  useEffect(() => {
-    dispath(addKeyword(getKeyword));
-  }, [dispath, addKeyword, getKeyword]);
-
-  // location
-  useEffect(() => {
-    dispath(addLocation(getLocation));
-  }, [dispath, addLocation, getLocation]);
-
-  // status
-  useEffect(() => {
-    dispath(addStatus(getStatus));
-  }, [dispath, addStatus, getStatus]);
-
-  // properties type
-  useEffect(() => {
-    dispath(addPropertyType(getPropertiesType));
-  }, [dispath, addPropertyType, getPropertiesType]);
-
-  // bathroom
-  useEffect(() => {
-    dispath(addBathrooms(getBathroom));
-  }, [dispath, addBathrooms, getBathroom]);
-
-  // bedroom
-  useEffect(() => {
-    dispath(addBedrooms(getBedroom));
-  }, [dispath, addBedrooms, getBedroom]);
-
-  // garages
-  useEffect(() => {
-    dispath(addGarages(getGarages));
-  }, [dispath, addGarages, getGarages]);
-
-  // built years
-  useEffect(() => {
-    dispath(addYearBuilt(getBuiltYear));
-  }, [dispath, addYearBuilt, getBuiltYear]);
-
-  // area min
-  useEffect(() => {
-    dispath(dispath(addAreaMin(getAreaMin)));
-  }, [dispath, addAreaMin, getAreaMin]);
-
-  // area max
-  useEffect(() => {
-    dispath(dispath(addAreaMax(getAreaMax)));
-  }, [dispath, addAreaMax, getAreaMax]);
-
   // clear filter
-  const clearHandler = () => {
-    clearAllFilters();
-  };
-
   const clearAllFilters = () => {
-    setKeyword("");
-    setLocation("");
-    setStatus("");
-    setPropertiesType("");
-    dispath(addPrice({ min: 10000, max: 20000 }));
-    setBathroom("");
-    setBedroom("");
-    setBedroom("");
-    setGarages("");
-    setBuiltYear("");
-    setAreaMin("");
-    setAreaMax("");
-    dispath(resetAmenities());
-    dispath(addStatusType(""));
-    dispath(addFeatured(""));
-    clearAdvanced();
-  };
-
-  // clear advanced
-  const clearAdvanced = () => {
-    const changed = getAdvanced.map((item) => {
-      item.isChecked = false;
-      return item;
-    });
-    setAdvanced(changed);
-  };
-
-  // add advanced
-  const advancedHandler = (id) => {
-    const data = getAdvanced.map((feature) => {
-      if (feature.id === id) {
-        if (feature.isChecked) {
-          feature.isChecked = false;
-        } else {
-          feature.isChecked = true;
-        }
-      }
-      return feature;
-    });
-
-    setAdvanced(data);
+    dispatch(addStatus("Ban"));
+    dispatch(addKeyword(""));
+    dispatch(addLocation(""));
+    dispatch(addPropertyType(""));
+    dispatch(addBathrooms(""));
+    dispatch(addBedrooms(""));
+    dispatch(resetAmenities());
+    dispatch(addPrice(priceRange.sell));
+    // dispatch(resetAmenities());
+    // dispatch(addStatusType(""));
+    // dispatch(addFeatured(""));
   };
 
   return (
     <ul className="sasw_list mb0">
+      <li>
+        <div className="search_option_two">
+          <div className="candidate_revew_select">
+            <select
+              onChange={(e) => {
+                dispatch(addStatus(e.target.value));
+                if (e.target.value === "Ban") {
+                  dispatch(addPrice(priceRange.sell));
+                } else {
+                  dispatch(addPrice(priceRange.rent));
+                }
+              }}
+              className="selectpicker w100 show-tick form-select"
+              value={status}
+            >
+              <option value="Ban">Bán</option>
+              <option value="Thue">Thuê</option>
+            </select>
+          </div>
+        </div>
+      </li>
+
       <li className="search_area">
         <div className="form-group mb-3">
           <input
             type="text"
             className="form-control"
             placeholder="Keyword"
-            value={getKeyword}
-            onChange={(e) => setKeyword(e.target.value)}
+            value={keyword}
+            onChange={(e) => dispatch(addKeyword(e.target.value))}
           />
           <label>
             <span className="flaticon-magnifying-glass"></span>
@@ -191,37 +94,19 @@ const FilteringItem = () => {
       {/* End li */}
 
       <li className="search_area">
-        <div className="form-group mb-3">
-          <input
-            type="search"
-            className="form-control"
-            id="exampleInputEmail"
-            placeholder="Location"
-            value={getLocation}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-          <label htmlFor="exampleInputEmail">
-            <span className="flaticon-maps-and-flags"></span>
-          </label>
-        </div>
-      </li>
-      {/* End li */}
-
-      <li>
         <div className="search_option_two">
           <div className="candidate_revew_select">
             <select
-              onChange={(e) => setStatus(e.target.value)}
-              className="selectpicker w100 show-tick form-select"
-              value={getStatus}
+              className="selectpicker w100 form-select show-tick"
+              onChange={(e) => dispatch(addLocation(e.target.value))}
+              value={location}
             >
-              <option value="">Status</option>
-              <option value="apartment">Apartment</option>
-              <option value="bungalow">Bungalow</option>
-              <option value="condo">Condo</option>
-              <option value="house">House</option>
-              <option value="land">Land</option>
-              <option value="single family">Single Family</option>
+              <option value="">Chọn khu vực</option>
+              {locationData?.locations?.data?.map((item) => (
+                <option value={item.id} key={item.id}>
+                  {item.attributes.name}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -232,17 +117,16 @@ const FilteringItem = () => {
         <div className="search_option_two">
           <div className="candidate_revew_select">
             <select
-              onChange={(e) => setPropertiesType(e.target.value)}
+              onChange={(e) => dispatch(addPropertyType(e.target.value))}
               className="selectpicker w100 show-tick form-select"
-              value={getPropertiesType}
+              value={propertyType}
             >
-              <option value="">Property Type</option>
-              <option value="apartment">Apartment</option>
-              <option value="bungalow">Bungalow</option>
-              <option value="condo">Condo</option>
-              <option value="house">House</option>
-              <option value="land">Land</option>
-              <option value="single family">Single Family</option>
+              <option value="">Chọn loại BĐS</option>
+              {categoriesData?.categories?.data?.map((item) => (
+                <option value={item.id} key={item.id}>
+                  {item.attributes.name}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -258,7 +142,7 @@ const FilteringItem = () => {
             data-bs-auto-close="outside"
             aria-expanded="false"
           >
-            <span>Price Range</span>
+            <span>Tài chính</span>
             <label htmlFor="prncgs2">
               <span className="fa fa-angle-down"></span>
             </label>
@@ -276,17 +160,14 @@ const FilteringItem = () => {
         <div className="search_option_two">
           <div className="candidate_revew_select">
             <select
-              onChange={(e) => setBathroom(e.target.value)}
+              onChange={(e) => dispatch(addBathrooms(e.target.value))}
               className="selectpicker w100 show-tick form-select"
-              value={getBathroom}
+              value={bathrooms}
             >
-              <option value="">Bathrooms</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
+              <option value="">Chọn phòng tắm</option>
+              {bathRoom.map((item) => (
+                <option value={item}>{item}</option>
+              ))}
             </select>
           </div>
         </div>
@@ -297,17 +178,14 @@ const FilteringItem = () => {
         <div className="search_option_two">
           <div className="candidate_revew_select">
             <select
-              onChange={(e) => setBedroom(e.target.value)}
+              onChange={(e) => dispatch(addBathrooms(e.target.value))}
               className="selectpicker w100 show-tick form-select"
-              value={getBedroom}
+              value={bedrooms}
             >
-              <option value="">Bedrooms</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
+              <option value="">Chọn phòng ngủ</option>
+              {bedRoom.map((item) => (
+                <option value={item}>{item}</option>
+              ))}
             </select>
           </div>
         </div>
@@ -383,7 +261,7 @@ const FilteringItem = () => {
       </li> */}
       {/* End li */}
 
-      <li>
+      {/* <li>
         <div id="accordion" className="panel-group">
           <div className="panel">
             <div className="panel-heading">
@@ -398,7 +276,6 @@ const FilteringItem = () => {
                 </a>
               </h4>
             </div>
-            {/* End .panel-heading */}
 
             <div id="panelBodyRating" className="panel-collapse collapse">
               <div className="panel-body row">
@@ -414,7 +291,7 @@ const FilteringItem = () => {
                             value={feature.name}
                             checked={feature.isChecked || false}
                             onChange={(e) =>
-                              dispath(addAmenities(e.target.value))
+                              dispatch(addAmenities(e.target.value))
                             }
                             onClick={() => advancedHandler(feature.id)}
                           />
@@ -433,13 +310,13 @@ const FilteringItem = () => {
             </div>
           </div>
         </div>
-      </li>
+      </li> */}
       {/* End li */}
 
       <li>
         <div className="search_option_button">
           <button
-            onClick={clearHandler}
+            onClick={clearAllFilters}
             type="button"
             className="btn btn-block btn-thm w-100"
           >
