@@ -51,36 +51,36 @@ const Footer = () => {
       </div>
       {/* End .col */}
 
-      {/* <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+      <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
         <div className="footer_contact_widget">
-          <h4>Contact Us</h4>
+          <h4>Liên hệ</h4>
           <ul className="list-unstyled">
             <li>
-              <a href="mailto:info@findhouse.com">info@findhouse.com</a>
+              <a href="mailto:Nhadatquan08@gmail.com">Nhadatquan08@gmail.com</a>
             </li>
-            <li>
+            {/* <li>
               <a href="#">Collins Street West, Victoria</a>
             </li>
             <li>
               <a href="#">8007, Australia.</a>
-            </li>
+            </li> */}
             <li>
-              <a href="tel:+4733378901">+1 246-345-0699</a>
+              <a href="tel:+84582006633">0582.00.66.33</a>
             </li>
-            <li>
+            {/* <li>
               <a href="tel:+4733378901">+1 246-345-0695</a>
-            </li>
+            </li> */}
           </ul>
         </div>
-      </div> */}
+      </div>
       {/* End .col */}
 
       <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
         <div className="footer_social_widget">
-          {/* <h4>Follow us</h4>
+          <h4>Theo dõi</h4>
           <ul className="mb30">
-            <Social />
-          </ul> */}
+            <Social showPhone={false} />
+          </ul>
           <h4>Đăng ký</h4>
           <SubscribeForm />
         </div>

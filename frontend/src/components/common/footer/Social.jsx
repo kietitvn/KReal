@@ -1,4 +1,4 @@
-const Social = () => {
+const Social = ({ showPhone = true }) => {
   // const socialContent = [
   //   { id: 1, liveLink: "https://www.facebook.com/", icon: "fa-facebook" },
   // ];
@@ -11,9 +11,11 @@ const Social = () => {
           </a>
         </li>
       ))} */}
-      <li className="list-inline-item">
-        <a href="tel:0582006633">0582.00.66.33</a>
-      </li>
+      {showPhone && (
+        <li className="list-inline-item">
+          <a href="tel:0582006633">0582.00.66.33</a>
+        </li>
+      )}
       <li className="list-inline-item">
         <a
           href={"https://www.facebook.com/muabannhaquan08"}
