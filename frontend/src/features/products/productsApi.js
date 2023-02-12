@@ -6,9 +6,9 @@ export const productsApi = api.injectEndpoints({
       query: () => ({
         url: "/products",
         method: "GET",
-        params: "?populate=*", //high level: populate[location][populate]=*
+        params: "?sort=id:desc&populate=*", //high level: populate[location][populate]=*
       }),
-      providesTags: ['Product'],
+      //providesTags: ["Product"],
     }),
   }),
 });

@@ -18,4 +18,5 @@ export const featuresSlice = createSlice({
 });
 
 export const { loadFeatures, resetFeatures } = featuresSlice.actions;
+export const selectFeatures = (state) => state.features;
 export default featuresSlice.reducer;

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { priceRange } from "../../utils/const";
 
 const initialState = {
   status: "Bán",
@@ -6,8 +7,8 @@ const initialState = {
   propertyType: "",
   location: "",
   price: {
-    min: 0,
-    max: 0,
+    min: priceRange.sell.min,
+    max: priceRange.sell.max,
   },
   amenities: [],  
   bathrooms: "",
@@ -94,5 +95,4 @@ export const {
   addLength,
   resetAmenities
 } = propertiesSlice.actions;
-export const selectFilter = (state) => state;
 export default propertiesSlice.reducer;

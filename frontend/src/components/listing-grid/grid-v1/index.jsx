@@ -1,4 +1,3 @@
-import Pagination from "../../common/blog/Pagination";
 import CopyrightFooter from "../../common/footer/CopyrightFooter";
 import Footer from "../../common/footer/Footer";
 import Header from "../../common/header/DefaultHeader";
@@ -24,7 +23,7 @@ const index = () => {
       <PopupSignInUp />
 
       {/* <!-- Listing Grid View --> */}
-      <section className="our-listing bgc-f7 pb30-991 mt85 md-mt0 ">
+      <section className="our-listing bgc-f7 pb30-991 md-mt0 ">
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
@@ -60,7 +59,7 @@ const index = () => {
                 id="sidebarListing"
               >
                 <div className="offcanvas-header">
-                  <h5 className="offcanvas-title">Advanced Search</h5>
+                  <h5 className="offcanvas-title">Tìm nâng cao</h5>
                   <button
                     type="button"
                     className="btn-close text-reset"
@@ -92,11 +91,11 @@ const index = () => {
               {/* End .row */}
 
               <div className="row">
-                <div className="col-lg-12 mt20">
+                {/* <div className="col-lg-12 mt20">
                   <div className="mbp_pagination">
                     <Pagination />
                   </div>
-                </div>
+                </div> */}
                 {/* End paginaion .col */}
               </div>
               {/* End .row */}

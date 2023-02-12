@@ -18,6 +18,7 @@ import productsSlice from "../features/products/productsSlice";
 import propertiesSlice from "../features/properties/propertiesSlice";
 import locationsSlice from "../features/location/locationsSlice";
 import featuresSlice from "../features/feature/featuresSlice";
+import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 const persistConfig = {
   key: "api",
@@ -50,3 +51,5 @@ export const store = configureStore({
       },
     }).concat(api.middleware),
 });
+
+setupListeners(store.dispatch);

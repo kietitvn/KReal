@@ -11,7 +11,7 @@ const SubscribeForm = () => {
             type="email"
             className="form-control mb-2"
             id="inlineFormInput"
-            placeholder="Your email"
+            placeholder="Email của bạn"
           />
         </div>
 

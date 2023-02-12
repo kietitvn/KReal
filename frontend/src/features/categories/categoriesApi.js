@@ -6,9 +6,9 @@ export const categoriesApi = api.injectEndpoints({
       query: () => ({
         url: "/categories",
         method: "GET",
-        params: "?populate=*",
+        params: "?sort=name&populate=*",
       }),
-      providesTags: ['Category'],
+      //providesTags: ["Category"],
     }),
   }),
 });

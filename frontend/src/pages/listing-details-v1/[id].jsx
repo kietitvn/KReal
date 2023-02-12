@@ -41,14 +41,14 @@ const ListingDynamicDetailsV1 = () => {
       <PopupSignInUp />
 
       {/* <!-- Listing Single Property --> */}
-      <section className="listing-title-area mt85 md-mt0">
+      <section className="listing-title-area md-mt0">
         <div className="container">
           <Gallery>
             <div className="row mb30">
               <div className="col-lg-7 col-xl-8">
                 <div className="single_property_title mt30-767">
                   <h2>{product?.attributes?.name}</h2>                  
-                  <p>{product?.attributes?.location ? product.attributes.location.data.attributes.name : ""}</p>
+                  <p>{product?.attributes?.location ? product?.attributes?.location?.data?.attributes?.name : ""}</p>
                 </div>
               </div>
               <div className="col-lg-5 col-xl-4">

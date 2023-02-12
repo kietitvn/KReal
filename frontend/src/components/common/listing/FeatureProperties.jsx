@@ -1,56 +1,71 @@
 import featureProContent from "../../../data/properties";
 import Slider from "react-slick";
+import { useSelector } from "react-redux";
+import { selectProducts } from "../../../features/products/productsSlice";
+import { doctien } from "../../../utils/currency";
 
 const FeatureProperties = () => {
-    const settings = {
-        dots: true,
-        arrows: false,
-        fade: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: false,
-        speed: 1000,
-    };
+  const settings = {
+    dots: true,
+    arrows: false,
+    fade: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    speed: 1000,
+  };
+  const dataProduct = useSelector(selectProducts);
+  const data = dataProduct?.products.data?.filter(
+    (item) => item?.attributes?.feature_ids?.data?.length > 0
+  );
+  return (
+    <>
+      {data && (
+        <Slider {...settings} arrows={false}>
+          {data.slice(0, 5).map((item) => (
+            <div className="item" key={item?.id}>
+              <div className="feat_property home7">
+                <div className="thumb">
+                  <img
+                    className="img-whp"
+                    src={
+                      process.env.baseUrl +
+                      item?.attributes?.cover?.data?.attributes?.url
+                    }
+                    alt={
+                      item?.attributes?.cover?.data?.attributes?.alternativeText
+                    }
+                  />
 
-    return (
-        <>
-            <Slider {...settings} arrows={false}>
-                {featureProContent.slice(0, 5).map((item) => (
-                    <div className="item" key={item.id}>
-                        <div className="feat_property home7">
-                            <div className="thumb">
-                                <img
-                                    className="img-whp"
-                                    src={item.img}
-                                    alt="properties identity"
-                                />
-
-                                <div className="thmb_cntnt">
-                                    <ul className="tag mb0">
-                                        {item.saleTag.map((val, i) => (
-                                            <li
-                                                className="list-inline-item"
-                                                key={i}
-                                            >
-                                                <a href="#">{val}</a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <a className="fp_price" href="#">
-                                        ${item.price}
-                                        <small>/mo</small>
-                                    </a>
-                                    <h4 className="posr color-white">
-                                        {item.title}
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </Slider>
-        </>
-    );
+                  <div className="thmb_cntnt">
+                    <ul className="tag mb0">
+                      {item?.attributes?.feature_ids?.data?.length > 0 && (
+                        <li className="list-inline-item">
+                          <a href="#">Tiện ích</a>
+                        </li>
+                      )}
+                      <li className="list-inline-item">
+                        <a href="#">{item?.attributes?.status}</a>
+                      </li>
+                    </ul>
+                    <a className="fp_price" href="#">
+                      {doctien(item?.attributes?.price)}
+                      <small>
+                        {item?.attributes?.status === "Bán" ? "" : "/tháng"}
+                      </small>
+                    </a>
+                    <h4 className="posr color-white">
+                      {item?.attributes?.name}
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      )}
+    </>
+  );
 };
 
 export default FeatureProperties;

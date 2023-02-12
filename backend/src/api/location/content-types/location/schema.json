@@ -13,12 +13,14 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "location": {
       "type": "component",
       "repeatable": false,
-      "component": "geography.location"
+      "component": "geography.location",
+      "required": true
     },
     "products": {
       "type": "relation",
@@ -29,7 +31,7 @@
     "image": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]

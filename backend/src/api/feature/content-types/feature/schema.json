@@ -4,7 +4,8 @@
   "info": {
     "singularName": "feature",
     "pluralName": "features",
-    "displayName": "Feature"
+    "displayName": "Feature",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGetFeaturesQuery } from "../../features/feature/featuresApi";
 import { loadFeatures } from "../../features/feature/featuresSlice";
 import { addAmenities } from "../../features/properties/propertiesSlice";
-import { pollingInterval } from "../../utils/const";
 
 const CheckBoxFilter = () => {
-  const { data, isLoading } = useGetFeaturesQuery("Feature");
+  const { data, isLoading } = useGetFeaturesQuery();
   const dispatch = useDispatch();
   useEffect(() => {
     if (!isLoading) {
@@ -51,7 +50,7 @@ const CheckBoxFilter = () => {
                       onChange={(e) => dispatch(addAmenities(e.target.value))}
                       // onClick={() => advancedHandler(item.id)}
                     />
-                    <label className="form-check-label" htmlFor="customCheck1">
+                    <label className="form-check-label" htmlFor={item.id}>
                       {item.attributes.name}
                     </label>
                   </div>

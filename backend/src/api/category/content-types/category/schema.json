@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
       "type": "string"
@@ -36,10 +37,17 @@
       "type": "uid",
       "targetField": "name"
     },
-    "icon_classname": {
-      "type": "string",
-      "required": true,
-      "default": "flaticon-house-1"
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "flaticon-house",
+        "flaticon-house-1",
+        "flaticon-house-2",
+        "flaticon-building",
+        "flaticon-placeholder"
+      ],
+      "default": "flaticon-house",
+      "required": true
     }
   }
 }

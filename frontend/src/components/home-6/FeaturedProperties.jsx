@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import Slider from "react-slick";
 import { useGetProductsQuery } from "../../features/products/productsApi";
 import { loadProducts } from "../../features/products/productsSlice";
-import { pollingInterval } from "../../utils/const";
 import { doctien } from "../../utils/currency";
 
 const FeaturedProperties = () => {
@@ -51,26 +50,28 @@ const FeaturedProperties = () => {
     ],
   };
 
-  const { data, isLoading, error } = useGetProductsQuery("Products", {
-    pollingInterval: pollingInterval,
-  });
+  const { data: dataProduct, isSuccess } = useGetProductsQuery();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!isLoading) {
-      dispatch(loadProducts(data));
+    if (isSuccess) {
+      dispatch(loadProducts(dataProduct));
     }
     return () => {};
-  }, [data]);
+  }, [dataProduct]);
+
+  const data = dataProduct?.data?.filter(
+    (item) => item?.attributes?.feature_ids?.data?.length > 0
+  );
 
   return (
     data && (
       <>
         <Slider {...settings} arrows={true}>
-          {data.data.map((item) => {
-            const detail = item.attributes;
+          {data.map((item) => {
+            const detail = item?.attributes;
             return (
-              <Link href={`/listing-details-v1/${item.id}`} key={item.id}>
+              <Link href={`/listing-details-v1/${item?.id}`} key={item?.id}>
                 <div className="item">
                   <div className="properti_city home6">
                     <div className="thumb">
@@ -78,7 +79,7 @@ const FeaturedProperties = () => {
                         <source
                           srcSet={
                             process.env.baseUrl +
-                            detail.cover.data.attributes.url
+                            detail?.cover?.data?.attributes?.url
                           }
                           type="image/webp"
                         />
@@ -86,15 +87,20 @@ const FeaturedProperties = () => {
                           className="img-whp"
                           src={
                             process.env.baseUrl +
-                            detail.cover.data.attributes.url
+                            detail?.cover?.data?.attributes?.url
                           }
-                          alt={detail.cover.data.attributes.alternativeText}
+                          alt={detail?.cover?.data?.attributes?.alternativeText}
                         />
                       </picture>
                       <div className="thmb_cntnt">
                         <ul className="tag mb0">
+                          {detail?.feature_ids?.data?.length > 0 && (
+                            <li className="list-inline-item">
+                              <a href="#">Tiện ích</a>
+                            </li>
+                          )}
                           <li className="list-inline-item">
-                            <a href="#">{detail.status}</a>
+                            <a href="#">{detail?.status}</a>
                           </li>
                         </ul>
                       </div>
@@ -104,18 +110,18 @@ const FeaturedProperties = () => {
                     <div className="overlay">
                       <div className="details">
                         <a className="fp_price">
-                          {doctien(detail.price)}
+                          {doctien(detail?.price)}
                           <small>
-                            {detail.status === "Bán" ? "" : "/tháng"}
+                            {detail?.status === "Bán" ? "" : "/tháng"}
                           </small>
                         </a>
                         <h4>
-                          <a>{detail.name}</a>
+                          <a>{detail?.name}</a>
                         </h4>
                         <ul className="prop_details mb0">
-                          {detail.feature_ids.data.map((val, i) => (
+                          {detail?.feature_ids?.data?.map((val, i) => (
                             <li className="list-inline-item" key={i}>
-                              <a href="#">{val.attributes.name}</a>
+                              <a href="#">{val?.attributes?.name}</a>
                             </li>
                           ))}
                         </ul>

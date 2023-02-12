@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { api } from "../../features/api/api";
 import { useGetCategoriesQuery } from "../../features/categories/categoriesApi";
 import { loadCategories } from "../../features/categories/categoriesSlice";
 import { useGetLocationsQuery } from "../../features/location/locationsApi";
 import { loadLocations } from "../../features/location/locationsSlice";
-import { selectFilter } from "../../features/properties/propertiesSlice";
-import { pollingInterval } from "../../utils/const";
 import Blogs from "../common/Blogs";
 import CopyrightFooter from "../common/footer/CopyrightFooter";
 import Footer from "../common/footer/Footer";
@@ -18,25 +17,24 @@ import Hero from "./Hero";
 import LookingItem from "./LookingItem";
 
 const index = () => {
-  const dataFilter = useSelector(selectFilter);
-
-  const { data, isSuccess } = useGetCategoriesQuery("Category");
+  const { data: dataCategory, isSuccess: isSuccessCategory } =
+    useGetCategoriesQuery();
 
   const { data: dataLocation, isSuccess: isSuccessLocation } =
-    useGetLocationsQuery("Location");
+    useGetLocationsQuery();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isSuccess) {
-      dispatch(loadCategories(data));
+    if (isSuccessCategory) {
+      dispatch(loadCategories(dataCategory));
     }
 
     if (isSuccessLocation) {
       dispatch(loadLocations(dataLocation));
     }
     return () => {};
-  }, [data || dataLocation]);
+  }, [dataCategory || dataLocation]);
 
   return (
     <>
@@ -129,7 +127,7 @@ const index = () => {
       </section>
 
       {/* <!-- Modern Apertment --> */}
-      <section className="modern-apertment pt100 pb90">
+      {/* <section className="modern-apertment pt100 pb90">
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
@@ -147,7 +145,7 @@ const index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <!-- Our Agents --> */}
       {/* <section id="our-agents" className="our-agents pt40 pb15">
@@ -177,7 +175,7 @@ const index = () => {
       </section> */}
 
       {/* <!-- Our Blog --> */}
-      <section className="our-blog bb1 pb30">
+      {/* <section className="our-blog bb1 pb30">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
@@ -191,7 +189,7 @@ const index = () => {
             <Blogs />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <!-- Our Partners --> */}
       {/* <section id="our-partners" className="our-partners">

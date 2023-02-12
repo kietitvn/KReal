@@ -6,9 +6,9 @@ export const locationsApi = api.injectEndpoints({
       query: () => ({
         url: "/locations",
         method: "GET",
-        params: "?populate=*", //high level: populate[location][populate]=*
+        params: "?sort=name&populate=*", //high level: populate[location][populate]=*
       }),
-      //providesTags: ['Location'],
+      //providesTags: ["Location"],
     }),
   }),
 });

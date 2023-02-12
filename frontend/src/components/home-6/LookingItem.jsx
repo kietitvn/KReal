@@ -1,21 +1,35 @@
-import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../features/categories/categoriesSlice";
+import { addPropertyType } from "../../features/properties/propertiesSlice";
 
 const LookingItem = () => {
+
   const categoriesData = useSelector(selectCategories);
+  const dispatch = useDispatch();
+  const route = useRouter();
+
   return (
     <>
-      {categoriesData && categoriesData.categories && categoriesData.categories.data && categoriesData.categories.data.map((item) => (
+      {categoriesData?.categories?.data?.map((item) => (
         <div className="col-sm-6 col-lg-3 col-xl-3 p0" key={item.id}>
-          <div className="why_chose_us home6">
-            <div className="icon">
-              <span className={item.attributes.icon_classname}></span>
+          <a
+            onClick={(e) => {
+              dispatch(addPropertyType(item?.id));
+              e.preventDefault();
+              route.push("/listing-grid-v1");
+            }}
+          >
+            <div className="why_chose_us home6">
+              <div className="icon">
+                <span className={item.attributes.icon}></span>
+              </div>
+              <div className="details">
+                <h4>{item.attributes.name}</h4>
+                <p>{item.attributes.description}</p>
+              </div>
             </div>
-            <div className="details">
-              <h4>{item.attributes.name}</h4>
-              <p>{item.attributes.description}</p>
-            </div>
-          </div>
+          </a>
         </div>
       ))}
     </>

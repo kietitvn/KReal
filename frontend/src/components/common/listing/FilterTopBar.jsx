@@ -36,7 +36,7 @@ const FilterTopBar = () => {
         <div className="left_area tac-xsd">
           <p>
             {length !== 0 ? (
-              <span>`${length} BĐS phù hợp nhất với bạn`</span>
+              <span>{length} BĐS phù hợp nhất với bạn</span>
             ) : (
               <span className="text-danger">
                 Rất tiếc, không có BĐS như yêu cầu.

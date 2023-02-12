@@ -6,9 +6,9 @@ export const featuresApi = api.injectEndpoints({
       query: () => ({
         url: "/features",
         method: "GET",
-        params: "?populate=*", //high level: populate[feature][populate]=*
+        params: "?sort=name&populate=*", //high level: populate[feature][populate]=*
       }),
-      //providesTags: ['Feature'],
+      //providesTags: ["Feature"],
     }),
   }),
 });

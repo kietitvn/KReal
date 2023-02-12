@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../../features/categories/categoriesSlice";
+import { selectFeatures } from "../../../features/feature/featuresSlice";
 import { selectLocations } from "../../../features/location/locationsSlice";
 import {
   addBathrooms,
@@ -10,6 +11,7 @@ import {
   addPrice,
   addPropertyType,
   addStatus,
+  addAmenities,
   resetAmenities,
 } from "../../../features/properties/propertiesSlice";
 import { bathRoom, bedRoom, priceRange } from "../../../utils/const";
@@ -23,20 +25,14 @@ const FilteringItem = () => {
     propertyType,
     bathrooms,
     bedrooms,
-    garages,
-    yearBuilt,
-    area,
-    amenities,
+    amenities
   } = useSelector((state) => state.properties);
-
-  const statspro = useSelector((state) => state.properties);
 
   const categoriesData = useSelector(selectCategories);
   const locationData = useSelector(selectLocations);
+  const featureData = useSelector(selectFeatures);
 
   const dispatch = useDispatch();
-
-  const Router = useRouter();
   // clear filter
   const clearAllFilters = () => {
     dispatch(addStatus("Bán"));
@@ -81,7 +77,7 @@ const FilteringItem = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Keyword"
+            placeholder="Từ khóa"
             value={keyword}
             onChange={(e) => dispatch(addKeyword(e.target.value))}
           />
@@ -264,7 +260,7 @@ const FilteringItem = () => {
       </li> */}
       {/* End li */}
 
-      {/* <li>
+      <li>
         <div id="accordion" className="panel-group">
           <div className="panel">
             <div className="panel-heading">
@@ -275,7 +271,7 @@ const FilteringItem = () => {
                   data-bs-toggle="collapse"
                   data-bs-parent="#accordion"
                 >
-                  <i className="flaticon-more"></i> Advanced features
+                  <i className="flaticon-more"></i> Thêm tiện ích
                 </a>
               </h4>
             </div>
@@ -284,25 +280,25 @@ const FilteringItem = () => {
               <div className="panel-body row">
                 <div className="col-lg-12">
                   <ul className="ui_kit_checkbox selectable-list fn-400">
-                    {getAdvanced?.map((feature) => (
+                    {featureData?.features?.data?.map((feature) => (
                       <li key={feature.id}>
                         <div className="form-check custom-checkbox">
                           <input
                             type="checkbox"
                             className="form-check-input"
                             id={feature.id}
-                            value={feature.name}
-                            checked={feature.isChecked || false}
+                            value={feature.id}
+                            checked={amenities.find((id) => id == feature.id)}
                             onChange={(e) =>
                               dispatch(addAmenities(e.target.value))
                             }
-                            onClick={() => advancedHandler(feature.id)}
+                            //onClick={() => advancedHandler(feature.id)}
                           />
                           <label
                             className="form-check-label"
                             htmlFor={feature.id}
                           >
-                            {feature.name}
+                            {feature.attributes.name}
                           </label>
                         </div>
                       </li>
@@ -313,7 +309,7 @@ const FilteringItem = () => {
             </div>
           </div>
         </div>
-      </li> */}
+      </li>
       {/* End li */}
 
       <li>
@@ -323,7 +319,7 @@ const FilteringItem = () => {
             type="button"
             className="btn btn-block btn-thm w-100"
           >
-            Clear Filters
+            Xóa lọc
           </button>
         </div>
       </li>

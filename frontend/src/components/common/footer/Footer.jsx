@@ -7,10 +7,11 @@ const Footer = () => {
     <>
       <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3 pr0 pl0">
         <div className="footer_about_widget">
-          <h4>About Site</h4>
+          <h4>Thông tin trang</h4>
           <p>
-            We’re reimagining how you buy, sell and rent. It’s now easier to get
-            into a place you love. So let’s do this, together.
+            Chúng tôi đang định hình lại cách bạn mua, bán và cho thuê. Bây giờ
+            dễ dàng hơn để đến một nơi bạn yêu thích. Vì vậy, chúng ta hãy làm
+            điều này, cùng nhau.
           </p>
         </div>
       </div>
@@ -18,11 +19,11 @@ const Footer = () => {
 
       <div className="col-sm-6 col-md-6 col-lg-3 col-xl-3">
         <div className="footer_qlink_widget">
-          <h4>Quick Links</h4>
+          <h4>Đường dẫn</h4>
           <ul className="list-unstyled">
             <li>
               <Link href="/">
-                <a>About Us</a>
+                <a>Về chúng tôi</a>
               </Link>
             </li>
             <li>
@@ -30,21 +31,21 @@ const Footer = () => {
                 <a>Terms & Conditions</a>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/">
                 <a>User’s Guide</a>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/">
-                <a>Support Center</a>
+                <a>Hỗ trợ</a>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/">
                 <a>Press Info</a>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
@@ -80,7 +81,7 @@ const Footer = () => {
           <ul className="mb30">
             <Social />
           </ul> */}
-          <h4>Subscribe</h4>
+          <h4>Đăng ký</h4>
           <SubscribeForm />
         </div>
       </div>
