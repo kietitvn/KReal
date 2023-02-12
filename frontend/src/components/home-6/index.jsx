@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { api } from "../../features/api/api";
@@ -16,7 +17,7 @@ import Header from "./Header";
 import Hero from "./Hero";
 import LookingItem from "./LookingItem";
 
-const index = () => {
+const Index = () => {
   const { data: dataCategory, isSuccess: isSuccessCategory } =
     useGetCategoriesQuery();
 
@@ -59,9 +60,10 @@ const index = () => {
                 <h2>Những BĐS có nhiều tiện ích</h2>
                 <p>
                   BĐS được lựa chọn cẩn thận bởi đội ngũ của chúng tôi.
-                  <a className="float-end" href="/listing-grid-v1">
-                    Danh sách <span className="flaticon-next"></span>
-                  </a>
+                  <Link className="float-end" href="/listing-grid-v1">
+                    Danh sách
+                  </Link>
+                  <span className="flaticon-next"></span>
                 </p>
               </div>
             </div>
@@ -227,4 +229,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
