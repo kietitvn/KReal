@@ -1,12 +1,12 @@
-export default ({ env }) => ({
+module.exports = ({ env }) => ({
   connection: {
     client: 'postgres',
     connection: {
-      host: env('DATABASE_HOST', '127.0.0.1'),
-      port: env.int('DATABASE_PORT', 5432),
-      database: env('DATABASE_NAME', 'KRealData'),
-      user: env('DATABASE_USERNAME', 'postgres'),
-      password: env('DATABASE_PASSWORD', 'postgres'),
+      host: env('PGHOST', '127.0.0.1'),
+      port: env.int('PGPORT', 5432),
+      database: env('PGDATABASE', 'KRealData'),
+      user: env('PGUSER', 'postgres'),
+      password: env('PGPASSWORD', 'postgres'),
       ssl: env.bool(true),
     },
   },
