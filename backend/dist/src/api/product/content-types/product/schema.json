@@ -1,0 +1,130 @@
+{
+    "kind": "collectionType",
+    "collectionName": "products",
+    "info": {
+        "singularName": "product",
+        "pluralName": "products",
+        "displayName": "Product",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "richtext",
+            "required": true,
+            "minLength": 200
+        },
+        "price": {
+            "type": "biginteger",
+            "default": "0",
+            "required": true,
+            "min": "0"
+        },
+        "yearBuilt": {
+            "type": "integer"
+        },
+        "width": {
+            "type": "integer",
+            "default": 0,
+            "min": 0
+        },
+        "length": {
+            "type": "integer",
+            "default": 0,
+            "min": 0
+        },
+        "categoryID": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::category.category",
+            "inversedBy": "products"
+        },
+        "status": {
+            "type": "enumeration",
+            "enum": [
+                "Bán",
+                "Thuê"
+            ],
+            "default": "Bán",
+            "required": true
+        },
+        "bedRoom": {
+            "type": "integer",
+            "default": 0
+        },
+        "bathRoom": {
+            "type": "integer",
+            "default": 0,
+            "min": 0
+        },
+        "floor": {
+            "type": "integer",
+            "default": 0,
+            "min": 0,
+            "required": false
+        },
+        "direction": {
+            "type": "enumeration",
+            "enum": [
+                "Đông",
+                "Tây",
+                "Nam",
+                "Bắc",
+                "Đông Nam",
+                "Đông Bắc",
+                "Tây Nam",
+                "Tây Bắc"
+            ],
+            "required": true
+        },
+        "feature_ids": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::feature.feature"
+        },
+        "legal": {
+            "type": "enumeration",
+            "enum": [
+                "SHR",
+                "Sổ Chung",
+                "Kê Khai 99",
+                "Vi Bằng"
+            ],
+            "default": "SHR",
+            "required": false
+        },
+        "image": {
+            "type": "media",
+            "multiple": true,
+            "required": true,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "cover": {
+            "type": "media",
+            "multiple": false,
+            "required": true,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "name"
+        },
+        "location": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::location.location",
+            "inversedBy": "products"
+        }
+    }
+}
