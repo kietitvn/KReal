@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 const prefixURL = isProd ? "https://" : "http://";
-const baseUrl = isProd ? "kreal-production.up.railway.app/" : "localhost:1337";
+const baseUrl = isProd ? "kreal-production.up.railway.app" : "localhost:1337";
 
 const nextConfig = {
   reactStrictMode: false,
