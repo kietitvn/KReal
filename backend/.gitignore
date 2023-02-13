@@ -110,6 +110,8 @@ coverage
 license.txt
 exports
 *.cache
-dist
 build
 .strapi-updater.json
+
+package.lock
+yarn.lock
