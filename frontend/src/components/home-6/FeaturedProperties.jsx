@@ -77,18 +77,12 @@ const FeaturedProperties = () => {
                     <div className="thumb">
                       <picture>
                         <source
-                          srcSet={
-                            process.env.baseUrl +
-                            detail?.cover?.data?.attributes?.url
-                          }
+                          srcSet={detail?.cover?.data?.attributes?.url}
                           type="image/webp"
                         />
                         <img
                           className="img-whp"
-                          src={
-                            process.env.baseUrl +
-                            detail?.cover?.data?.attributes?.url
-                          }
+                          src={detail?.cover?.data?.attributes?.url}
                           alt={detail?.cover?.data?.attributes?.alternativeText}
                         />
                       </picture>

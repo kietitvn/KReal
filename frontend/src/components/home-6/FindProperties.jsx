@@ -24,10 +24,7 @@ const FindProperties = () => {
               {item?.attributes?.image?.data && (
                 <img
                   className="img-fluid w100"
-                  src={
-                    process.env.baseUrl +
-                    item.attributes.image.data.attributes.url
-                  }
+                  src={item.attributes.image.data.attributes.url}
                   alt={item.attributes.image.data.attributes.alternativeText}
                 />
               )}

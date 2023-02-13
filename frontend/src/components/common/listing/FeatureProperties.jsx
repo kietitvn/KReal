@@ -28,10 +28,7 @@ const FeatureProperties = () => {
                 <div className="thumb">
                   <img
                     className="img-whp"
-                    src={
-                      process.env.baseUrl +
-                      item?.attributes?.cover?.data?.attributes?.url
-                    }
+                    src={item?.attributes?.cover?.data?.attributes?.url}
                     alt={
                       item?.attributes?.cover?.data?.attributes?.alternativeText
                     }

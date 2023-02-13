@@ -18,7 +18,7 @@ const ListingDynamicDetailsV1 = () => {
   const router = useRouter();
   const [product, setProduct] = useState({});
   const id = router.query.id;
-  
+
   const productData = useSelector(selectProducts);
   useEffect(() => {
     if (!id) <h1>Loading...</h1>;
@@ -47,8 +47,12 @@ const ListingDynamicDetailsV1 = () => {
             <div className="row mb30">
               <div className="col-lg-7 col-xl-8">
                 <div className="single_property_title mt30-767">
-                  <h2>{product?.attributes?.name}</h2>                  
-                  <p>{product?.attributes?.location ? product?.attributes?.location?.data?.attributes?.name : ""}</p>
+                  <h2>{product?.attributes?.name}</h2>
+                  <p>
+                    {product?.attributes?.location
+                      ? product?.attributes?.location?.data?.attributes?.name
+                      : ""}
+                  </p>
                 </div>
               </div>
               <div className="col-lg-5 col-xl-4">
@@ -99,11 +103,9 @@ const ListingDynamicDetailsV1 = () => {
                     <div className="spls_style_two mb30-520">
                       <Item
                         original={
-                          process.env.baseUrl +
                           product?.attributes?.cover?.data?.attributes?.url
                         }
                         thumbnail={
-                          process.env.baseUrl +
                           product?.attributes?.cover?.data?.attributes?.url
                         }
                         width={752}
@@ -114,7 +116,6 @@ const ListingDynamicDetailsV1 = () => {
                             <img
                               className="img-fluid w100 cover lds-1"
                               src={
-                                process.env.baseUrl +
                                 product?.attributes?.cover?.data?.attributes
                                   ?.url
                               }
@@ -137,8 +138,8 @@ const ListingDynamicDetailsV1 = () => {
                     <div className="col-6" key={i}>
                       <div className="spls_style_two img-gallery-box mb24">
                         <Item
-                          original={process.env.baseUrl + val.attributes?.url}
-                          thumbnail={process.env.baseUrl + val.attributes?.url}
+                          original={val.attributes?.url}
+                          thumbnail={val.attributes?.url}
                           width={752}
                           height={450}
                         >
@@ -146,7 +147,7 @@ const ListingDynamicDetailsV1 = () => {
                             <div role="button" ref={ref} onClick={open}>
                               <img
                                 className="img-fluid w100"
-                                src={process.env.baseUrl + val.attributes?.url}
+                                src={val.attributes?.url}
                                 alt={val.attributes?.alternativeText}
                               />
                             </div>
