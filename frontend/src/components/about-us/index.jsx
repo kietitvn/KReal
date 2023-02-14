@@ -6,10 +6,10 @@ import MobileMenu from "../common/header/MobileMenu";
 import Partners from "../common/Partners";
 import PopupSignInUp from "../common/PopupSignInUp";
 import WhyChoose from "../common/WhyChoose";
-import Testimonial from "../home-7/Testimonial";
 import BreadCrumbBanner from "./BreadCrumbBanner";
 import Team from "./Team";
 import OurMission from "./OurMission";
+import Testimonial from "../common/Testimonial";
 
 const index = () => {
   return (
