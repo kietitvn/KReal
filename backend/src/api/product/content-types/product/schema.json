@@ -31,12 +31,12 @@
       "type": "integer"
     },
     "width": {
-      "type": "integer",
+      "type": "decimal",
       "default": 0,
       "min": 0
     },
     "length": {
-      "type": "integer",
+      "type": "decimal",
       "default": 0,
       "min": 0
     },

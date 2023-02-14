@@ -19,7 +19,6 @@ const FeatureProperties = () => {
   const data = dataProduct?.products.data?.filter(
     (item) => item?.attributes?.feature_ids?.data?.length > 0
   );
-  console.log("FeatureProperties", data);
   return (
     <>
       {data && (
