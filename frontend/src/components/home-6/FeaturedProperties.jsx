@@ -71,10 +71,7 @@ const FeaturedProperties = () => {
           {data.map((item) => {
             const detail = item?.attributes;
             return (
-              <Link
-                href={`/details/${item?.attributes.slug}`}
-                key={item?.id}
-              >
+              <Link href={`/details/${item?.attributes.slug}`} key={item?.id}>
                 <div className="item">
                   <div className="properti_city home6">
                     <div className="thumb">
@@ -85,7 +82,10 @@ const FeaturedProperties = () => {
                         />
                         <img
                           className="img-whp"
-                          src={detail?.cover?.data?.attributes?.formats?.thumbnail?.url}
+                          src={
+                            detail?.cover?.data?.attributes?.formats?.thumbnail
+                              ?.url
+                          }
                           alt={detail?.cover?.data?.attributes?.alternativeText}
                         />
                       </picture>

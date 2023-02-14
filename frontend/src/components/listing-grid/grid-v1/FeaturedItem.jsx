@@ -156,7 +156,7 @@ const FeaturedItem = () => {
             <div className="thumb">
               <img
                 className="img-whp"
-                src={item?.attributes?.cover?.data?.attributes?.formats?.thumbnail?.url}
+                src={item?.attributes?.cover?.data?.attributes?.formats?.small?.url}
                 alt={item?.attributes?.cover?.data?.attributes?.alternativeText}
               />
               <div className="thmb_cntnt">
