@@ -141,7 +141,7 @@ const FeaturedItem = () => {
     // ?.sort(statusTypeHandler)
     ?.filter(featuredHandler)
     .map((item) => (
-      <Link href={`/listing-details-v1/${item?.id}`} key={item?.id}>
+      <Link href={`/details/${item?.attributes.slug}`} key={item?.id}>
         <div
           className={`${
             isGridOrList ? "col-12 feature-list" : "col-md-6 col-lg-6"
@@ -156,7 +156,7 @@ const FeaturedItem = () => {
             <div className="thumb">
               <img
                 className="img-whp"
-                src={item?.attributes?.cover?.data?.attributes?.url}
+                src={item?.attributes?.cover?.data?.attributes?.formats?.thumbnail?.url}
                 alt={item?.attributes?.cover?.data?.attributes?.alternativeText}
               />
               <div className="thmb_cntnt">
@@ -196,7 +196,7 @@ const FeaturedItem = () => {
                   {item?.attributes?.categoryID?.data?.attributes?.name}
                 </p>
                 <h4>
-                  <Link href={`/listing-details-v1/${item.id}`}>
+                  <Link href={`/details/${item?.attributes.slug}`}>
                     <a>{item?.attributes?.name}</a>
                   </Link>
                 </h4>

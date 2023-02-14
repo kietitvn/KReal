@@ -37,7 +37,7 @@ const Listings = () => {
                     ))}
                   </ul>
 
-                  <Link href={`/listing-details-v1/${item.id}`}>
+                  <Link href={`/details/${item?.attributes.slug}`}>
                     <a className="fp_price">
                       ${item.price}
                       <small>/mo</small>
@@ -47,7 +47,7 @@ const Listings = () => {
                 <p className="text-thm">{item.type}</p>
                 <h4>
                   {" "}
-                  <Link href={`/listing-details-v1/${item.id}`}>
+                  <Link href={`/details/${item?.attributes.slug}`}>
                     <a>{item.title}</a>
                   </Link>
                 </h4>

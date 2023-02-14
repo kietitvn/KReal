@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import { useSelector } from "react-redux";
 import { selectProducts } from "../../../features/products/productsSlice";
 import { doctien } from "../../../utils/currency";
+import Link from "next/link";
 
 const FeatureProperties = () => {
   const settings = {
@@ -18,6 +19,7 @@ const FeatureProperties = () => {
   const data = dataProduct?.products.data?.filter(
     (item) => item?.attributes?.feature_ids?.data?.length > 0
   );
+  console.log("FeatureProperties", data);
   return (
     <>
       {data && (
@@ -28,7 +30,10 @@ const FeatureProperties = () => {
                 <div className="thumb">
                   <img
                     className="img-whp"
-                    src={item?.attributes?.cover?.data?.attributes?.url}
+                    src={
+                      item?.attributes?.cover?.data?.attributes?.formats
+                        ?.thumbnail?.url
+                    }
                     alt={
                       item?.attributes?.cover?.data?.attributes?.alternativeText
                     }
@@ -45,12 +50,14 @@ const FeatureProperties = () => {
                         <a href="#">{item?.attributes?.status}</a>
                       </li>
                     </ul>
-                    <a className="fp_price" href="#">
+
+                    <a className="fp_price">
                       {doctien(item?.attributes?.price)}
                       <small>
                         {item?.attributes?.status === "Bán" ? "" : "/tháng"}
                       </small>
                     </a>
+
                     <h4 className="posr color-white">
                       {item?.attributes?.name}
                     </h4>

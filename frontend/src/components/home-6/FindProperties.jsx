@@ -11,7 +11,7 @@ const FindProperties = () => {
   return (
     <>
       {locationData?.locations?.data?.map((item) => (
-        <div className="col-sm-6 col-md-6 col-lg-4 col-xl-4" key={item.id}>
+        <div className="col-sm-6 col-md-6 col-lg-4 col-xl-4" key={item?.id}>
           <a
             className="property_city_home6"
             onClick={(e) => {
@@ -24,14 +24,14 @@ const FindProperties = () => {
               {item?.attributes?.image?.data && (
                 <img
                   className="img-fluid w100"
-                  src={item.attributes.image.data.attributes.url}
-                  alt={item.attributes.image.data.attributes.alternativeText}
+                  src={item?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url}
+                  alt={item?.attributes?.image?.data?.attributes?.alternativeText}
                 />
               )}
             </div>
             <div className="details">
-              <h4>{item.attributes.name}</h4>
-              <p>{item.attributes.products.data.length} BĐS</p>
+              <h4>{item?.attributes?.name}</h4>
+              <p>{item?.attributes?.products?.data?.length} BĐS</p>
             </div>
           </a>
         </div>

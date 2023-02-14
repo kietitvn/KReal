@@ -20,11 +20,11 @@ const ListingDynamicDetailsV1 = () => {
   const slug = router.query.slug;
 
   const productData = useSelector(selectProducts);
-  console.log("productData", productData)
+  console.log("productData:", slug)
   useEffect(() => {
     if (!slug) <h1>Loading...</h1>;
     else {
-      const product = productData?.products?.data?.find((f) => f.attributes.slug == slug);
+      const product = productData?.products?.data?.find((f) => f.attributes.slug === slug);
       setProduct(product);
     }
     return () => {};
@@ -107,7 +107,7 @@ const ListingDynamicDetailsV1 = () => {
                           product?.attributes?.cover?.data?.attributes?.url
                         }
                         thumbnail={
-                          product?.attributes?.cover?.data?.attributes?.url
+                          product?.attributes?.cover?.data?.attributes?.formats?.thumbnail?.url
                         }
                         width={752}
                         height={450}
@@ -140,7 +140,7 @@ const ListingDynamicDetailsV1 = () => {
                       <div className="spls_style_two img-gallery-box mb24">
                         <Item
                           original={val.attributes?.url}
-                          thumbnail={val.attributes?.url}
+                          thumbnail={val.attributes?.formats?.thumbnail?.url}
                           width={752}
                           height={450}
                         >

@@ -21,7 +21,7 @@ const FavouritProducts = () => {
         <div className="tc_content">
           <h4>
             {" "}
-            <Link href={`/listing-details-v1/${item.id}`}>
+            <Link href={`/details/${item?.attributes.slug}`}>
               <a>{item.title}</a>
             </Link>
           </h4>

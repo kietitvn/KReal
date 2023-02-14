@@ -73,11 +73,6 @@ const FeaturedProperties = () => {
             return (
               <Link
                 href={`/details/${item?.attributes.slug}`}
-                // href={{
-                //   pathname: "/listing-details-v1",
-                //   query: { slug: item?.attributes.slug },
-                // }}
-                //as={`/${item?.attributes.slug}`}
                 key={item?.id}
               >
                 <div className="item">
@@ -90,7 +85,7 @@ const FeaturedProperties = () => {
                         />
                         <img
                           className="img-whp"
-                          src={detail?.cover?.data?.attributes?.url}
+                          src={detail?.cover?.data?.attributes?.formats?.thumbnail?.url}
                           alt={detail?.cover?.data?.attributes?.alternativeText}
                         />
                       </picture>

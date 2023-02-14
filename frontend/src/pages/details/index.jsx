@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Seo from "../../components/common/seo";
 import ListingDetailsV1 from "../../components/details";
 
-const index = () => {
+const Index = () => {
   const router = useRouter();
   const slug = router.query.slug;
 
@@ -15,4 +15,4 @@ const index = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(index), { ssr: false });
+export default dynamic(() => Promise.resolve(Index), { ssr: false });
