@@ -8,7 +8,7 @@ export const featuresApi = api.injectEndpoints({
         method: "GET",
         params: "?sort=name&populate=*", //high level: populate[feature][populate]=*
       }),
-      //providesTags: ["Feature"],
+      providesTags: ["Feature"],
     }),
   }),
 });

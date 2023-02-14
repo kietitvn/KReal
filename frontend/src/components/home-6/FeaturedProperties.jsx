@@ -71,7 +71,15 @@ const FeaturedProperties = () => {
           {data.map((item) => {
             const detail = item?.attributes;
             return (
-              <Link href={`/listing-details-v1/${item?.id}`} key={item?.id}>
+              <Link
+                href={`/details/${item?.attributes.slug}`}
+                // href={{
+                //   pathname: "/listing-details-v1",
+                //   query: { slug: item?.attributes.slug },
+                // }}
+                //as={`/${item?.attributes.slug}`}
+                key={item?.id}
+              >
                 <div className="item">
                   <div className="properti_city home6">
                     <div className="thumb">

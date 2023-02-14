@@ -4,16 +4,16 @@ const Seo = ({ pageTitle, font }) => (
   <>
     <Head>
       <title>
-        {pageTitle && `${pageTitle} || KReal - Bất Động Sản`}
+        {pageTitle && `${pageTitle} | Bất Động Sản - KReal`}
       </title>
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta
         name="keywords"
-        content="advanced custom search, agency, agent, business, clean, corporate, directory, google maps, homes, idx agent, listing properties, membership packages, property, real broker, real estate, real estate agent, real estate agency, realtor"
+        content="Mua bán, cho thuê, ký gửi, dịch vụ, đăng bộ, nhà, đất, chung cư, căn hộ"
       />
       <meta
         name="description"
-        content="KReal - Bất Động Sản"
+        content="Mua bán cho thuê ký gửi dịch vụ đăng bộ nhà đất chung cư căn hộ"
       />
       <meta name="ibthemes" content="ATFN" />
       <meta

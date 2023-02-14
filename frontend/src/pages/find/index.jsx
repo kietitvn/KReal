@@ -1,12 +1,12 @@
 import dynamic from "next/dynamic";
-import Seo from "../components/common/seo";
-import Home5 from "../components/home-5";
+import Seo from "../../components/common/seo";
+import GridV1 from "../../components/listing-grid/grid-v1";
 
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Home-5" />
-      <Home5 />
+      <Seo pageTitle="Tìm kiếm" />
+      <GridV1 />
     </>
   );
 };

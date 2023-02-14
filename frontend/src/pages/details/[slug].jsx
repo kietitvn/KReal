@@ -7,8 +7,8 @@ import Footer from "../../components/common/footer/Footer";
 import Header from "../../components/common/header/DefaultHeader";
 import MobileMenu from "../../components/common/header/MobileMenu";
 import PopupSignInUp from "../../components/common/PopupSignInUp";
-import DetailsContent from "../../components/listing-details-v1/DetailsContent";
-import Sidebar from "../../components/listing-details-v1/Sidebar";
+import DetailsContent from "../../components/details/DetailsContent";
+import Sidebar from "../../components/details/Sidebar";
 import { useSelector, useStore } from "react-redux";
 import properties from "../../data/properties";
 import { selectProducts } from "../../features/products/productsSlice";
@@ -17,17 +17,18 @@ import { doctien } from "../../utils/currency";
 const ListingDynamicDetailsV1 = () => {
   const router = useRouter();
   const [product, setProduct] = useState({});
-  const id = router.query.id;
+  const slug = router.query.slug;
 
   const productData = useSelector(selectProducts);
+  console.log("productData", productData)
   useEffect(() => {
-    if (!id) <h1>Loading...</h1>;
+    if (!slug) <h1>Loading...</h1>;
     else {
-      const product = productData?.products?.data?.find((f) => f.id == id);
+      const product = productData?.products?.data?.find((f) => f.attributes.slug == slug);
       setProduct(product);
     }
     return () => {};
-  }, [id]);
+  }, [slug]);
 
   return (
     <>

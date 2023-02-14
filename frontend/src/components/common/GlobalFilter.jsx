@@ -17,7 +17,7 @@ const GlobalFilter = ({ className = "" }) => {
   const locationData = useSelector(selectLocations);
   // submit handler
   const submitHandler = () => {
-    Router.push("/listing-grid-v1");
+    Router.push("/find");
   };
 
   const { keyword, location, propertyType } = useSelector(

@@ -18,7 +18,7 @@ const Social = ({ showPhone = true }) => {
       )}
       <li className="list-inline-item">
         <a
-          href={"https://www.facebook.com/muabannhaquan08"}
+          href={"https://www.facebook.com/kelli.nguyen88"}
           target="_blank"
           rel="noopener noreferrer"
         >

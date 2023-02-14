@@ -17,7 +17,7 @@ const LookingItem = () => {
             onClick={(e) => {
               dispatch(addPropertyType(item?.id));
               e.preventDefault();
-              route.push("/listing-grid-v1");
+              route.push("/find");
             }}
           >
             <div className="why_chose_us home6">

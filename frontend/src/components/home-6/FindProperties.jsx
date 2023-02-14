@@ -17,7 +17,7 @@ const FindProperties = () => {
             onClick={(e) => {
               dispatch(addLocation(item?.id));
               e.preventDefault();
-              route.push("/listing-grid-v1");
+              route.push("/find");
             }}
           >
             <div className="thumb">

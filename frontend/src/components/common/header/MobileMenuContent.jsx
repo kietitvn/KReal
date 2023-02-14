@@ -61,7 +61,7 @@ const listing = [
     items: [
       {
         name: "Grid v1",
-        routerPath: "/listing-grid-v1",
+        routerPath: "/find",
       },
       {
         name: "Grid v2",

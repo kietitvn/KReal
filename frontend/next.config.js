@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 const prefixURL = isProd ? "https://" : "http://";
-const baseUrl = isProd ? "kreal-production.up.railway.app" : "localhost:1337";
+const baseUrl = isProd ? "manage.batdongsan-hcm.com" : "localhost:1337";
 
 const nextConfig = {
   reactStrictMode: false,
@@ -12,13 +12,13 @@ const nextConfig = {
   },
   images: {
     domains: [baseUrl],
-    nextImageExportOptimizer: {
-      imageFolderPath: "public",
-      exportFolderPath: "out",
+    //nextImageExportOptimizer: {
+      //imageFolderPath: "public",
+      //exportFolderPath: "out",
       imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
       deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-      quality: 75,
-    },
+      //quality: 75,
+    //},
   },
 };
 
