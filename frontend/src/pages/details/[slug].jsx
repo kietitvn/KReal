@@ -106,7 +106,7 @@ const ListingDynamicDetailsV1 = () => {
                           product?.attributes?.cover?.data?.attributes?.url
                         }
                         thumbnail={
-                          product?.attributes?.cover?.data?.attributes?.formats?.thumbnail?.url
+                          product?.attributes?.cover?.data?.attributes?.formats?.small?.url
                         }
                         width={752}
                         height={450}
@@ -139,7 +139,7 @@ const ListingDynamicDetailsV1 = () => {
                       <div className="spls_style_two img-gallery-box mb24">
                         <Item
                           original={val.attributes?.url}
-                          thumbnail={val.attributes?.formats?.thumbnail?.url}
+                          thumbnail={val.attributes?.formats?.small?.url}
                           width={752}
                           height={450}
                         >

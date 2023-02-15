@@ -24,7 +24,7 @@ const FindProperties = () => {
               {item?.attributes?.image?.data && (
                 <img
                   className="img-fluid w100"
-                  src={item?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url}
+                  src={item?.attributes?.image?.data?.attributes?.formats?.small?.url}
                   alt={item?.attributes?.image?.data?.attributes?.alternativeText}
                 />
               )}

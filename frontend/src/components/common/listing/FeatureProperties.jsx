@@ -31,7 +31,7 @@ const FeatureProperties = () => {
                     className="img-whp"
                     src={
                       item?.attributes?.cover?.data?.attributes?.formats
-                        ?.thumbnail?.url
+                        ?.small?.url
                     }
                     alt={
                       item?.attributes?.cover?.data?.attributes?.alternativeText
