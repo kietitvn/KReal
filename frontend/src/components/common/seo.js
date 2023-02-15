@@ -3,9 +3,7 @@ import Head from "next/head";
 const Seo = ({ pageTitle, font }) => (
   <>
     <Head>
-      <title>
-        {pageTitle && `${pageTitle} | Bất Động Sản - KReal`}
-      </title>
+      <title>{pageTitle && `${pageTitle}|` + "Bất Động Sản - KReal"}</title>
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta
         name="keywords"

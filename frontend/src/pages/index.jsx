@@ -5,7 +5,7 @@ import HomeMain from "../components/home-6";
 const index = () => {
   return (
     <>
-      <Seo/>
+      <Seo pageTitle={"Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ"}/>
       <HomeMain />
     </>
   );
