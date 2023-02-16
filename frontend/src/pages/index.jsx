@@ -1,14 +1,34 @@
 import dynamic from "next/dynamic";
-import Seo from "../components/common/seo";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import HomeMain from "../components/home-6";
+import { loadGlobal } from "../features/global/globalSlice";
+import { useGetGlobalQuery } from "../features/global/globalApi";
+import Seo from "../components/common/seo";
 
-const index = () => {
+const Index = () => {
+  const { data, isSuccess } = useGetGlobalQuery();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(loadGlobal(data));
+    }
+    return () => {};
+  }, [data]);
+  console.log("useGetGlobalQuery", data);
   return (
     <>
-      <Seo pageTitle={"Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ"}/>
+      <Seo
+        seo={data?.data?.attributes?.DefaultSeo}
+        font={
+          "https://fonts.googleapis.com/css?family=Nunito:400,400i,500,600,700&display=swap"
+        }
+      />
       <HomeMain />
     </>
   );
 };
 
-export default dynamic(() => Promise.resolve(index), { ssr: false });
+export default dynamic(() => Promise.resolve(Index), { ssr: false });

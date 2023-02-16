@@ -125,6 +125,12 @@
             "relation": "manyToOne",
             "target": "api::location.location",
             "inversedBy": "products"
+        },
+        "seo": {
+            "type": "component",
+            "repeatable": false,
+            "component": "seo.seo",
+            "required": false
         }
     }
 }

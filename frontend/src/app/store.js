@@ -1,24 +1,21 @@
 import {
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
+  FLUSH, PAUSE,
+  PERSIST, persistReducer, PURGE,
+  REGISTER, REHYDRATE
 } from "reduxjs-toolkit-persist";
 import storage from "reduxjs-toolkit-persist/lib/storage";
 
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import agentSlice from "../features/agent/agentSlice";
 import { api } from "../features/api/api";
 import categoriesSlice from "../features/categories/categoriesSlice";
+import featuresSlice from "../features/feature/featuresSlice";
 import filterSlice from "../features/filter/filterSlice";
+import globalSlice from "../features/global/globalSlice";
+import locationsSlice from "../features/location/locationsSlice";
 import productsSlice from "../features/products/productsSlice";
 import propertiesSlice from "../features/properties/propertiesSlice";
-import locationsSlice from "../features/location/locationsSlice";
-import featuresSlice from "../features/feature/featuresSlice";
-import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 const persistConfig = {
   key: "api",
@@ -34,6 +31,7 @@ const reducers = combineReducers({
   products: productsSlice,
   locations: locationsSlice,
   features: featuresSlice,
+  global: globalSlice,
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);
