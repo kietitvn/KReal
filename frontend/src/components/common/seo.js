@@ -4,10 +4,14 @@ import { selectGlobal } from "../../features/global/globalSlice";
 
 const Seo = ({ pageTitle, font, seo }) => {
   const globalData = useSelector(selectGlobal);
+
   const seoWithDefaults = {
-    ...globalData?.global?.data?.attributes.DefaultSeo,
+    ...globalData?.global?.data?.attributes?.DefaultSeo,
     ...seo,
+    Favicon:
+      globalData?.global?.data?.attributes?.Favicon?.data?.attributes?.url,
   };
+
   const fullSeo = {
     ...seoWithDefaults,
     // Add title suffix
@@ -17,10 +21,12 @@ const Seo = ({ pageTitle, font, seo }) => {
     // Get full image URL
     ShareImage: seoWithDefaults?.ShareImage?.data?.attributes.url,
   };
-  console.log("fullSeo", fullSeo);
+
   return (
     <>
       <Head>
+        {fullSeo.Favicon && <link rel="icon" href={fullSeo.Favicon} />}
+
         {fullSeo.MetaTitle && (
           <>
             <title>{fullSeo.MetaTitle}</title>
@@ -28,6 +34,7 @@ const Seo = ({ pageTitle, font, seo }) => {
             <meta name="twitter:title" content={fullSeo.MetaTitle} />
           </>
         )}
+
         {fullSeo.MetaDescription && (
           <>
             <meta name="description" content={fullSeo.MetaDescription} />
@@ -38,6 +45,11 @@ const Seo = ({ pageTitle, font, seo }) => {
             />
           </>
         )}
+
+        {fullSeo.MetaKeyword && (
+          <meta name="keywords" content={fullSeo.MetaKeyword} />
+        )}
+
         {fullSeo.ShareImage && (
           <>
             <meta property="og:image" content={fullSeo.ShareImage} />
@@ -45,10 +57,15 @@ const Seo = ({ pageTitle, font, seo }) => {
             <meta name="image" content={fullSeo.ShareImage} />
           </>
         )}
-        {fullSeo.article && <meta property="og:type" content="article" />}
+
+        {/* {fullSeo.article && <meta property="og:type" content="article" />} */}
+
         <meta name="twitter:card" content="summary_large_image" />
-        {/* <title>{pageTitle && `${pageTitle}|` + "Bất Động Sản - KReal"}</title> */}
+
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+
+        {/* <title>{pageTitle && `${pageTitle}|` + "Bất Động Sản - KReal"}</title> */}
+
         {/* <meta
           name="keywords"
           content="Mua bán, cho thuê, ký gửi, dịch vụ, đăng bộ, nhà, đất, chung cư, căn hộ"
@@ -58,13 +75,13 @@ const Seo = ({ pageTitle, font, seo }) => {
           content="Mua bán cho thuê ký gửi dịch vụ đăng bộ nhà đất chung cư căn hộ"
         /> */}
         <meta name="ibthemes" content="ATFN" />
+
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
 
         {font && <link href={font} rel="stylesheet" />}
-        <link rel="icon" href="favicon.ico" />
       </Head>
     </>
   );

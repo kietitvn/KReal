@@ -6,7 +6,7 @@ export const globalApi = api.injectEndpoints({
       query: () => ({
         url: "/global",
         method: "GET",
-        params: "?populate[0]=favicon&populate[1]=defaultSeo&populate[2]=defaultSeo.sharedImage",
+        params: "?populate[0]=Favicon&populate[1]=DefaultSeo&populate[2]=DefaultSeo.ShareImage",
       }),
       providesTags: ["Global"],
     }),
