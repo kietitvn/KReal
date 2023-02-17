@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Suspense } from "react";
 import CopyrightFooter from "../common/footer/CopyrightFooter";
 import Footer from "../common/footer/Footer";
 import MobileMenu from "../common/header/MobileMenu";
@@ -95,11 +94,9 @@ const Index = () => {
           </div>
           {/* End .row */}
 
-          <Suspense fallback={<h2>Loading...</h2>}>
-            <div className="row">
-              <FindProperties />
-            </div>
-          </Suspense>
+          <div className="row">
+            <FindProperties />
+          </div>
 
           {/* End .row */}
         </div>
