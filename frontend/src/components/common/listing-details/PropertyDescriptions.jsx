@@ -7,21 +7,16 @@ const PropertyDescriptions = (props) => {
   return (
     <>
       <p className={click ? "gpara second_para white_goverlay mt10 mb10" : ""}>
-        <ReactMarkdown
-          children={props?.description?.substring(0, 1000)}
-          remarkPlugins={[remarkGfm]}
-        />
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {props?.description?.substring(0, 1000)}
+        </ReactMarkdown>
       </p>
       <div className="collapse" id="collapseExample">
         <div className="card card-body">
           <p className="mt10 mb10">
-            <ReactMarkdown
-              children={props?.description?.substring(
-                1000,
-                props?.description?.length
-              )}
-              remarkPlugins={[remarkGfm]}
-            />
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {props?.description?.substring(1000, props?.description?.length)}
+            </ReactMarkdown>
           </p>
         </div>
       </div>
