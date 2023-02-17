@@ -4,7 +4,7 @@ const prefixURL = isProd ? "https://" : "http://";
 const baseUrl = isProd ? "manage.batdongsan-hcm.com" : "localhost:1337";
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: false,
   env: {
     baseUrl: `${prefixURL}${baseUrl}`,

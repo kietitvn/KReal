@@ -17,7 +17,7 @@ const Index = () => {
     }
     return () => {};
   }, [data]);
-  console.log("useGetGlobalQuery", data);
+  
   return (
     <>
       <Seo
