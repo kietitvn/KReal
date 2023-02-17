@@ -1,1 +1,0 @@
-https://techmaster.vn/posts/36679/huong-dan-su-dung-rtk-query-trong-redux-toolkit
