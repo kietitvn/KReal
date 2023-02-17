@@ -21,7 +21,7 @@ const Index = () => {
   return (
     <>
       <Seo
-        seo={data?.data?.attributes?.DefaultSeo}
+        seo={data?.data?.attributes?.defaultSeo}
         font={
           "https://fonts.googleapis.com/css?family=Nunito:400,400i,500,600,700&display=swap"
         }

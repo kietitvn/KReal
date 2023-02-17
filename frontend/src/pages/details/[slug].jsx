@@ -6,10 +6,14 @@ import ListingDetails from "../../components/details";
 const Index = () => {
   const router = useRouter();
   const slug = router.query.slug;
+  const productData = useSelector(selectProducts);
+  const product = productData?.products?.data?.find(
+    (f) => f.attributes.slug === slug
+  );
 
   return (
     <>
-      <Seo pageTitle={slug} />
+      <Seo seo={product?.attributes?.seo} />
       <ListingDetails />
     </>
   );
