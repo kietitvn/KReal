@@ -1,16 +1,27 @@
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { selectLocations } from "../../features/location/locationsSlice";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useGetLocationsQuery } from "../../features/location/locationsApi";
+import {
+  loadLocations
+} from "../../features/location/locationsSlice";
 import { addLocation } from "../../features/properties/propertiesSlice";
 
 const FindProperties = () => {
-  const locationData = useSelector(selectLocations);
+  const { data: locationData, isSuccess: isSuccessLocation } =
+    useGetLocationsQuery();
+
   const dispatch = useDispatch();
-  const route = useRouter();
+
+  useEffect(() => {
+    if (isSuccessLocation) {
+      dispatch(loadLocations(locationData));
+    }
+    return () => {};
+  }, [locationData]);
 
   return (
     <>
-      {locationData?.locations?.data?.map((item) => (
+      {locationData?.data?.map((item) => (
         <div className="col-sm-6 col-md-6 col-lg-4 col-xl-4" key={item?.id}>
           <a
             className="property_city_home6"
@@ -24,8 +35,13 @@ const FindProperties = () => {
               {item?.attributes?.image?.data && (
                 <img
                   className="img-fluid w100"
-                  src={item?.attributes?.image?.data?.attributes?.formats?.small?.url}
-                  alt={item?.attributes?.image?.data?.attributes?.alternativeText}
+                  src={
+                    item?.attributes?.image?.data?.attributes?.formats?.small
+                      ?.url
+                  }
+                  alt={
+                    item?.attributes?.image?.data?.attributes?.alternativeText
+                  }
                 />
               )}
             </div>

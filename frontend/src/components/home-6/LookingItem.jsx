@@ -1,17 +1,25 @@
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCategories } from "../../features/categories/categoriesSlice";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loadCategories } from "../../features/categories/categoriesSlice";
+import { useGetLocationsQuery } from "../../features/location/locationsApi";
 import { addPropertyType } from "../../features/properties/propertiesSlice";
 
 const LookingItem = () => {
-
-  const categoriesData = useSelector(selectCategories);
+  const { data: categoriesData, isSuccess: isSuccessCategory } =
+    useGetLocationsQuery();
   const dispatch = useDispatch();
-  const route = useRouter();
+
+  useEffect(() => {
+    if (isSuccessCategory) {
+      dispatch(loadCategories(categoriesData));
+    }
+
+    return () => {};
+  }, [categoriesData]);
 
   return (
     <>
-      {categoriesData?.categories?.data?.map((item) => (
+      {categoriesData?.data?.map((item) => (
         <div className="col-sm-6 col-lg-3 col-xl-3 p0" key={item.id}>
           <a
             onClick={(e) => {

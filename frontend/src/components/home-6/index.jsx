@@ -1,12 +1,5 @@
 import Link from "next/link";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { api } from "../../features/api/api";
-import { useGetCategoriesQuery } from "../../features/categories/categoriesApi";
-import { loadCategories } from "../../features/categories/categoriesSlice";
-import { useGetLocationsQuery } from "../../features/location/locationsApi";
-import { loadLocations } from "../../features/location/locationsSlice";
-import Blogs from "../common/Blogs";
+import { Suspense } from "react";
 import CopyrightFooter from "../common/footer/CopyrightFooter";
 import Footer from "../common/footer/Footer";
 import MobileMenu from "../common/header/MobileMenu";
@@ -18,25 +11,6 @@ import Hero from "./Hero";
 import LookingItem from "./LookingItem";
 
 const Index = () => {
-  const { data: dataCategory, isSuccess: isSuccessCategory } =
-    useGetCategoriesQuery();
-
-  const { data: dataLocation, isSuccess: isSuccessLocation } =
-    useGetLocationsQuery();
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (isSuccessCategory) {
-      dispatch(loadCategories(dataCategory));
-    }
-
-    if (isSuccessLocation) {
-      dispatch(loadLocations(dataLocation));
-    }
-    return () => {};
-  }, [dataCategory || dataLocation]);
-
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -121,9 +95,12 @@ const Index = () => {
           </div>
           {/* End .row */}
 
-          <div className="row">
-            <FindProperties />
-          </div>
+          <Suspense fallback={<h2>Loading...</h2>}>
+            <div className="row">
+              <FindProperties />
+            </div>
+          </Suspense>
+
           {/* End .row */}
         </div>
       </section>
