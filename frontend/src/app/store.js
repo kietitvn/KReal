@@ -18,6 +18,7 @@ import productsSlice from "../features/products/productsSlice";
 import propertiesSlice from "../features/properties/propertiesSlice";
 
 const persistConfig = {
+  timeout: 1,
   key: "api",
   storage,
 };

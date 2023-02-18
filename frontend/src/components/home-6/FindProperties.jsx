@@ -5,6 +5,7 @@ import {
   loadLocations
 } from "../../features/location/locationsSlice";
 import { addLocation } from "../../features/properties/propertiesSlice";
+import Router from "next/router";
 
 const FindProperties = () => {
   const { data: locationData, isSuccess: isSuccessLocation } =
@@ -28,7 +29,7 @@ const FindProperties = () => {
             onClick={(e) => {
               dispatch(addLocation(item?.id));
               e.preventDefault();
-              route.push("/find");
+              Router.push("/find");
             }}
           >
             <div className="thumb">

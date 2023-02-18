@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadCategories } from "../../features/categories/categoriesSlice";
-import { useGetLocationsQuery } from "../../features/location/locationsApi";
+import { useGetCategoriesQuery } from "../../features/categories/categoriesApi";
 import { addPropertyType } from "../../features/properties/propertiesSlice";
+import Router from "next/router";
 
 const LookingItem = () => {
   const { data: categoriesData, isSuccess: isSuccessCategory } =
-    useGetLocationsQuery();
+    useGetCategoriesQuery();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const LookingItem = () => {
             onClick={(e) => {
               dispatch(addPropertyType(item?.id));
               e.preventDefault();
-              route.push("/find");
+              Router.push("/find");
             }}
           >
             <div className="why_chose_us home6">
