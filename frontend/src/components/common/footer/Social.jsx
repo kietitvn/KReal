@@ -3,7 +3,7 @@ const Social = ({ showPhone = true }) => {
   //   { id: 1, liveLink: "https://www.facebook.com/", icon: "fa-facebook" },
   // ];
   return (
-    <>
+    <div>
       {/* {socialContent.map((item) => (
         <li className="list-inline-item" key={item.id}>
           <a href={item.liveLink} target="_blank" rel="noopener noreferrer">
@@ -34,7 +34,7 @@ const Social = ({ showPhone = true }) => {
           <img src="https://img.icons8.com/cute-clipart/48/null/zalo.png" />
         </a>
       </li>
-    </>
+    </div>
   );
 };
 

@@ -553,6 +553,9 @@ header.header-nav.menu_style_home_one .ace-responsive-menu li.add_listing:hover 
         top: 0 !important;
     }
 }
+.mobile-header{
+    justify-content: space-between;
+}
 .feature_property_home6_slider,
 .our_agents_home6_slider {
     margin-left: calc((100% - 1170px) / 2);

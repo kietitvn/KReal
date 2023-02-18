@@ -34,17 +34,12 @@ const Header = () => {
                 src="/assets/images/header-logo2.png"
                 alt="header-logo.png"
               />
-              <img
-                className="logo2 img-fluid"
-                src="/assets/images/header-logo2.png"
-                alt="header-logo2.png"
-              />
               <span>KReal</span>
             </a>
           </Link>
           {/* site logo brand */}
 
-          <div className="ht_left_widget float-left">
+          {/* <div className="ht_left_widget float-left">
             <ul>
               <li className="list-inline-item dn-1440">
                 <div className="ht_search_widget">
@@ -64,7 +59,7 @@ const Header = () => {
                 </div>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           <nav className="ms-auto">
             <HeaderMenuContent />
