@@ -7,7 +7,7 @@ import { useGetGlobalQuery } from "../features/global/globalApi";
 import Seo from "../components/common/seo";
 
 const Index = () => {
-  const { data, isSuccess } = useGetGlobalQuery();
+  const { data, isSuccess } = useGetGlobalQuery({subscribe: false});
 
   const dispatch = useDispatch();
 

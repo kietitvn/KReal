@@ -8,7 +8,7 @@ export const globalApi = api.injectEndpoints({
         method: "GET",
         params: "?populate[0]=Favicon&populate[1]=DefaultSeo&populate[2]=DefaultSeo.ShareImage",
       }),
-      providesTags: ["Global"],
+      // providesTags: ["Global"],
     }),
   }),
 });

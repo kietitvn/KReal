@@ -7,7 +7,7 @@ import Router from "next/router";
 
 const LookingItem = () => {
   const { data: categoriesData, isSuccess: isSuccessCategory } =
-    useGetCategoriesQuery();
+    useGetCategoriesQuery({ subscribe: false });
   const dispatch = useDispatch();
 
   useEffect(() => {

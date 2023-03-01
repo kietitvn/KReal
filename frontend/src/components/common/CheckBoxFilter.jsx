@@ -5,7 +5,7 @@ import { loadFeatures } from "../../features/feature/featuresSlice";
 import { addAmenities } from "../../features/properties/propertiesSlice";
 
 const CheckBoxFilter = () => {
-  const { data, isLoading } = useGetFeaturesQuery();
+  const { data, isLoading } = useGetFeaturesQuery({subscribe: false});
   const dispatch = useDispatch();
   useEffect(() => {
     if (!isLoading) {

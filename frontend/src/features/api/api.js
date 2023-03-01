@@ -8,6 +8,6 @@ export const api = createApi({
   refetchOnFocus: true,
   refetchOnReconnect: true,
   //overrideExisting: true,
-  tagTypes: ["Category", "Product", "Feature", "Location", "Global"],
+  // tagTypes: ["Category", "Product", "Feature", "Location", "Global"],
   endpoints: (builder) => ({}),
 });

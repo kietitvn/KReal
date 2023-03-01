@@ -8,7 +8,7 @@ export const productsApi = api.injectEndpoints({
         method: "GET",
         params: "?sort=id:desc&populate=*", //high level: populate[location][populate]=*
       }),
-      providesTags: ["Product"],
+      // providesTags: ["Product"],
     }),
   }),
 });

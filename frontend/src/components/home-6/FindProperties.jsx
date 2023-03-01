@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useGetLocationsQuery } from "../../features/location/locationsApi";
-import {
-  loadLocations
-} from "../../features/location/locationsSlice";
+import { loadLocations } from "../../features/location/locationsSlice";
 import { addLocation } from "../../features/properties/propertiesSlice";
 import Router from "next/router";
 
 const FindProperties = () => {
   const { data: locationData, isSuccess: isSuccessLocation } =
-    useGetLocationsQuery();
+    useGetLocationsQuery({ subscribe: false });
 
   const dispatch = useDispatch();
 
