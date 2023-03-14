@@ -18,8 +18,7 @@
         },
         "description": {
             "type": "richtext",
-            "required": true,
-            "minLength": 200
+            "required": false
         },
         "price": {
             "type": "biginteger",
