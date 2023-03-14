@@ -131,6 +131,9 @@
       "repeatable": false,
       "component": "seo.seo",
       "required": false
+    },
+    "imageUrl": {
+      "type": "text"
     }
   }
 }
