@@ -102,7 +102,7 @@
         "image": {
             "type": "media",
             "multiple": true,
-            "required": true,
+            "required": false,
             "allowedTypes": [
                 "images"
             ]
@@ -110,7 +110,7 @@
         "cover": {
             "type": "media",
             "multiple": false,
-            "required": true,
+            "required": false,
             "allowedTypes": [
                 "images"
             ]
