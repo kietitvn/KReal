@@ -121,6 +121,8 @@ const Index = () => {
                             product?.attributes?.cover?.data?.attributes
                               ?.formats?.small?.url
                           }
+                          width={703}
+                          height={937}
                         >
                           {({ ref, open }) => (
                             <div role="button" ref={ref} onClick={open}>
@@ -134,8 +136,6 @@ const Index = () => {
                                   product?.attributes?.cover?.data?.attributes
                                     ?.alternativeText
                                 }
-                                width={703}
-                                height={937}
                               />
                             </div>
                           )}
@@ -151,7 +151,7 @@ const Index = () => {
                   {imageUrl && imageUrl.length > 0
                     ? imageUrl.map((val, i) => {
                         return (
-                          i != 0 && (
+                          i !== 0 && (
                             <div className="col-6" key={i}>
                               <div className="spls_style_two img-gallery-box mb24">
                                 <Item original={val} width={703} height={937}>

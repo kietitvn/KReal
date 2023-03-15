@@ -128,7 +128,6 @@ const FeaturedItem = () => {
 
   // status handler
   let content = productData?.products?.data
-    ?.slice(0, 10)
     ?.filter(keywordHandler)
     ?.filter(locationHandler)
     ?.filter(statusHandler)
@@ -136,10 +135,11 @@ const FeaturedItem = () => {
     ?.filter(priceHandler)
     ?.filter(bathroomHandler)
     ?.filter(bedroomHandler)
+    ?.filter(featuredHandler)
+    ?.slice(0, 6)
 
     //?.filter(advanceHandler)
     // ?.sort(statusTypeHandler)
-    ?.filter(featuredHandler)
     .map((item) => {
       const imageUrl = item?.attributes?.imageUrl?.split(";");
       return (
@@ -157,7 +157,7 @@ const FeaturedItem = () => {
             >
               <div className="thumb">
                 {imageUrl && imageUrl.length > 0 ? (
-                  <img className="img-whp" src={imageUrl[0]} />
+                  <img className="img-whp" src={imageUrl[0]}  width={703} height={937}/>
                 ) : (
                   <img
                     className="img-whp"

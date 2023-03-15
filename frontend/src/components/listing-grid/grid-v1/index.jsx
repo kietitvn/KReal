@@ -6,6 +6,7 @@ import FilterTopBar from "../../common/listing/FilterTopBar";
 import GridListButton from "../../common/listing/GridListButton";
 import ShowFilter from "../../common/listing/ShowFilter";
 import SidebarListing from "../../common/listing/SidebarListing";
+import Pagination from "./Pagination";
 import PopupSignInUp from "../../common/PopupSignInUp";
 import BreadCrumb2 from "./BreadCrumb2";
 import FeaturedItem from "./FeaturedItem";
@@ -91,11 +92,11 @@ const index = () => {
               {/* End .row */}
 
               <div className="row">
-                {/* <div className="col-lg-12 mt20">
+                <div className="col-lg-12 mt20">
                   <div className="mbp_pagination">
                     <Pagination />
                   </div>
-                </div> */}
+                </div>
                 {/* End paginaion .col */}
               </div>
               {/* End .row */}

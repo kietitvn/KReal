@@ -14,4 +14,6 @@ export const priceRange = {
 export const bathRoom = [1,2,3];
 export const bedRoom = [1,2,3];
 
+export const pageSize = 6; // items each page
+
 export const pollingInterval = 1 * 60 * 1000; // minute*second*milisecond
