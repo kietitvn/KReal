@@ -50,7 +50,9 @@ const FeaturedProperties = () => {
     ],
   };
 
-  const { data: dataProduct, isSuccess } = useGetProductsQuery({subscribe: false});
+  const { data: dataProduct, isSuccess } = useGetProductsQuery({
+    subscribe: false,
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -63,32 +65,41 @@ const FeaturedProperties = () => {
   const data = dataProduct?.data?.filter(
     (item) => item?.attributes?.feature_ids?.data?.length > 0
   );
-
   return (
     data && (
       <>
         <Slider {...settings} arrows={true}>
           {data.map((item) => {
             const detail = item?.attributes;
+            const imageUrl = detail.imageUrl.split(";");
             return (
               <Link href={`/details/${item?.attributes.slug}`} key={item?.id}>
                 <div className="item">
                   <div className="properti_city home6">
                     <div className="thumb">
-                      <picture>
-                        <source
-                          srcSet={detail?.cover?.data?.attributes?.url}
-                          type="image/webp"
-                        />
-                        <img
-                          className="img-whp"
-                          src={
-                            detail?.cover?.data?.attributes?.formats?.thumbnail
-                              ?.url
-                          }
-                          alt={detail?.cover?.data?.attributes?.alternativeText}
-                        />
-                      </picture>
+                      {imageUrl && imageUrl.length > 0 ? (
+                        <picture>
+                          <source srcSet={imageUrl[0]} type="image/webp" />
+                          <img className="img-whp" src={imageUrl[0]} />
+                        </picture>
+                      ) : (
+                        <picture>
+                          <source
+                            srcSet={detail?.cover?.data?.attributes?.url}
+                            type="image/webp"
+                          />
+                          <img
+                            className="img-whp"
+                            src={
+                              detail?.cover?.data?.attributes?.formats
+                                ?.thumbnail?.url
+                            }
+                            alt={
+                              detail?.cover?.data?.attributes?.alternativeText
+                            }
+                          />
+                        </picture>
+                      )}
                       <div className="thmb_cntnt">
                         <ul className="tag mb0">
                           {detail?.feature_ids?.data?.length > 0 && (

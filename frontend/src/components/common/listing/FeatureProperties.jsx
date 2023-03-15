@@ -23,48 +23,56 @@ const FeatureProperties = () => {
     <>
       {data && (
         <Slider {...settings} arrows={false}>
-          {data.slice(0, 5).map((item) => (
-            <div className="item" key={item?.id}>
-              <div className="feat_property home7">
-                <div className="thumb">
-                  <img
-                    className="img-whp"
-                    src={
-                      item?.attributes?.cover?.data?.attributes?.formats
-                        ?.small?.url
-                    }
-                    alt={
-                      item?.attributes?.cover?.data?.attributes?.alternativeText
-                    }
-                  />
+          {data.slice(0, 5).map((item) => {
+            const imageUrl = item?.attributes?.imageUrl.split(";");
+            return (
+              <div className="item" key={item?.id}>
+                <div className="feat_property home7">
+                  <div className="thumb">
+                    {imageUrl && imageUrl.length > 0 ? (
+                      <img className="img-whp" src={imageUrl[0]} />
+                    ) : (
+                      <img
+                        className="img-whp"
+                        src={
+                          item?.attributes?.cover?.data?.attributes?.formats
+                            ?.small?.url
+                        }
+                        alt={
+                          item?.attributes?.cover?.data?.attributes
+                            ?.alternativeText
+                        }
+                      />
+                    )}
 
-                  <div className="thmb_cntnt">
-                    <ul className="tag mb0">
-                      {item?.attributes?.feature_ids?.data?.length > 0 && (
+                    <div className="thmb_cntnt">
+                      <ul className="tag mb0">
+                        {item?.attributes?.feature_ids?.data?.length > 0 && (
+                          <li className="list-inline-item">
+                            <a href="#">Tiện ích</a>
+                          </li>
+                        )}
                         <li className="list-inline-item">
-                          <a href="#">Tiện ích</a>
+                          <a href="#">{item?.attributes?.status}</a>
                         </li>
-                      )}
-                      <li className="list-inline-item">
-                        <a href="#">{item?.attributes?.status}</a>
-                      </li>
-                    </ul>
+                      </ul>
 
-                    <a className="fp_price">
-                      {doctien(item?.attributes?.price)}
-                      <small>
-                        {item?.attributes?.status === "Bán" ? "" : "/tháng"}
-                      </small>
-                    </a>
+                      <a className="fp_price">
+                        {doctien(item?.attributes?.price)}
+                        <small>
+                          {item?.attributes?.status === "Bán" ? "" : "/tháng"}
+                        </small>
+                      </a>
 
-                    <h4 className="posr color-white">
-                      {item?.attributes?.name}
-                    </h4>
+                      <h4 className="posr color-white">
+                        {item?.attributes?.name}
+                      </h4>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </Slider>
       )}
     </>

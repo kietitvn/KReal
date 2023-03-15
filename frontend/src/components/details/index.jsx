@@ -28,7 +28,7 @@ const Index = () => {
     }
     return () => {};
   }, [slug]);
-
+  const imageUrl = product?.attributes?.imageUrl.split(";");
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -101,33 +101,46 @@ const Index = () => {
                 <div className="row">
                   <div className="col-lg-12">
                     <div className="spls_style_two mb30-520">
-                      <Item
-                        original={
-                          product?.attributes?.cover?.data?.attributes?.url
-                        }
-                        thumbnail={
-                          product?.attributes?.cover?.data?.attributes?.formats
-                            ?.small?.url
-                        }
-                        width={752}
-                        height={450}
-                      >
-                        {({ ref, open }) => (
-                          <div role="button" ref={ref} onClick={open}>
-                            <img
-                              className="img-fluid w100 cover lds-1"
-                              src={
-                                product?.attributes?.cover?.data?.attributes
-                                  ?.url
-                              }
-                              alt={
-                                product?.attributes?.cover?.data?.attributes
-                                  ?.alternativeText
-                              }
-                            />
-                          </div>
-                        )}
-                      </Item>
+                      {imageUrl && imageUrl.length > 0 ? (
+                        <Item original={imageUrl[0]} width={703} height={937}>
+                          {({ ref, open }) => (
+                            <div role="button" ref={ref} onClick={open}>
+                              <img
+                                className="img-fluid w100 cover lds-1"
+                                src={imageUrl[0]}
+                              />
+                            </div>
+                          )}
+                        </Item>
+                      ) : (
+                        <Item
+                          original={
+                            product?.attributes?.cover?.data?.attributes?.url
+                          }
+                          thumbnail={
+                            product?.attributes?.cover?.data?.attributes
+                              ?.formats?.small?.url
+                          }
+                        >
+                          {({ ref, open }) => (
+                            <div role="button" ref={ref} onClick={open}>
+                              <img
+                                className="img-fluid w100 cover lds-1"
+                                src={
+                                  product?.attributes?.cover?.data?.attributes
+                                    ?.url
+                                }
+                                alt={
+                                  product?.attributes?.cover?.data?.attributes
+                                    ?.alternativeText
+                                }
+                                width={703}
+                                height={937}
+                              />
+                            </div>
+                          )}
+                        </Item>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -135,28 +148,49 @@ const Index = () => {
 
               <div className="col-sm-5 col-lg-4">
                 <div className="row">
-                  {product?.attributes?.image?.data.map((val, i) => (
-                    <div className="col-6" key={i}>
-                      <div className="spls_style_two img-gallery-box mb24">
-                        <Item
-                          original={val.attributes?.url}
-                          thumbnail={val.attributes?.formats?.small?.url}
-                          width={752}
-                          height={450}
-                        >
-                          {({ ref, open }) => (
-                            <div role="button" ref={ref} onClick={open}>
-                              <img
-                                className="img-fluid w100"
-                                src={val.attributes?.url}
-                                alt={val.attributes?.alternativeText}
-                              />
+                  {imageUrl && imageUrl.length > 0
+                    ? imageUrl.map((val, i) => {
+                        return (
+                          i != 0 && (
+                            <div className="col-6" key={i}>
+                              <div className="spls_style_two img-gallery-box mb24">
+                                <Item original={val} width={703} height={937}>
+                                  {({ ref, open }) => (
+                                    <div role="button" ref={ref} onClick={open}>
+                                      <img
+                                        className="img-fluid w100"
+                                        src={val}
+                                      />
+                                    </div>
+                                  )}
+                                </Item>
+                              </div>
                             </div>
-                          )}
-                        </Item>
-                      </div>
-                    </div>
-                  ))}
+                          )
+                        );
+                      })
+                    : product?.attributes?.image?.data.map((val, i) => (
+                        <div className="col-6" key={i}>
+                          <div className="spls_style_two img-gallery-box mb24">
+                            <Item
+                              original={val.attributes?.url}
+                              thumbnail={val.attributes?.formats?.small?.url}
+                              width={703}
+                              height={937}
+                            >
+                              {({ ref, open }) => (
+                                <div role="button" ref={ref} onClick={open}>
+                                  <img
+                                    className="img-fluid w100"
+                                    src={val.attributes?.url}
+                                    alt={val.attributes?.alternativeText}
+                                  />
+                                </div>
+                              )}
+                            </Item>
+                          </div>
+                        </div>
+                      ))}
                 </div>
               </div>
             </div>
