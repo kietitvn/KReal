@@ -24,7 +24,7 @@ const FeatureProperties = () => {
       {data && (
         <Slider {...settings} arrows={false}>
           {data.slice(0, 5).map((item) => {
-            const imageUrl = item?.attributes?.imageUrl.split(";");
+            const imageUrl = item?.attributes?.imageUrl?.split(";");
             return (
               <div className="item" key={item?.id}>
                 <div className="feat_property home7">

@@ -71,7 +71,7 @@ const FeaturedProperties = () => {
         <Slider {...settings} arrows={true}>
           {data.map((item) => {
             const detail = item?.attributes;
-            const imageUrl = detail.imageUrl.split(";");
+            const imageUrl = detail?.imageUrl?.split(";");
             return (
               <Link href={`/details/${item?.attributes.slug}`} key={item?.id}>
                 <div className="item">

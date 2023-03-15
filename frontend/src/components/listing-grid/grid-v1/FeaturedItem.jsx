@@ -141,7 +141,7 @@ const FeaturedItem = () => {
     // ?.sort(statusTypeHandler)
     ?.filter(featuredHandler)
     .map((item) => {
-      const imageUrl = item?.attributes.imageUrl.split(";");
+      const imageUrl = item?.attributes?.imageUrl?.split(";");
       return (
         <Link href={`/details/${item?.attributes.slug}`} key={item?.id}>
           <div

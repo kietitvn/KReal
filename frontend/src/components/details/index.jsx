@@ -28,7 +28,7 @@ const Index = () => {
     }
     return () => {};
   }, [slug]);
-  const imageUrl = product?.attributes?.imageUrl.split(";");
+  const imageUrl = product?.attributes?.imageUrl?.split(";");
   return (
     <>
       {/* <!-- Main Header Nav --> */}
