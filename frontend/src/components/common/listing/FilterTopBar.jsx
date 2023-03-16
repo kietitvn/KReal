@@ -7,7 +7,7 @@ import {
 } from "../../../features/filter/filterSlice";
 
 const FilterTopBar = () => {
-  const { length } = useSelector((state) => state.properties);
+  const { products } = useSelector((state) => state.products);
   const { statusType, featured } = useSelector((state) => state.filter);
   const [getStatus, setStatus] = useState(statusType);
   const [getFeatured, setFeatured] = useState(featured);
@@ -35,8 +35,11 @@ const FilterTopBar = () => {
       <div className="col-sm-12 col-md-4 col-lg-4 col-xl-5">
         <div className="left_area tac-xsd">
           <p>
-            {length !== 0 ? (
-              <span>{length} BĐS phù hợp nhất với bạn</span>
+            {products?.meta?.pagination?.total !== 0 ? (
+              <span className="text-success">
+                Có <span>{products?.meta?.pagination?.total}</span> BĐS phù hợp
+                với bạn.
+              </span>
             ) : (
               <span className="text-danger">
                 Rất tiếc, không có BĐS như yêu cầu.

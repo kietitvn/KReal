@@ -10,6 +10,8 @@ const Pagination = () => {
   const dispatch = useDispatch();
   const productData = useSelector(selectProducts);
   const pagination = productData?.products?.meta?.pagination;
+  console.log("pagination",pagination)
+  const pageCount = pagination?.pageCount;
 
   const [pageSelected, setpageSelected] = useState(pagination?.page);
 
@@ -17,10 +19,7 @@ const Pagination = () => {
     page: pageSelected,
   });
 
-  const listPage = [];
-  for (let index = 1; index <= pagination?.pageCount; index++) {
-    listPage.push(index);
-  }
+  //////////////////////////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     if (isSuccess) {
@@ -34,54 +33,112 @@ const Pagination = () => {
   };
 
   const pageNext = () => {
-    setpageSelected(pageSelected + 1);
+    setpageSelected(Number(pageSelected) + 1);
   };
 
   const pagePrev = () => {
-    setpageSelected(pageSelected - 1);
+    setpageSelected(Number(pageSelected) - 1);
   };
 
+  //////////////////////////////////////////////////////////////////////////////////////////
+
+  let listPageLeft2 = [];
+  let listPageLeft = [];
+  let listPageCenter = [];
+  let listPageRight = [];
+  let listPageRight2 = [];
+
+  if (pageCount <= 7) {
+    listPageLeft2 = [];
+    listPageLeft = [];
+    listPageCenter = [];
+    for (let index = 1; index <= pageCount; index++) {
+      listPageCenter.push(index.toString());
+    }
+    listPageRight = [];
+    listPageRight2 = [];
+  } else if (Number(pageSelected) <= 3) {
+    listPageLeft2 = [];
+    listPageLeft = [];
+    for (let index = 1; index <= 4; index++) {
+      listPageLeft.push(index.toString());
+    }
+    listPageCenter = ["..."];
+    listPageRight = [pageCount.toString()];
+    listPageRight2 = [];
+  } else if (Number(pageSelected) >= pageCount - 3) {
+    listPageLeft2 = [];
+    listPageLeft = ["1"];
+    listPageCenter = ["..."];
+    listPageRight = [];
+    for (let index = pageCount - 4; index <= pageCount; index++) {
+      listPageRight.push(index.toString());
+    }
+    listPageRight2 = [];
+  } else {
+    listPageLeft2 = ["1"];
+    listPageLeft = ["..."];
+    listPageCenter = [
+      (Number(pageSelected) - 1).toString(),
+      pageSelected.toString(),
+      (Number(pageSelected) + 1).toString(),
+    ];
+    listPageRight = ["..."];
+    listPageRight2 = [pageCount.toString()];
+  }
+
+  const listPage = listPageLeft2.concat(
+    listPageLeft,
+    listPageCenter,
+    listPageRight,
+    listPageRight2
+  );
   return (
     <ul className="page_navigation">
-      <li className={`page-item ${pageSelected == 1 && "disabled"}`}>
+      <li className={`page-item ${Number(pageSelected) == 1 && "disabled"}`}>
         <a
           className="page-link"
           href="#"
           onClick={() => pagePrev()}
           //tabIndex="-1"
-          aria-disabled={pageSelected == 1 ? "true" : "false"}
+          aria-disabled={Number(pageSelected) == 1 ? "true" : "false"}
         >
           <span className="flaticon-left-arrow"></span>
         </a>
       </li>
 
-      {listPage.map((element) => {
-        return (
-          <li
-            className={`page-item ${element == pageSelected && "active"}`}
-            key={element}
-          >
-            <a
-              className="page-link"
-              href="#"
-              onClick={() => pageHandle(element)}
+      {listPage.length > 0 &&
+        listPage.map((element, i) => {
+          return (
+            <li
+              className={`page-item 
+              ${element == Number(pageSelected) && "active"} 
+              ${element == "..." && "disabled"}              
+              `}
+              key={element + i}
             >
-              {element}
-            </a>
-          </li>
-        );
-      })}
+              <a
+                className="page-link"
+                href="#"
+                onClick={() => pageHandle(element)}
+                aria-disabled={element == "..." ? "true" : "false"}
+              >
+                {element}
+              </a>
+            </li>
+          );
+        })}
 
       <li
         className={`page-item ${
-          pageSelected == pagination?.pageCount && "disabled"
+          Number(pageSelected) == pageCount && "disabled"
         }`}
       >
         <a
           className="page-link"
           href="#"
           onClick={() => pageNext()}
-          aria-disabled={pageSelected == pagination?.pageCount ? "true" : "false"}
+          aria-disabled={Number(pageSelected) == pageCount ? "true" : "false"}
         >
           <span className="flaticon-right-arrow"></span>
         </a>

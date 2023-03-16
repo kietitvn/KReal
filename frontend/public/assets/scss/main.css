@@ -11723,16 +11723,18 @@ legend span {
 }
 
 .mbp_pagination ul.page_navigation li .page-link {
+  height: 35px;
+  width: 35px;
   background-color: #ffffff;
   border: 1px solid #ebebeb;
   border-radius: 50%;
   font-size: 14px;
   font-family: "Nunito";
   color: #777777;
-  height: 45px;
+  
   overflow: hidden;
   text-align: center;
-  width: 45px;
+ 
   display: inline-flex;
   align-items: center;
   justify-content: center;

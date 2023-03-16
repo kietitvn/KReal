@@ -54,7 +54,6 @@ const FeaturedProperties = () => {
     subscribe: false,
     featured: true
   });
-  console.log("useGetProductsQuery:", dataProduct);
   const dispatch = useDispatch();
 
   useEffect(() => {
