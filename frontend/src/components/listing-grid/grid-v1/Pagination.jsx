@@ -11,8 +11,10 @@ const Pagination = () => {
   const dispatch = useDispatch();
   const productData = useSelector(selectProducts);
   const pagination = productData?.products?.meta?.pagination;
-  const pageCount = pagination?.pageCount;
-  const [pageSelected, setpageSelected] = useState(pagination?.page);
+  const pageCount = pagination ? pagination.pageCount : 1;
+  const [pageSelected, setpageSelected] = useState(
+    pagination ? pagination.page : 1
+  );
   const {
     keyword,
     location,
@@ -55,12 +57,14 @@ const Pagination = () => {
     page: pageSelected,
     filters: query,
   });
-
   //////////////////////////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(loadProducts(dataProduct));
+      if (pageSelected > dataProduct?.meta?.pagination?.pageCount) {
+        setpageSelected(1);
+      }
     }
     return () => {};
   }, [dataProduct]);

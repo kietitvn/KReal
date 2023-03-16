@@ -11,7 +11,7 @@ const FeaturedItem = () => {
   );
 
   // status handler
-  let content = productData?.products?.data.map((item) => {
+  let content = productData?.products?.data?.map((item) => {
     const imageUrl = item?.attributes?.imageUrl?.split(";");
     return (
       <Link href={`/details/${item?.attributes.slug}`} key={item?.id}>
