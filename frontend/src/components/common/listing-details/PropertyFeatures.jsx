@@ -8,12 +8,6 @@ const PropertyFeatures = (props) => {
               <span className="flaticon-tick"></span>
               {item.attributes.name}
             </li>
-            {/* {item.list.map((val, i) => (
-              <li key={i}>
-                <span className="flaticon-tick"></span>
-                {val}
-              </li>
-            ))} */}
           </ul>
         </div>
       ))}

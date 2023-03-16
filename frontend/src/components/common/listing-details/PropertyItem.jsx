@@ -1,9 +1,13 @@
 const PropertyItem = (props) => {
   return (
     <ul className="mb0">
-      <li className="list-inline-item">
-        <a href="#">{props?.attributes?.categoryID?.data?.attributes?.name}</a>
-      </li>
+      {props?.attributes?.categoryID?.data?.attributes?.name && (
+        <li className="list-inline-item">
+          <a href="#">
+            {props?.attributes?.categoryID?.data?.attributes?.name}
+          </a>
+        </li>
+      )}
       <li className="list-inline-item">
         <a href="#">{`Pháp lý: ${props?.attributes?.legal}`}</a>
       </li>

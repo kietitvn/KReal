@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../../features/categories/categoriesSlice";
 import { selectFeatures } from "../../../features/feature/featuresSlice";
 import { selectLocations } from "../../../features/location/locationsSlice";
 import {
+  addAmenities,
   addBathrooms,
   addBedrooms,
   addKeyword,
@@ -11,7 +11,6 @@ import {
   addPrice,
   addPropertyType,
   addStatus,
-  addAmenities,
   resetAmenities,
 } from "../../../features/properties/propertiesSlice";
 import { bathRoom, bedRoom, priceRange } from "../../../utils/const";
@@ -25,7 +24,7 @@ const FilteringItem = () => {
     propertyType,
     bathrooms,
     bedrooms,
-    amenities
+    amenities,
   } = useSelector((state) => state.properties);
 
   const categoriesData = useSelector(selectCategories);
@@ -43,9 +42,6 @@ const FilteringItem = () => {
     dispatch(addBedrooms(""));
     dispatch(resetAmenities());
     dispatch(addPrice(priceRange.sell));
-    // dispatch(resetAmenities());
-    // dispatch(addStatusType(""));
-    // dispatch(addFeatured(""));
   };
 
   return (
@@ -175,7 +171,7 @@ const FilteringItem = () => {
         <div className="search_option_two">
           <div className="candidate_revew_select">
             <select
-              onChange={(e) => dispatch(addBathrooms(e.target.value))}
+              onChange={(e) => dispatch(addBedrooms(e.target.value))}
               className="selectpicker w100 show-tick form-select"
               value={bedrooms}
             >

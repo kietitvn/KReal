@@ -34,18 +34,15 @@ const FilterTopBar = () => {
     <>
       <div className="col-sm-12 col-md-4 col-lg-4 col-xl-5">
         <div className="left_area tac-xsd">
-          <p>
             {products?.meta?.pagination?.total !== 0 ? (
               <span className="text-success">
-                Có <span>{products?.meta?.pagination?.total}</span> BĐS phù hợp
-                với bạn.
+                Có {products?.meta?.pagination?.total} BĐS phù hợp với bạn.
               </span>
             ) : (
               <span className="text-danger">
                 Rất tiếc, không có BĐS như yêu cầu.
               </span>
             )}
-          </p>
         </div>
       </div>
       {/* End .col */}

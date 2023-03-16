@@ -21,9 +21,14 @@ const Index = () => {
   useEffect(() => {
     if (!slug) <h1>Loading...</h1>;
     else {
-      const product = productData?.products?.data?.find(
+      let product = productData?.products?.data?.find(
         (f) => f.attributes.slug === slug
       );
+      if (!product) {
+        product = productData?.productsFeatured?.data?.find(
+          (f) => f.attributes.slug === slug
+        );
+      }
       setProduct(product);
     }
     return () => {};

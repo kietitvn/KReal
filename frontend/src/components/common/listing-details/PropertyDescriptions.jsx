@@ -6,7 +6,12 @@ const PropertyDescriptions = (props) => {
   const handleClick = () => setClick(!click);
   return (
     <>
-      <p className={click ? "gpara second_para white_goverlay mt10 mb10" : ""}>
+      <p>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {props?.description}
+        </ReactMarkdown>
+      </p>
+      {/* <p className={click ? "gpara second_para white_goverlay mt10 mb10" : ""}>
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {props?.description?.substring(0, 1000)}
         </ReactMarkdown>
@@ -19,8 +24,8 @@ const PropertyDescriptions = (props) => {
             </ReactMarkdown>
           </p>
         </div>
-      </div>
-      <p className="overlay_close">
+      </div> */}
+      {/* <p className="overlay_close">
         <a
           className="text-thm fz14"
           data-bs-toggle="collapse"
@@ -32,7 +37,7 @@ const PropertyDescriptions = (props) => {
         >
           Show More <span className="flaticon-download-1 fz12"></span>
         </a>
-      </p>
+      </p> */}
     </>
   );
 };

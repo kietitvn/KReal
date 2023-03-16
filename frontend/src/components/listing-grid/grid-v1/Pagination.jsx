@@ -5,18 +5,55 @@ import {
   loadProducts,
   selectProducts,
 } from "../../../features/products/productsSlice";
+const qs = require("qs");
 
 const Pagination = () => {
   const dispatch = useDispatch();
   const productData = useSelector(selectProducts);
   const pagination = productData?.products?.meta?.pagination;
-  console.log("pagination",pagination)
   const pageCount = pagination?.pageCount;
-
   const [pageSelected, setpageSelected] = useState(pagination?.page);
+  const {
+    keyword,
+    location,
+    status,
+    propertyType,
+    price,
+    bathrooms,
+    bedrooms,
+    amenities,
+  } = useSelector((state) => state.properties);
+
+  //////////////////////////////////////////////////////////////////////////////////////////
+  const query = qs.stringify(
+    {
+      filters: {
+        $and: [
+          { status: { $eq: status } },
+          { price: { $between: [price?.min, price?.max] } },
+          location ? { location: { id: { $eq: location } } } : null,
+          propertyType ? { categoryID: { id: { $eq: propertyType } } } : null,
+          bathrooms ? { bathRoom: { $eq: bathrooms } } : null,
+          bedrooms ? { bedRoom: { $eq: bedrooms } } : null,
+          amenities.length > 0
+            ? { feature_ids: { id: { $in: amenities } } }
+            : null,
+        ],
+        $or: [
+          keyword ? { name: { $containsi: keyword } } : null,
+          keyword ? { description: { $containsi: keyword } } : null,
+        ],
+      },
+    },
+    {
+      encodeValuesOnly: true,
+      skipNulls: true,
+    }
+  );
 
   const { data: dataProduct, isSuccess } = useGetProductsQuery({
     page: pageSelected,
+    filters: query,
   });
 
   //////////////////////////////////////////////////////////////////////////////////////////
@@ -93,57 +130,60 @@ const Pagination = () => {
     listPageRight,
     listPageRight2
   );
-  return (
-    <ul className="page_navigation">
-      <li className={`page-item ${Number(pageSelected) == 1 && "disabled"}`}>
-        <a
-          className="page-link"
-          href="#"
-          onClick={() => pagePrev()}
-          //tabIndex="-1"
-          aria-disabled={Number(pageSelected) == 1 ? "true" : "false"}
-        >
-          <span className="flaticon-left-arrow"></span>
-        </a>
-      </li>
 
-      {listPage.length > 0 &&
-        listPage.map((element, i) => {
-          return (
-            <li
-              className={`page-item 
+  return (
+    pageCount > 1 && (
+      <ul className="page_navigation">
+        <li className={`page-item ${Number(pageSelected) == 1 && "disabled"}`}>
+          <a
+            className="page-link"
+            href="#"
+            onClick={() => pagePrev()}
+            //tabIndex="-1"
+            aria-disabled={Number(pageSelected) == 1 ? "true" : "false"}
+          >
+            <span className="flaticon-left-arrow"></span>
+          </a>
+        </li>
+
+        {listPage.length > 0 &&
+          listPage.map((element, i) => {
+            return (
+              <li
+                className={`page-item 
               ${element == Number(pageSelected) && "active"} 
               ${element == "..." && "disabled"}              
               `}
-              key={element + i}
-            >
-              <a
-                className="page-link"
-                href="#"
-                onClick={() => pageHandle(element)}
-                aria-disabled={element == "..." ? "true" : "false"}
+                key={element + i}
               >
-                {element}
-              </a>
-            </li>
-          );
-        })}
+                <a
+                  className="page-link"
+                  href="#"
+                  onClick={() => pageHandle(element)}
+                  aria-disabled={element == "..." ? "true" : "false"}
+                >
+                  {element}
+                </a>
+              </li>
+            );
+          })}
 
-      <li
-        className={`page-item ${
-          Number(pageSelected) == pageCount && "disabled"
-        }`}
-      >
-        <a
-          className="page-link"
-          href="#"
-          onClick={() => pageNext()}
-          aria-disabled={Number(pageSelected) == pageCount ? "true" : "false"}
+        <li
+          className={`page-item ${
+            Number(pageSelected) == pageCount && "disabled"
+          }`}
         >
-          <span className="flaticon-right-arrow"></span>
-        </a>
-      </li>
-    </ul>
+          <a
+            className="page-link"
+            href="#"
+            onClick={() => pageNext()}
+            aria-disabled={Number(pageSelected) == pageCount ? "true" : "false"}
+          >
+            <span className="flaticon-right-arrow"></span>
+          </a>
+        </li>
+      </ul>
+    )
   );
 };
 

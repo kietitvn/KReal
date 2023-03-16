@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import { useGetProductsQuery } from "../../features/products/productsApi";
-import { loadProducts } from "../../features/products/productsSlice";
+import { loadProductsFeatured } from "../../features/products/productsSlice";
 import { doctien } from "../../utils/currency";
+const qs = require("qs");
 
 const FeaturedProperties = () => {
   const settings = {
@@ -50,15 +51,29 @@ const FeaturedProperties = () => {
     ],
   };
 
+  const query = qs.stringify(
+    {
+      filters: {
+        feature_ids: {
+          id: {
+            $gte: 1,
+          },
+        },
+      },
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
   const { data: dataProduct, isSuccess } = useGetProductsQuery({
-    subscribe: false,
-    featured: true
+    filters: query,
   });
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(loadProducts(dataProduct));
+      dispatch(loadProductsFeatured(dataProduct));
     }
     return () => {};
   }, [dataProduct]);
