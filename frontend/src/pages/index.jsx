@@ -7,7 +7,7 @@ import { useGetGlobalQuery } from "../features/global/globalApi";
 import Seo from "../components/common/seo";
 
 const Index = () => {
-  const { data, isSuccess } = useGetGlobalQuery({subscribe: false});
+  const { data, isSuccess } = useGetGlobalQuery({ subscribe: false });
 
   const dispatch = useDispatch();
 
@@ -17,17 +17,19 @@ const Index = () => {
     }
     return () => {};
   }, [data]);
-  
+
   return (
-    <>
-      <Seo
-        seo={data?.data?.attributes?.DefaultSeo}
-        font={
-          "https://fonts.googleapis.com/css?family=Nunito:400,400i,500,600,700&display=swap"
-        }
-      />
-      <HomeMain />
-    </>
+    isSuccess && (
+      <>
+        <Seo
+          seo={data?.data?.attributes?.DefaultSeo}
+          font={
+            "https://fonts.googleapis.com/css?family=Nunito:400,400i,500,600,700&display=swap"
+          }
+        />
+        <HomeMain />
+      </>
+    )
   );
 };
 
