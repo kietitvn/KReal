@@ -19,7 +19,6 @@ const Index = () => {
   }, [data]);
 
   return (
-    isSuccess && (
       <>
         <Seo
           seo={data?.data?.attributes?.DefaultSeo}
@@ -29,7 +28,6 @@ const Index = () => {
         />
         <HomeMain />
       </>
-    )
   );
 };
 
