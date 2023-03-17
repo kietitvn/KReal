@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectGlobal } from "../../features/global/globalSlice";
 
 const Seo = ({ pageTitle, font, seo }) => {
-  defaultSeo = {
+  const defaultSeo = {
     MetaTitle: "Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ",
     MetaDescription:
       "Mua bán cho thuê ký gửi dịch vụ đăng bộ nhà đất chung cư căn hộ",
@@ -85,7 +85,7 @@ const Seo = ({ pageTitle, font, seo }) => {
             fullSeo?.MetaKeyword ? fullSeo?.MetaKeyword : defaultSeo.MetaKeyword
           }
         />
-        
+
         {fullSeo.ShareImage && (
           <>
             <meta property="og:image" content={fullSeo.ShareImage} />
