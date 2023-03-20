@@ -37,55 +37,53 @@ const Seo = ({ pageTitle, font, seo }) => {
         ) : (
           <link rel="icon" href={"../../../public/favicon.ico"} />
         )}
-
-        <title>
-          {fullSeo?.MetaTitle ? fullSeo?.MetaTitle : defaultSeo.MetaTitle}
-        </title>
-        <meta
-          property="og:title"
-          content={
-            fullSeo?.MetaTitle ? fullSeo?.MetaTitle : defaultSeo.MetaTitle
-          }
-        />
-        <meta
-          name="twitter:title"
-          content={
-            fullSeo?.MetaTitle ? fullSeo?.MetaTitle : defaultSeo.MetaTitle
-          }
-        />
         {/*  */}
-        <meta
-          name="description"
-          content={
-            fullSeo?.MetaDescription
-              ? fullSeo?.MetaDescription
-              : defaultSeo.MetaDescription
-          }
-        />
-        <meta
-          property="og:description"
-          content={
-            fullSeo?.MetaDescription
-              ? fullSeo?.MetaDescription
-              : defaultSeo.MetaDescription
-          }
-        />
-        <meta
-          name="twitter:description"
-          content={
-            fullSeo?.MetaDescription
-              ? fullSeo?.MetaDescription
-              : defaultSeo.MetaDescription
-          }
-        />
+        {fullSeo?.MetaTitle ? (
+          <>
+            <title>{fullSeo?.MetaTitle}</title>
+            <meta property="og:title" content={fullSeo?.MetaTitle} />
+            <meta name="twitter:title" content={fullSeo?.MetaTitle} />
+          </>
+        ) : (
+          <>
+            <title>{defaultSeo.MetaTitle}</title>
+            <meta property="og:title" content={defaultSeo.MetaTitle} />
+            <meta name="twitter:title" content={defaultSeo.MetaTitle} />
+          </>
+        )}
         {/*  */}
-        <meta
-          name="keywords"
-          content={
-            fullSeo?.MetaKeyword ? fullSeo?.MetaKeyword : defaultSeo.MetaKeyword
-          }
-        />
-
+        {fullSeo?.MetaDescription ? (
+          <>
+            <meta name="description" content={fullSeo?.MetaDescription} />
+            <meta
+              property="og:description"
+              content={fullSeo?.MetaDescription}
+            />
+            <meta
+              name="twitter:description"
+              content={fullSeo?.MetaDescription}
+            />
+          </>
+        ) : (
+          <>
+            <meta name="description" content={defaultSeo.MetaDescription} />
+            <meta
+              property="og:description"
+              content={defaultSeo.MetaDescription}
+            />
+            <meta
+              name="twitter:description"
+              content={defaultSeo.MetaDescription}
+            />
+          </>
+        )}
+        {/*  */}
+        {fullSeo?.MetaKeyword ? (
+          <meta name="keywords" content={fullSeo?.MetaKeyword} />
+        ) : (
+          <meta name="keywords" content={defaultSeo.MetaKeyword} />
+        )}
+        {/*  */}
         {fullSeo.ShareImage && (
           <>
             <meta property="og:image" content={fullSeo.ShareImage} />

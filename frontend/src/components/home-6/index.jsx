@@ -32,11 +32,11 @@ const Index = () => {
               <div className="main-title mb40">
                 <h2>Những BĐS có nhiều tiện ích</h2>
                 <p>
-                  BĐS được lựa chọn cẩn thận bởi đội ngũ của chúng tôi.
-                  <Link className="float-end" href="/find">
-                    Danh sách
-                  </Link>
-                  <span className="flaticon-next"></span>
+                  BĐS được lựa chọn cẩn thận bởi đội ngũ của chúng tôi.{" "}
+                  <div className="float-end">
+                    <Link href="/find">Xem tất cả</Link>
+                    <span className="flaticon-next"></span>
+                  </div>
                 </p>
               </div>
             </div>
