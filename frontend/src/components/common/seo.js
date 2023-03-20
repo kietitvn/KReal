@@ -4,7 +4,7 @@ import { selectGlobal } from "../../features/global/globalSlice";
 
 const Seo = ({ pageTitle, font, seo }) => {
   const defaultSeo = {
-    MetaTitle: "Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ",
+    MetaTitle: "Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ | KReal",
     MetaDescription:
       "Mua bán cho thuê ký gửi dịch vụ đăng bộ nhà đất chung cư căn hộ",
     MetaKeyword:
@@ -38,21 +38,27 @@ const Seo = ({ pageTitle, font, seo }) => {
           <link rel="icon" href={"../../../public/favicon.ico"} />
         )}
         {/*  */}
-        {fullSeo?.MetaTitle ? (
+        <title>{defaultSeo.MetaTitle}</title>
+        <meta property="og:title" content={defaultSeo.MetaTitle} />
+        <meta name="twitter:title" content={defaultSeo.MetaTitle} />
+        {fullSeo?.MetaTitle && (
           <>
             <title>{fullSeo?.MetaTitle}</title>
             <meta property="og:title" content={fullSeo?.MetaTitle} />
             <meta name="twitter:title" content={fullSeo?.MetaTitle} />
           </>
-        ) : (
-          <>
-            <title>{defaultSeo.MetaTitle}</title>
-            <meta property="og:title" content={defaultSeo.MetaTitle} />
-            <meta name="twitter:title" content={defaultSeo.MetaTitle} />
-          </>
         )}
         {/*  */}
-        {fullSeo?.MetaDescription ? (
+        <meta name="description" content={defaultSeo.MetaDescription} />
+        <meta
+          property="og:description"
+          content={defaultSeo.MetaDescription}
+        />
+        <meta
+          name="twitter:description"
+          content={defaultSeo.MetaDescription}
+        />
+        {fullSeo?.MetaDescription && (
           <>
             <meta name="description" content={fullSeo?.MetaDescription} />
             <meta
@@ -64,24 +70,11 @@ const Seo = ({ pageTitle, font, seo }) => {
               content={fullSeo?.MetaDescription}
             />
           </>
-        ) : (
-          <>
-            <meta name="description" content={defaultSeo.MetaDescription} />
-            <meta
-              property="og:description"
-              content={defaultSeo.MetaDescription}
-            />
-            <meta
-              name="twitter:description"
-              content={defaultSeo.MetaDescription}
-            />
-          </>
         )}
         {/*  */}
-        {fullSeo?.MetaKeyword ? (
+        <meta name="keywords" content={defaultSeo.MetaKeyword} />
+        {fullSeo?.MetaKeyword && (
           <meta name="keywords" content={fullSeo?.MetaKeyword} />
-        ) : (
-          <meta name="keywords" content={defaultSeo.MetaKeyword} />
         )}
         {/*  */}
         {fullSeo.ShareImage && (
