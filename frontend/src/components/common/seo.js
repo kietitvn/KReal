@@ -3,13 +3,6 @@ import { useSelector } from "react-redux";
 import { selectGlobal } from "../../features/global/globalSlice";
 
 const Seo = ({ pageTitle, font, seo }) => {
-  const defaultSeo = {
-    MetaTitle: "Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ | KReal",
-    MetaDescription:
-      "Mua bán cho thuê ký gửi dịch vụ đăng bộ nhà đất chung cư căn hộ",
-    MetaKeyword:
-      "Mua bán, cho thuê, ký gửi, dịch vụ, đăng bộ, nhà, đất, chung cư, căn hộ",
-  };
   const globalData = useSelector(selectGlobal);
 
   const seoWithDefaults = {
@@ -38,9 +31,9 @@ const Seo = ({ pageTitle, font, seo }) => {
           <link rel="icon" href={"../../../public/favicon.ico"} />
         )}
         {/*  */}
-        <title>{defaultSeo.MetaTitle}</title>
-        <meta property="og:title" content={defaultSeo.MetaTitle} />
-        <meta name="twitter:title" content={defaultSeo.MetaTitle} />
+        <title>Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ | KReal</title>
+        <meta property="og:title" content={`Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ | KReal`} />
+        <meta name="twitter:title" content={`Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ | KReal`} />
         {fullSeo?.MetaTitle && (
           <>
             <title>{fullSeo?.MetaTitle}</title>
@@ -49,14 +42,14 @@ const Seo = ({ pageTitle, font, seo }) => {
           </>
         )}
         {/*  */}
-        <meta name="description" content={defaultSeo.MetaDescription} />
+        <meta name="description" content={`Mua bán cho thuê ký gửi dịch vụ đăng bộ nhà đất chung cư căn hộ`} />
         <meta
           property="og:description"
-          content={defaultSeo.MetaDescription}
+          content={`Mua bán cho thuê ký gửi dịch vụ đăng bộ nhà đất chung cư căn hộ`}
         />
         <meta
           name="twitter:description"
-          content={defaultSeo.MetaDescription}
+          content={`Mua bán cho thuê ký gửi dịch vụ đăng bộ nhà đất chung cư căn hộ`}
         />
         {fullSeo?.MetaDescription && (
           <>
@@ -72,7 +65,7 @@ const Seo = ({ pageTitle, font, seo }) => {
           </>
         )}
         {/*  */}
-        <meta name="keywords" content={defaultSeo.MetaKeyword} />
+        <meta name="keywords" content={`Mua bán, cho thuê, ký gửi, dịch vụ, đăng bộ, nhà, đất, chung cư, căn hộ`} />
         {fullSeo?.MetaKeyword && (
           <meta name="keywords" content={fullSeo?.MetaKeyword} />
         )}

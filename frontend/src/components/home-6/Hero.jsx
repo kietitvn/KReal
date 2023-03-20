@@ -8,7 +8,7 @@ const Hero = () => {
           <div className="col-lg-12">
             <div className="home_content home6">
               <div className="home-text home6 text-center">
-                <h2 className="fz55">Tìm Nhà Cho Bạn</h2>
+                <h1 className="fz55">Tìm Nhà Cho Bạn</h1>
                 {/* <p className="fz18">
                   From as low as $10 per day with limited time offer discounts.
                 </p> */}

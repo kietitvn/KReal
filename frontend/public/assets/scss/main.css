@@ -3631,6 +3631,14 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
   margin-top: 0;
 }
 
+.home-text.home6 h1 {
+  font-family: "Nunito";
+  color: #484848;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+
 .home-text.home6 h2 {
   font-family: "Nunito";
   color: #484848;
