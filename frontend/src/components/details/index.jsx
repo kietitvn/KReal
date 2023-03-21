@@ -17,38 +17,24 @@ const Index = () => {
   const router = useRouter();
   const slug = router.query.slug;
 
-  const productData = useSelector(selectProducts);
-
-  let product = productData?.products?.data?.find(
-    (f) => f.attributes.slug === slug
-  );
-
-  if (!product) {
-    product = productData?.productsFeatured?.data?.find(
-      (f) => f.attributes.slug === slug
-    );
-  }
-
-  if (!product) {
-    const query = qs.stringify(
-      {
-        filters: {
-          slug: {
-            $eq: slug,
-          },
+  const query = qs.stringify(
+    {
+      filters: {
+        slug: {
+          $eq: slug,
         },
       },
-      {
-        encodeValuesOnly: true,
-      }
-    );
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
 
-    const { data: dataProduct } = useGetProductsQuery({
-      filters: query,
-    });
+  const { data: dataProduct } = useGetProductsQuery({
+    filters: query,
+  });
 
-    product = dataProduct?.data[0];
-  }
+  const product = dataProduct?.data[0];
 
   const imageUrl = product?.attributes?.imageUrl?.split(";");
 
