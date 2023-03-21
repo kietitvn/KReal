@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import "photoswipe/dist/photoswipe.css";
-import { useEffect, useState } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import { useSelector } from "react-redux";
 import CopyrightFooter from "../../components/common/footer/CopyrightFooter";
@@ -9,31 +8,50 @@ import Header from "../../components/common/header/DefaultHeader";
 import MobileMenu from "../../components/common/header/MobileMenu";
 import PopupSignInUp from "../../components/common/PopupSignInUp";
 import DetailsContent from "../../components/details/DetailsContent";
+import { useGetProductsQuery } from "../../features/products/productsApi";
 import { selectProducts } from "../../features/products/productsSlice";
 import { doctien } from "../../utils/currency";
+const qs = require("qs");
 
 const Index = () => {
   const router = useRouter();
-  const [product, setProduct] = useState({});
   const slug = router.query.slug;
 
   const productData = useSelector(selectProducts);
-  useEffect(() => {
-    if (!slug) <h1>Loading...</h1>;
-    else {
-      let product = productData?.products?.data?.find(
-        (f) => f.attributes.slug === slug
-      );
-      if (!product) {
-        product = productData?.productsFeatured?.data?.find(
-          (f) => f.attributes.slug === slug
-        );
+
+  let product = productData?.products?.data?.find(
+    (f) => f.attributes.slug === slug
+  );
+
+  if (!product) {
+    product = productData?.productsFeatured?.data?.find(
+      (f) => f.attributes.slug === slug
+    );
+  }
+
+  if (!product) {
+    const query = qs.stringify(
+      {
+        filters: {
+          slug: {
+            $eq: slug,
+          },
+        },
+      },
+      {
+        encodeValuesOnly: true,
       }
-      setProduct(product);
-    }
-    return () => {};
-  }, [slug]);
+    );
+
+    const { data: dataProduct } = useGetProductsQuery({
+      filters: query,
+    });
+
+    product = dataProduct?.data[0];
+  }
+
   const imageUrl = product?.attributes?.imageUrl?.split(";");
+
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -155,47 +173,47 @@ const Index = () => {
                 <div className="row">
                   {imageUrl && imageUrl.length > 0
                     ? imageUrl.map((val, i) => {
-                        return (
-                          i !== 0 && (
-                            <div className="col-6" key={i}>
-                              <div className="spls_style_two img-gallery-box mb24">
-                                <Item original={val} width={703} height={937}>
-                                  {({ ref, open }) => (
-                                    <div role="button" ref={ref} onClick={open}>
-                                      <img
-                                        className="img-fluid w100"
-                                        src={val}
-                                      />
-                                    </div>
-                                  )}
-                                </Item>
-                              </div>
+                      return (
+                        i !== 0 && (
+                          <div className="col-6" key={i}>
+                            <div className="spls_style_two img-gallery-box mb24">
+                              <Item original={val} width={703} height={937}>
+                                {({ ref, open }) => (
+                                  <div role="button" ref={ref} onClick={open}>
+                                    <img
+                                      className="img-fluid w100"
+                                      src={val}
+                                    />
+                                  </div>
+                                )}
+                              </Item>
                             </div>
-                          )
-                        );
-                      })
-                    : product?.attributes?.image?.data.map((val, i) => (
-                        <div className="col-6" key={i}>
-                          <div className="spls_style_two img-gallery-box mb24">
-                            <Item
-                              original={val.attributes?.url}
-                              thumbnail={val.attributes?.formats?.small?.url}
-                              width={703}
-                              height={937}
-                            >
-                              {({ ref, open }) => (
-                                <div role="button" ref={ref} onClick={open}>
-                                  <img
-                                    className="img-fluid w100"
-                                    src={val.attributes?.url}
-                                    alt={val.attributes?.alternativeText}
-                                  />
-                                </div>
-                              )}
-                            </Item>
                           </div>
+                        )
+                      );
+                    })
+                    : product?.attributes?.image?.data.map((val, i) => (
+                      <div className="col-6" key={i}>
+                        <div className="spls_style_two img-gallery-box mb24">
+                          <Item
+                            original={val.attributes?.url}
+                            thumbnail={val.attributes?.formats?.small?.url}
+                            width={703}
+                            height={937}
+                          >
+                            {({ ref, open }) => (
+                              <div role="button" ref={ref} onClick={open}>
+                                <img
+                                  className="img-fluid w100"
+                                  src={val.attributes?.url}
+                                  alt={val.attributes?.alternativeText}
+                                />
+                              </div>
+                            )}
+                          </Item>
                         </div>
-                      ))}
+                      </div>
+                    ))}
                 </div>
               </div>
             </div>

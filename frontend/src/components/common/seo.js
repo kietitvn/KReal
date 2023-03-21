@@ -17,11 +17,10 @@ const Seo = ({ pageTitle, font, seo }) => {
     // Add title suffix
     MetaTitle:
       (pageTitle ? pageTitle : `${seoWithDefaults?.MetaTitle}`) +
-      ` | ${globalData?.global?.data?.attributes?.SiteName}`,
+      ` | ${globalData ? globalData.global?.data?.attributes?.SiteName : "KReal"}`,
     // Get full image URL
     ShareImage: seoWithDefaults?.ShareImage?.data?.attributes.url,
   };
-  console.log("fullSeo:", fullSeo)
   return (
     <>
       <Head>
