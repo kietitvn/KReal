@@ -1,22 +1,25 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPrice, addStatus } from "../../features/properties/propertiesSlice";
 import { priceRange } from "../../utils/const";
 import GlobalFilter from "./GlobalFilter";
 
 const GlobalHeroFilter = ({ className = "" }) => {
   const dispatch = useDispatch();
+  const { status } = useSelector(
+    (state) => state.properties
+  );
   return (
     <div className={`home_adv_srch_opt ${className}`}>
       <ul className="nav nav-pills" id="pills-tab" role="tablist">
         <li className="nav-item">
           <a
-            className="nav-link active"
+            className={`nav-link ${status === "Bán" && "active"}`}
             id="pills-home-tab"
             data-bs-toggle="pill"
             href="#pills-home"
             role="tab"
             aria-controls="pills-home"
-            aria-selected="true"
+            aria-selected={status === "Bán"}
             onClick={() => {
               dispatch(addStatus("Bán"));
               dispatch(addPrice(priceRange.sell));
@@ -28,13 +31,13 @@ const GlobalHeroFilter = ({ className = "" }) => {
 
         <li className="nav-item">
           <a
-            className="nav-link"
+            className={`nav-link ${status === "Thuê" && "active"}`}
             id="pills-profile-tab"
             data-bs-toggle="pill"
             href="#pills-profile"
             role="tab"
             aria-controls="pills-profile"
-            aria-selected="false"
+            aria-selected={status === "Thuê"}
             onClick={() => {
               dispatch(addStatus("Thuê"));
               dispatch(addPrice(priceRange.rent));

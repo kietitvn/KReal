@@ -16,17 +16,17 @@ const Seo = ({ pageTitle, font, seo }) => {
     ...seoWithDefaults,
     // Add title suffix
     MetaTitle:
-      (pageTitle ? pageTitle : `${seoWithDefaults.MetaTitle}`) +
+      (pageTitle ? pageTitle : `${seoWithDefaults?.MetaTitle}`) +
       ` | ${globalData?.global?.data?.attributes?.SiteName}`,
     // Get full image URL
     ShareImage: seoWithDefaults?.ShareImage?.data?.attributes.url,
   };
-
+  console.log("fullSeo:", fullSeo)
   return (
     <>
       <Head>
-        {fullSeo?.MetaTitle ?
-          <title>{fullSeo?.MetaTitle}</title> : <title>`Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ | KReal`</title>
+        {seoWithDefaults?.MetaTitle ?
+          <title>{fullSeo?.MetaTitle}</title> : <title>Mua bán Ký gửi-Nhà đất Căn hộ-Pháp lý Đăng bộ | KReal</title>
         }
 
         {fullSeo?.MetaDescription ?

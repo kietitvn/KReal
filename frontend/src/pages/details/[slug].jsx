@@ -9,10 +9,14 @@ const Index = () => {
   const router = useRouter();
   const slug = router.query.slug;
   const productData = useSelector(selectProducts);
-  const product = productData?.products?.data?.find(
+  let product = productData?.products?.data?.find(
     (f) => f.attributes.slug === slug
   );
-
+  if (!product)
+    product = productData?.productsFeatured
+      ?.data?.find(
+        (f) => f.attributes.slug === slug
+      );
   return (
     <>
       <Seo seo={product?.attributes?.seo} />
