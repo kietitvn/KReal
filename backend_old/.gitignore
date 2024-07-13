@@ -99,6 +99,7 @@ node_modules
 # Tests
 ############################
 
+testApp
 coverage
 
 ############################
@@ -108,8 +109,9 @@ coverage
 .env
 license.txt
 exports
-.strapi
-dist
+*.cache
 build
 .strapi-updater.json
-.strapi-cloud.json
+
+package.lock
+yarn.lock
