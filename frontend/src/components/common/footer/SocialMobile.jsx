@@ -2,7 +2,7 @@ const Social = () => {
   return (
     <>
       <li>
-        <a href="tel:0582006633">0582.00.66.33</a>
+        <a href="tel:0937121461">0937.12.14.61</a>
       </li>
       <li>
         <a
@@ -15,7 +15,7 @@ const Social = () => {
       </li>
       <location>
         <a
-          href={"https://zalo.me/0582006633"}
+          href={"https://zalo.me/0937121461"}
           target="_blank"
           rel="noopener noreferrer"
         >
