@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 const prefixURL = isProd ? "https://" : "https://";
-const baseUrl = isProd ? "manage.batdongsan-hcm.com" : "manage.batdongsan-hcm.com";
+const baseUrl = isProd ? "batdongsan-hcm.ddns.net" : "batdongsan-hcm.ddns.net";
 
 const nextConfig = {
   reactStrictMode: false,
