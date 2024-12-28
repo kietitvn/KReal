@@ -24,7 +24,7 @@ const Social = () => {
       </li> */}
       {/* <location>
         <a
-          href={"https://zalo.me/0582006633"}
+          href={"https://zalo.me/0937121461"}
           target="_blank"
           rel="noopener noreferrer"
         >
