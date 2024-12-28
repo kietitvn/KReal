@@ -56,20 +56,11 @@ const Footer = () => {
           <h4>Liên hệ</h4>
           <ul className="list-unstyled">
             <li>
-              <a href="mailto:Nhadatquan08@gmail.com">Nhadatquan08@gmail.com</a>
-            </li>
-            {/* <li>
-              <a href="#">Collins Street West, Victoria</a>
+              <a href="tel:+84582006633">0582.00.66.33 (Ms.Kiều)</a>
             </li>
             <li>
-              <a href="#">8007, Australia.</a>
-            </li> */}
-            <li>
-              <a href="tel:+84582006633">0582.00.66.33</a>
-            </li>
-            {/* <li>
-              <a href="tel:+4733378901">+1 246-345-0695</a>
-            </li> */}
+              <a href="tel:+84908727618">0908.72.76.18 (Mr.Lộc)</a>
+            </li>    
           </ul>
         </div>
       </div>
