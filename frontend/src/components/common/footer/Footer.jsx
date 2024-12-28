@@ -56,7 +56,7 @@ const Footer = () => {
           <h4>Liên hệ</h4>
           <ul className="list-unstyled">
             <li>
-              <a href="tel:+84582006633">0582.00.66.33 (Ms.Kiều)</a>
+              <a href="tel:+84937121461">0937.12.14.61 (Ms.Kiều)</a>
             </li>
             <li>
               <a href="tel:+84908727618">0908.72.76.18 (Mr.Lộc)</a>
