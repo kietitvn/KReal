@@ -1,13 +1,14 @@
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkBreaks from 'remark-breaks';
 const PropertyDescriptions = (props) => {
   const [click, setClick] = useState(true);
   const handleClick = () => setClick(!click);
   return (
     <>
       <p>
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
           {props?.description}
         </ReactMarkdown>
       </p>

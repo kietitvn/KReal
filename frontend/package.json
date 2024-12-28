@@ -28,6 +28,7 @@
     "react-redux": "^8.0.4",
     "react-slick": "^0.29.0",
     "reduxjs-toolkit-persist": "^7.2.1",
+    "remark-breaks": "^4.0.0",
     "remark-gfm": "^3.0.1",
     "sass": "^1.54.9",
     "slick-carousel": "^1.8.1",
