@@ -14,7 +14,7 @@ const FeaturedItem = () => {
   let content = productData?.products?.data?.map((item) => {
     const imageUrl = item?.attributes?.imageUrl?.split(";");
     return (
-      <Link href={`/details/${item?.attributes.slug}`} key={item?.id}>
+      <Link href={`/${item?.attributes.slug}`} key={item?.id}>
         <div
           className={`${
             isGridOrList ? "col-12 feature-list" : "col-md-6 col-lg-6"
@@ -83,7 +83,7 @@ const FeaturedItem = () => {
                   {item?.attributes?.categoryID?.data?.attributes?.name}
                 </p>
                 <h4>
-                  <Link href={`/details/${item?.attributes.slug}`}>
+                  <Link href={`/${item?.attributes.slug}`}>
                     <a>{item?.attributes?.name}</a>
                   </Link>
                 </h4>
