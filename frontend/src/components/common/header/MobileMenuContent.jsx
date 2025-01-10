@@ -312,7 +312,7 @@ const MobileMenuContent = () => {
                 src="/assets/images/header-logo2.png"
                 alt="header-logo.png"
               />
-              <span className="brand-text">FindHouse</span>
+              <span className="brand-text">KReal</span>
             </a>
           </Link>
           {/* End .logo */}
