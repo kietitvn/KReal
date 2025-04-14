@@ -76,6 +76,9 @@ export const propertiesSlice = createSlice({
     addLength: (state, action) => {
       state.length = action.payload;
     },
+    resetFilter: (state, action) => {
+      return initialState;
+    },
   },
 });
 
@@ -85,6 +88,7 @@ export const {
   addLocation,
   addPrice,
   addAmenities,
+  resetAmenities,
   addStatus,
   addBathrooms,
   addBedrooms,
@@ -93,6 +97,6 @@ export const {
   addAreaMin,
   addAreaMax,
   addLength,
-  resetAmenities
+  resetFilter
 } = propertiesSlice.actions;
 export default propertiesSlice.reducer;

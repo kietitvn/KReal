@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { selectProducts } from "../../../features/products/productsSlice";
 import { doctien } from "../../../utils/currency";
+import Image from "next/image";
 
 const FeaturedItem = () => {
   const productData = useSelector(selectProducts);
@@ -28,15 +29,15 @@ const FeaturedItem = () => {
           >
             <div className="thumb">
               {imageUrl && imageUrl.length > 0 ? (
-                <img
-                  className="img-whp"
+                <Image
+                  className="img-whp w-100 h-100 cover"
                   src={imageUrl[0]}
-                  width={703}
-                  height={937}
+                  width={342}
+                  height={220}
                 />
               ) : (
-                <img
-                  className="img-whp"
+                <Image
+                  className="img-whp w-100 h-100 cover"
                   src={
                     item?.attributes?.cover?.data?.attributes?.formats?.small
                       ?.url
@@ -44,6 +45,8 @@ const FeaturedItem = () => {
                   alt={
                     item?.attributes?.cover?.data?.attributes?.alternativeText
                   }
+                  width={342}
+                  height={220}
                 />
               )}
               <div className="thmb_cntnt">

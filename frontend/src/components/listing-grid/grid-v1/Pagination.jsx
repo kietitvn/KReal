@@ -12,9 +12,7 @@ const Pagination = () => {
   const productData = useSelector(selectProducts);
   const pagination = productData?.products?.meta?.pagination;
   const pageCount = pagination ? pagination.pageCount : 1;
-  const [pageSelected, setpageSelected] = useState(
-    pagination ? pagination.page : 1
-  );
+  const [pageSelected, setpageSelected] = useState(1);
   const {
     keyword,
     location,
@@ -68,6 +66,10 @@ const Pagination = () => {
     }
     return () => {};
   }, [dataProduct]);
+
+  useEffect(() => {
+    setpageSelected(1);
+  }, [query]);
 
   const pageHandle = (element) => {
     setpageSelected(element);

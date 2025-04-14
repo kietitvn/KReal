@@ -12,6 +12,7 @@ import {
   addPropertyType,
   addStatus,
   resetAmenities,
+  resetFilter
 } from "../../../features/properties/propertiesSlice";
 import { bathRoom, bedRoom, priceRange } from "../../../utils/const";
 import PricingRangeSlider from "../../common/PricingRangeSlider";
@@ -34,14 +35,7 @@ const FilteringItem = () => {
   const dispatch = useDispatch();
   // clear filter
   const clearAllFilters = () => {
-    dispatch(addStatus("Bán"));
-    dispatch(addKeyword(""));
-    dispatch(addLocation(""));
-    dispatch(addPropertyType(""));
-    dispatch(addBathrooms(""));
-    dispatch(addBedrooms(""));
-    dispatch(resetAmenities());
-    dispatch(addPrice(priceRange.sell));
+    dispatch(resetFilter());
   };
 
   return (

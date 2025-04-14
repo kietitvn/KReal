@@ -8,8 +8,17 @@ import FindProperties from "./FindProperties";
 import Header from "./Header";
 import Hero from "./Hero";
 import LookingItem from "./LookingItem";
+import { useDispatch } from "react-redux";
+import { resetFilter } from "../../features/properties/propertiesSlice";
+import Router from "next/router";
 
 const Index = () => {
+  const dispatch = useDispatch();
+  const onClickHandle = (e) =>{
+    dispatch(resetFilter());
+    e.preventDefault();
+    Router.push("/find");
+  }
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -34,7 +43,8 @@ const Index = () => {
                 <p>
                   BĐS được lựa chọn cẩn thận bởi đội ngũ của chúng tôi.{" "}
                   <div className="float-end">
-                    <Link href="/find">Xem tất cả</Link>
+                      <a className="link-style"
+                        onClick={onClickHandle}>Xem tất cả</a>
                     <span className="flaticon-next"></span>
                   </div>
                 </p>
