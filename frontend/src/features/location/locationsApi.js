@@ -6,7 +6,7 @@ export const locationsApi = api.injectEndpoints({
       query: () => ({
         url: "/locations",
         method: "GET",
-        params: "?sort=name&populate=*", //high level: populate[location][populate]=*
+        params: "?sort=id&populate=*", //high level: populate[location][populate]=*
       }),
       // providesTags: ["Location"],
     }),
