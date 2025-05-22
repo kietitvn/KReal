@@ -1,7 +1,5 @@
-
-
-
 import NotFound from "@/components/404";
+import { appName } from "@/utils/const";
 import dynamic from "next/dynamic";
 
 export const metadata = {
