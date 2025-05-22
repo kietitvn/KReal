@@ -1,14 +1,14 @@
+
+'use client';
+import CopyrightFooter from "../common/footer/CopyrightFooter";
+import Footer from "../common/footer/Footer";
 import MobileMenu from "../common/header/MobileMenu";
-import Header from "./Header";
-import GlobalHeroFilter from "../common/GlobalHeroFilter";
-import PopupVideo from "../common/PopupVideo";
+import PopupSignInUp from "../common/PopupSignInUp";
+import AgentsTeam from "./AgentsTeam";
+import BestProperties from "./BestProperties";
 import FeaturedProperties from "./FeaturedProperties";
 import FindProperties from "./FindProperties";
-import BestProperties from "./BestProperties";
-import AgentsTeam from "./AgentsTeam";
-import Footer from "../common/footer/Footer";
-import CopyrightFooter from "../common/footer/CopyrightFooter";
-import PopupSignInUp from "../common/PopupSignInUp";
+import Header from "./Header";
 import Hero from "./Hero";
 
 const Home3 = () => {

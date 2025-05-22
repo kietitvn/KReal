@@ -1,3 +1,4 @@
+'use client';
 import Blogs from "../common/Blogs";
 import GlobalHeroFilter from "../common/GlobalHeroFilter";
 import MobileMenu from "../common/header/MobileMenu";

@@ -87,7 +87,7 @@ const FeaturedItem = () => {
                 {item?.attributes?.categoryID?.data?.attributes?.name}
               </p>
               <h4>
-                <Link href={`/${item?.attributes.slug}`}>
+                <Link href={`/${item?.attributes?.slug}`}>
                   {item?.attributes?.name}
                 </Link>
               </h4>

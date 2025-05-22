@@ -8,7 +8,7 @@ const nextConfig = {
   swcMinify: false,
   env: {
     baseUrl: `${prefixURL}${baseUrl}`,
-    storePicturesInWEBP: true,
+    // storePicturesInWEBP: true,
   },
   images: {
     domains: [baseUrl, 'batdongsan678.com', "localhost"],

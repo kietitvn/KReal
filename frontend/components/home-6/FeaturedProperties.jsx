@@ -92,7 +92,7 @@ const FeaturedProperties = () => {
           const detail = item?.attributes;
           const imageUrl = detail?.imageUrl?.split(";");
           return (
-            <Link href={`/${item?.attributes.slug}?id=${item?.id}`} key={item?.id}>
+            <Link href={`/${item?.attributes?.slug}?id=${item?.id}`} key={item?.id}>
               <div className="item" key={item.id}>
                 <div className="properti_city home6">
                   <div className="thumb">

@@ -16,7 +16,7 @@ const qs = require("qs");
 
 const Index = () => {
   const params = useParams();
-  const slug = params.slug;
+  const slug = params?.slug;
 
   const query = qs.stringify(
     {
