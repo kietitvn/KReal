@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
-const prefixURL = isProd ? "https://" : "https://";
-const baseUrl = isProd ? "batdongsan-hcm.ddns.net" : "batdongsan-hcm.ddns.net";
+const prefixURL = isProd ? "https://" : "http://";
+const baseUrl = isProd ? "batdongsan-hcm.ddns.net" : "localhost:1337";
 
 const nextConfig = {
   reactStrictMode: false,
@@ -11,7 +11,7 @@ const nextConfig = {
     storePicturesInWEBP: true,
   },
   images: {
-    domains: [baseUrl, 'batdongsan678.com'],
+    domains: [baseUrl, 'batdongsan678.com', "localhost"],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   },
