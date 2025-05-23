@@ -2,9 +2,6 @@ import ListingDetails from "@/components/details";
 import dynamic from "next/dynamic";
 
 export async function generateMetadata({ params, searchParams }) {
-  console.log('params',params);
-  console.log('searchParams',searchParams);
-
   const id = searchParams.id;
   const res = await fetch(process.env.baseUrl + "/api/products/" + id + "?&populate=*", {
     cache: 'no-store', // nếu bạn muốn luôn fetch mới
