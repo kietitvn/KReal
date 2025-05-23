@@ -86,79 +86,77 @@ const FeaturedProperties = () => {
     (item) => item?.attributes?.feature_ids?.data?.length > 0
   );
   return (
-    <>
-      <Slider {...settings} arrows={true}>
-        {data && data.map((item) => {
-          const detail = item?.attributes;
-          const imageUrl = detail?.imageUrl?.split(";");
-          return (
-            <Link href={`/${item?.attributes?.slug}?id=${item?.id}`} key={item?.id}>
-              <div className="item" key={item.id}>
-                <div className="properti_city home6">
-                  <div className="thumb">
-                    {imageUrl && imageUrl.length > 0 ?
-                      <Image
-                        width={367}
-                        height={370}
-                        className="img-whp"
-                        src={imageUrl[0]}
-                        alt="image.jpg"
-                      />
-                      : <Image
-                        width={367}
-                        height={370}
-                        className="img-whp"
-                        src={
-                          detail?.cover?.data?.attributes?.formats
-                            ?.small?.url
-                        }
-                        alt={
-                          detail?.cover?.data?.attributes?.alternativeText
-                        }
-                      />}
+    <Slider {...settings} arrows={true}>
+      {data && data.map((item) => {
+        const detail = item?.attributes;
+        const imageUrl = detail?.imageUrl?.split(";");
+        return (
+          <Link href={`/${item?.attributes?.slug}?id=${item?.id}`} key={item?.id}>
+            <div className="item" key={item.id}>
+              <div className="properti_city home6">
+                <div className="thumb">
+                  {imageUrl && imageUrl.length > 0 ?
+                    <Image
+                      width={367}
+                      height={370}
+                      className="img-whp"
+                      src={imageUrl[0]}
+                      alt="image.jpg"
+                    />
+                    : <Image
+                      width={367}
+                      height={370}
+                      className="img-whp"
+                      src={
+                        detail?.cover?.data?.attributes?.formats
+                          ?.small?.url
+                      }
+                      alt={
+                        detail?.cover?.data?.attributes?.alternativeText
+                      }
+                    />}
 
-                    <div className="thmb_cntnt">
-                      <ul className="tag mb0">
-                        {detail?.feature_ids?.data?.length > 0 && (
-                          <li className="list-inline-item">
-                            <a href="#">Tiện ích</a>
-                          </li>
-                        )}
+                  <div className="thmb_cntnt">
+                    <ul className="tag mb0">
+                      {detail?.feature_ids?.data?.length > 0 && (
                         <li className="list-inline-item">
-                          <a href="#">{detail?.status}</a>
+                          <a href="#">Tiện ích</a>
                         </li>
-                      </ul>
-                    </div>
+                      )}
+                      <li className="list-inline-item">
+                        <a href="#">{detail?.status}</a>
+                      </li>
+                    </ul>
                   </div>
-                  {/* End .thumb */}
+                </div>
+                {/* End .thumb */}
 
-                  <div className="overlay">
-                    <div className="details">
-                      <a className="fp_price">
-                        {doctien(detail?.price)}
-                        <small>
-                          {detail?.status === "Bán" ? "" : "/tháng"}
-                        </small>
-                      </a>
-                      <h4>
-                        <a>{detail?.name}</a>
-                      </h4>
-                      <ul className="prop_details mb0">
-                        {detail?.feature_ids?.data?.map((val, i) => (
-                          <li className="list-inline-item" key={i}>
-                            <a href="#">{val?.attributes?.name}</a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                <div className="overlay">
+                  <div className="details">
+                    <a className="fp_price">
+                      {doctien(detail?.price)}
+                      <small>
+                        {detail?.status === "Bán" ? "" : "/tháng"}
+                      </small>
+                    </a>
+                    <h4>
+                      <a>{detail?.name}</a>
+                    </h4>
+                    <ul className="prop_details mb0">
+                      {detail?.feature_ids?.data?.map((val, i) => (
+                        <li className="list-inline-item" key={i}>
+                          <a href="#">{val?.attributes?.name}</a>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
-            </Link>
-          )
-        })}
-      </Slider>
-    </>
+            </div>
+          </Link>
+        )
+      })}
+    </Slider>
   );
 };
 
