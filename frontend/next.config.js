@@ -20,13 +20,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: baseUrl,
-        port: '443',
-        pathname: '/**',
+        pathname: '/uploads/**',
       },  
       {
         protocol: 'https',
         hostname: 'batdongsan678.com',
-        port: '443',
         pathname: '/**',
       },
     ],
