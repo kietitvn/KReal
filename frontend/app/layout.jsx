@@ -2,7 +2,8 @@
 'use client'
 
 import { Provider } from "react-redux";
-import { store } from "../store/store";
+import { store, persistor } from "../store/store";
+import { PersistGate } from "reduxjs-toolkit-persist/integration/react";
 import ScrollToTop from "@/components/common/ScrollTop";
 import "../public/assets/scss/index.scss";
 
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
       <body >
       
       <Provider store={store}>
-      {children}
+        <PersistGate loading={null} persistor={persistor}>
+          {children}
+        </PersistGate>
       </Provider>
 
       <ScrollToTop />

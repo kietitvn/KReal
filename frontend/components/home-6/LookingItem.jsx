@@ -21,7 +21,7 @@ const LookingItem = () => {
 
   return (
     <>
-      {categoriesData?.data?.map((item) => (
+      {/* {categoriesData?.data?.map((item) => (
         <div className="col-sm-6 col-lg-3 col-xl-3 p0" key={item.id}>
           <a
             onClick={(e) => {
@@ -41,7 +41,7 @@ const LookingItem = () => {
             </div>
           </a>
         </div>
-      ))}
+      ))} */}
     </>
   );
 };

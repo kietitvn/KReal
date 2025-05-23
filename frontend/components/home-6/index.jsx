@@ -78,11 +78,11 @@ const Index = () => {
       </section> */}
 
       {/* <!-- Property Cities --> */}
-      <section id="property-city" className="property-city">
+      <section id="property-city" className="property-city mt30">
         <div className="container">
-          {/* <div className="row features_row">
+          <div className="row features_row">
             <LookingItem />
-          </div> */}
+          </div>
 
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
