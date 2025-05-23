@@ -5228,7 +5228,7 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 
 .feat_property .thumb img {
-  opacity: 0.6;
+  opacity: 0.9;
   object-fit: fill;
   min-height: 220px;
 }
@@ -5294,7 +5294,7 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 .feat_property.home8 ul.tag li:first-child,
 .properti_city.home6 .thumb .thmb_cntnt ul.tag li:first-child,
 .feat_property.list .dtls_headr ul.tag li:first-child {
-  background-color: rgb(62, 76, 102);
+  background-color:  rgb(62, 76, 102);
 }
 
 .feat_property .thumb .thmb_cntnt ul.tag li:last-child,

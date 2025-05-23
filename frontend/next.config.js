@@ -19,7 +19,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: baseUrl,
+        hostname: 'batdongsan-hcm.ddns.net',
+        pathname: '/uploads/**',
+      },  
+      {
+        protocol: 'http',
+        hostname: 'localhost',
         pathname: '/uploads/**',
       },  
       {
