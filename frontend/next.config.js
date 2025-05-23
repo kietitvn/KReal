@@ -20,19 +20,13 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: baseUrl,
-        port: '',
+        port: '443',
         pathname: '/**',
       },  
       {
         protocol: 'https',
         hostname: 'batdongsan678.com',
-        port: '',
-        pathname: '/**',
-      },  
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '1337',
+        port: '443',
         pathname: '/**',
       },
     ],
