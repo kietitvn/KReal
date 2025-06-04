@@ -8,6 +8,9 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+.contain {
+    object-fit: contain;
+}
 .static-title,
 .transform-none {
     transform: none !important;
@@ -553,9 +556,6 @@ header.header-nav.menu_style_home_one .ace-responsive-menu li.add_listing:hover 
         top: 0 !important;
     }
 }
-.mobile-header{
-    justify-content: space-between;
-}
 .feature_property_home6_slider,
 .our_agents_home6_slider {
     margin-left: calc((100% - 1170px) / 2);
@@ -905,11 +905,6 @@ textarea.form-control {
 .breadcrumb_title {
     margin-bottom: 0;
     margin-top: 10px;
-}
-.breadcrumb_filter {
-    margin-top: 5px;
-    font-style: italic;
-    font-size: 10px;
 }
 
 .feat_property .details .fp_footer .fp_meta li a {

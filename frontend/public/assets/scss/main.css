@@ -3627,17 +3627,9 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 .home-text h1,
 .home-text h2,
 .home-text h3 {
-  color: #ffffff;
+  color: #484848;
   margin-top: 0;
 }
-
-.home-text.home6 h1 {
-  font-family: "Nunito";
-  color: #484848;
-  font-weight: bold;
-  line-height: 1.2;
-}
-
 
 .home-text.home6 h2 {
   font-family: "Nunito";
@@ -4280,7 +4272,7 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 
 .home6-overlay:before {
-  background-image: url(../images/home/6.jpg);
+  background-image: url(../images/background/7.jpg);
   bottom: 0;
   content: "";
   opacity: 0.7;
@@ -5236,7 +5228,7 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 
 .feat_property .thumb img {
-  opacity: 0.6;
+  opacity: 0.9;
   object-fit: fill;
   min-height: 220px;
 }
@@ -5302,7 +5294,7 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 .feat_property.home8 ul.tag li:first-child,
 .properti_city.home6 .thumb .thmb_cntnt ul.tag li:first-child,
 .feat_property.list .dtls_headr ul.tag li:first-child {
-  background-color: rgb(62, 76, 102);
+  background-color:  rgb(62, 76, 102);
 }
 
 .feat_property .thumb .thmb_cntnt ul.tag li:last-child,
@@ -5829,6 +5821,7 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
   margin: 0 auto;
   right: 0;
   position: absolute;
+  border-radius: 50%;
 }
 
 .properti_city.home6 .details .tc_content h4,
@@ -8862,7 +8855,7 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 }
 
 .about_content p {
-  font-size: 14px;
+  font-size: 16px;
   color: #484848;
   line-height: 1.714;
   margin-bottom: 40px;
@@ -11731,18 +11724,16 @@ legend span {
 }
 
 .mbp_pagination ul.page_navigation li .page-link {
-  height: 30px;
-  width: 30px;
   background-color: #ffffff;
   border: 1px solid #ebebeb;
   border-radius: 50%;
   font-size: 14px;
   font-family: "Nunito";
   color: #777777;
-  
+  height: 45px;
   overflow: hidden;
   text-align: center;
- 
+  width: 45px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -14307,16 +14298,21 @@ legend span {
   margin-bottom: 30px;
   position: relative;
   padding: 20px 20px 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .ff_one .icon {
   border-radius: 50%;
   background-color: rgba(29, 41, 62, 0.102);
-  float: right;
-  height: 100px;
-  line-height: 100px;
+  height: 80px;
   text-align: center;
-  width: 100px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .ff_one .icon span {
@@ -14334,10 +14330,6 @@ legend span {
 
 .ff_one.style4 .icon span {
   color: #ffbc7d;
-}
-
-.ff_one .detais {
-  padding-top: 25px;
 }
 
 .ff_one .detais .timer {
@@ -19749,4 +19741,10 @@ button.gm-ui-hover-effect:focus {
 
 .pro-sidebar .pro-menu a.ui-active {
   color: var(--color-primary) !important;
+}
+
+/* sticky header che mất 1 phần khi scroll down section */
+/* Áp dụng cho tất cả các section có ID, hoặc các phần tử cụ thể */
+section[id] { /* Chọn tất cả các thẻ <section> có thuộc tính id */
+  scroll-margin-top: 80px; /* Thay 80px bằng chiều cao header + 1 chút */
 }
