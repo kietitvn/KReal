@@ -135,7 +135,7 @@ class FacebookService {
 
       // Add product link if slug is available
       if (product.slug) {
-        postData.link = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/${product.slug}`;
+        postData.link = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/${product.slug}?id=${product.id}`;
         // postData.name = product.name;
         // postData.caption = 'View full details';
         // postData.description = product.description?.replace(/<[^>]*>/g, '').substring(0, 300) || '';
