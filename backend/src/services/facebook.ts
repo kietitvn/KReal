@@ -101,13 +101,13 @@ class FacebookService {
     }
     
     // Fallback to first image if no cover
-    // if (product.image?.data?.[0]?.attributes?.url) {
-    //   const url = product.image.data[0].attributes.url;
-    //   if (url.startsWith('/')) {
-    //     return `${process.env.HOST || 'http://localhost:1337'}${url}`;
-    //   }
-    //   return url;
-    // }
+    if (product.image?.[0]?.url) {
+      const url = product.image?.[0]?.url;
+      if (url.startsWith('/')) {
+        return `${process.env.HOST || 'http://localhost:1337'}${url}`;
+      }
+      return url;
+    }
     
     return null;
   }
