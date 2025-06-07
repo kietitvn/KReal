@@ -18,16 +18,20 @@
     },
     "description": {
       "type": "richtext",
-      "required": false
+      "required": true,
+      "minLength": 50,
+      "maxLength": 2000
     },
     "price": {
       "type": "biginteger",
-      "default": "0",
+      "default": 0,
       "required": true,
-      "min": "0"
+      "min": 1000000,
+      "max": 1000000000000
     },
     "yearBuilt": {
-      "type": "integer"
+      "type": "integer",
+      "min": 1900
     },
     "width": {
       "type": "decimal",
@@ -56,7 +60,8 @@
     },
     "bedRoom": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "min": 0
     },
     "bathRoom": {
       "type": "integer",
@@ -102,7 +107,7 @@
     "image": {
       "type": "media",
       "multiple": true,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
@@ -110,7 +115,7 @@
     "cover": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
