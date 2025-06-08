@@ -86,30 +86,168 @@ class FacebookService {
     message += `\n#${statusText.replace(' ', '')} #${product.location?.name}`;
     return message;
   }
+  /**
+   * Get multiple image URLs from product (max 10)
+   */
+  private getProductImages(product: ProductData): string[] {
+    const images: string[] = [];
+    
+    // Add cover image first if available
+    // if (product.cover?.data?.attributes?.url) {
+    //   const url = product.cover.data.attributes.url;
+    //   if (url.startsWith('/')) {
+    //     images.push(`${process.env.HOST || 'http://localhost:1337'}${url}`);
+    //   } else {
+    //     images.push(url);
+    //   }
+    // }
+    
+    // Add other images from the image array
+    if (product.image && Array.isArray(product.image)) {
+      for (const img of product.image.slice(0, 10)) {
+        // if (images.length >= 10) break; // Facebook allows max 10 images
+        
+        if (img.url) {
+          const url = img.url;
+          const fullUrl = url.startsWith('/') 
+            ? `${process.env.HOST || 'http://localhost:1337'}${url}` 
+            : url;
+          
+          // Avoid duplicates
+          if (!images.includes(fullUrl)) {
+            images.push(fullUrl);
+          }
+        }
+      }
+    }
+    
+    // Fallback to imageUrl array if available
+    // if (images.length === 0 && product.image && Array.isArray(product.image)) {
+    //   for (const img of product.image) {
+    //     if (images.length >= 10) break;
+        
+    //     if (img.url) {
+    //       const fullUrl = img.url.startsWith('/') 
+    //         ? `${process.env.HOST || 'http://localhost:1337'}${img.url}` 
+    //         : img.url;
+          
+    //       if (!images.includes(fullUrl)) {
+    //         images.push(fullUrl);
+    //       }
+    //     }
+    //   }
+    // }
+    
+    return images;
+  }
 
   /**
-   * Get the cover image URL for the product
+   * Post multiple photos as an album to Facebook Page
    */
-  private getCoverImageUrl(product: ProductData): string | null {
-    if (product.cover?.data?.attributes?.url) {
-      const url = product.cover.data.attributes.url;
-      // If it's a relative URL, make it absolute
-      if (url.startsWith('/')) {
-        return `${process.env.HOST || 'http://localhost:1337'}${url}`;
+  async postPhotoAlbum(images: string[], message: string): Promise<{ success: boolean; postId?: string; error?: string }> {
+    try {
+      if (!this.isConfigured()) {
+        throw new Error('Facebook integration is not properly configured');
       }
-      return url;
-    }
-    
-    // Fallback to first image if no cover
-    if (product.image?.[0]?.url) {
-      const url = product.image?.[0]?.url;
-      if (url.startsWith('/')) {
-        return `${process.env.HOST || 'http://localhost:1337'}${url}`;
+
+      if (images.length === 0) {
+        throw new Error('No images provided for album');
       }
-      return url;
+
+      // For single image, use simple photo post
+      if (images.length === 1) {
+        const response = await axios.post(
+          `${this.baseUrl}/${this.pageId}/photos`,
+          {
+            url: images[0],
+            caption: message,
+          },
+          {
+            params: {
+              access_token: this.accessToken,
+            },
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        return {
+          success: true,
+          postId: response.data.id,
+        };
+      }
+
+      // For multiple images, create a batch post
+      const attachedMedia = [];
+      
+      // Upload each image first and get media IDs
+      for (const imageUrl of images.slice(0, 10)) { // Max 10 images
+        try {
+          const uploadResponse = await axios.post(
+            `${this.baseUrl}/${this.pageId}/photos`,
+            {
+              url: imageUrl,
+              published: false, // Don't publish yet, just upload
+            },
+            {
+              params: {
+                access_token: this.accessToken,
+              },
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          );
+          
+          if (uploadResponse.data.id) {
+            attachedMedia.push({
+              media_fbid: uploadResponse.data.id
+            });
+          }
+        } catch (error) {
+          strapi.log.warn(`Failed to upload image ${imageUrl}:`, error.response?.data || error.message);
+          // Continue with other images
+        }
+      }
+
+      if (attachedMedia.length === 0) {
+        throw new Error('Failed to upload any images');
+      }
+
+      // Create the post with attached media
+      const response = await axios.post(
+        `${this.baseUrl}/${this.pageId}/feed`,
+        {
+          message: message,
+          attached_media: attachedMedia,
+        },
+        {
+          params: {
+            access_token: this.accessToken,
+          },
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (response.data.id) {
+        strapi.log.info(`Successfully posted photo album to Facebook. Post ID: ${response.data.id}`);
+        return {
+          success: true,
+          postId: response.data.id,
+        };
+      } else {
+        throw new Error('No post ID returned from Facebook');
+      }
+    } catch (error: any) {
+      strapi.log.error('Error posting photo album to Facebook:', error.response?.data || error.message);
+      return {
+        success: false,
+        error: error.response?.data?.error?.message || error.message,
+      };
     }
-    
-    return null;
   }
 
   /**
@@ -122,23 +260,31 @@ class FacebookService {
       }
 
       const message = this.formatProductMessage(product);
-      const imageUrl = this.getCoverImageUrl(product);
+      // console.log(product);
+      // return;
+      const images = this.getProductImages(product);
       
+      // If we have images, post as photo album for better engagement
+      // if (images.length > 0) {
+        let photoMessage = message;
+        
+        // Add product link to the message if slug is available
+        if (product.slug) {
+          const productLink = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/${product.slug}?id=${product.id}`;
+          photoMessage += `\n\n🔗 View details: ${productLink}`;
+        }
+        
+        return await this.postPhotoAlbum(images, photoMessage);
+      // }
+      return;
+      // Fallback to regular text post if no images
       const postData: FacebookPostData = {
         message: message,
       };
 
-      // Add image if available
-      // if (imageUrl) {
-      //   postData.picture = imageUrl;
-      // }
-
       // Add product link if slug is available
       if (product.slug) {
         postData.link = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/${product.slug}?id=${product.id}`;
-        // postData.name = product.name;
-        // postData.caption = 'View full details';
-        // postData.description = product.description?.replace(/<[^>]*>/g, '').substring(0, 300) || '';
       }
 
       const response = await axios.post(
