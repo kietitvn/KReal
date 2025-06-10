@@ -1,4 +1,5 @@
 import ListingDetails from "@/components/details";
+import { appName } from "@/utils/const";
 import dynamic from "next/dynamic";
 
 export async function generateMetadata({ params, searchParams }) {
@@ -10,17 +11,17 @@ export async function generateMetadata({ params, searchParams }) {
   const data = response?.data;
   const slug = data?.attributes?.slug;
   const seoContent = data?.attributes?.seo;
-  const title = seoContent?.MetaTitle ? seoContent?.MetaTitle : slug;
-  const description = seoContent?.MetaDescription ? seoContent?.MetaDescription : slug;
+  const title = seoContent?.MetaTitle ? seoContent?.MetaTitle : data?.attributes?.name;
+  const description = seoContent?.MetaDescription ? seoContent?.MetaDescription : data?.attributes?.description.substring(0, 150);
   const keywords = seoContent?.MetaKeywords ? seoContent?.MetaKeywords : slug;
-  const images = data?.attributes?.cover?.data?.attributes?.url ;
+  const images = data?.attributes?.cover?.data?.attributes?.url;
   return {
-    title,
-    description,
+    title: title + ` | ${appName}`,
+    description: description + "...",
     keywords,
     openGraph: {
-      title,
-      description,
+      title: title + ` | ${appName}`,
+      description: description + "...",
       images
     },
   };
